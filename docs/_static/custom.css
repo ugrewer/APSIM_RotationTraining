@@ -1,4 +1,9 @@
-/* Hide the "View page source" link */
-.viewcode-link {
+/* Hide 'View page source' in the page header */
+div.rst-other-versions, a.headerlink, .rst-footer-buttons a[title="View page source"] {
+    display: none !important;
+}
+
+/* Also hide the source link in the top right */
+a.icon-view-page-source {
     display: none !important;
 }
