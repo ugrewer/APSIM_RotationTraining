@@ -1,11 +1,11 @@
-# images
-*.png
-*.gif
-*.bmp
-*.tif
-*.tiff
-*.jpg
-*.jpeg
+# # images
+# *.png
+# *.gif
+# *.bmp
+# *.tif
+# *.tiff
+# *.jpg
+# *.jpeg
 
 # file-archives
 *.tar.gz
