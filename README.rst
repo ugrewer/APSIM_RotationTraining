@@ -1,5 +1,5 @@
-.. image:: _static/Logo_APSIM_Initiative_03.png
-   :alt: APSIM Initiative Logo
+.. image:: _static/ApsimNextGeneration.png
+   :alt: APSIM NextGen Logo
    :align: right
    :width: 200px
 
