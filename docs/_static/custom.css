@@ -4,14 +4,15 @@ a[href="_sources/index.rst.txt"] {
 }
 
 
-/* Make the sidebar scroll container a flex column */
+/* Make sidebar scroll area fill full height */
 .wy-side-scroll {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;  /* full viewport height */
 }
 
-/* Push the Ethical Ads box to the bottom */
+/* Push ad box to bottom */
 .rst-ethical-sidebar {
     margin-top: auto;
+    padding-top: 2em;  /* optional spacing */
 }
