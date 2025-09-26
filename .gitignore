@@ -1,0 +1,81 @@
+# images
+*.png
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.jpg
+*.jpeg
+
+# file-archives
+*.tar.gz
+*.tar
+*.gz
+*.xz
+*.zip
+
+# document and office files
+*.docx
+*.doc
+*.pptx
+*.pdf
+
+# # text files
+# *.txt
+
+# spreadsheets
+*.csv
+*.xlsx
+*.xls
+
+# dataset-files
+*.nc
+*.xml
+*.json
+
+# GIS files
+*.gpkg
+*.shp
+*.dbf
+*.shx
+
+# python pickle files
+*.pkl
+
+# singularity container
+*.sif
+*.sapp
+
+# APSIM files
+# *.apsimx
+# *.apsim
+*.met
+*.sim
+*.sum
+*.out
+*.db
+*.bak
+
+
+### ignore directories containing specific substring
+*old*/
+*pycache*/
+*ipynb_checkpoints*/
+
+
+### ignore specific directories
+
+# application settings
+.vscode/
+
+### ignore files containing specific substring
+*old*
+
+# auto-generated Sphinx api docs
+/docs/generated
+# Sphinx build artifacts
+docs/_build/
+docs/.doctrees/
+docs/.buildinfo
+# ReadTheDocs local build artifacts (if using rtd locally)
+.readthedocs/
