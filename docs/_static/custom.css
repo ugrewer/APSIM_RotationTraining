@@ -1,12 +1,8 @@
-/* Hide 'View page source' in the page header */
-div.rst-other-versions, a.headerlink, .rst-footer-buttons a[title="View page source"] {
+/* Hide 'View page source' link by href */
+a[href="_sources/index.rst.txt"] {
     display: none !important;
 }
 
-/* Also hide the source link in the top right */
-a.icon-view-page-source {
-    display: none !important;
-}
 
 /* Move Ethical Ads to the bottom of the sidebar */
 .rst-ethical-sidebar {
