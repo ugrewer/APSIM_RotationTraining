@@ -1,4 +1,9 @@
-Simulation of Continous Cropping and Crop Rotations Using the APSIM Cropping Systems Model
+.. image:: _static/Logo_APSIM_Initiative_03.png
+   :alt: APSIM Initiative Logo
+   :align: right
+   :width: 200px
+
+Continuous Cropping and Crop Rotations Using the APSIM Cropping Systems Model
 ===============================================
 
 A Comprehensive Tutorial for APSIM Users
