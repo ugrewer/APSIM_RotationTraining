@@ -1,0 +1,4 @@
+/* Hide the "View page source" link */
+.viewcode-link {
+    display: none !important;
+}
