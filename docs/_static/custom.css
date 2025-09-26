@@ -4,8 +4,14 @@ a[href="_sources/index.rst.txt"] {
 }
 
 
-/* Move Ethical Ads to the bottom of the sidebar */
+/* Make the sidebar scroll container a flex column */
+.wy-side-scroll {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Push the Ethical Ads box to the bottom */
 .rst-ethical-sidebar {
-    margin-top: 300px;  /* Adds spacing above */
-    position: static;    /* or just remove 'position' property */
+    margin-top: auto;
 }
