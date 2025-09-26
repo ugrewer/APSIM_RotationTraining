@@ -7,3 +7,11 @@ div.rst-other-versions, a.headerlink, .rst-footer-buttons a[title="View page sou
 a.icon-view-page-source {
     display: none !important;
 }
+
+/* Move Ethical Ads to the bottom of the sidebar */
+.rst-ethical-sidebar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 300px;  /* Increase spacing */
+}
