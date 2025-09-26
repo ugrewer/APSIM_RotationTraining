@@ -6,8 +6,6 @@ a[href="_sources/index.rst.txt"] {
 
 /* Move Ethical Ads to the bottom of the sidebar */
 .rst-ethical-sidebar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin-top: 300px;  /* Increase spacing */
+    margin-top: 300px;  /* Adds spacing above */
+    position: static;    /* or just remove 'position' property */
 }
