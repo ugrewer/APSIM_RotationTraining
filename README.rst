@@ -21,9 +21,17 @@ While APSIM offers robust capabilities for simulating complex cropping systems, 
 This tutorial introduces several approaches for representing continuous cropping in APSIM, including the use of the APSIM Rotation Manager, a graphical interface designed to simplify the specification of crop rotation sequences.
 
 
+
+Acknowledgment of Country
+-----------------------------------------------------
+We acknowledges the First Nations of southern Queensland and their ongoing connection to Country, lands, and waterways. Further, we recognise Aboriginal and Torres Strait Islander peoples as the first educators and researchers of Australia. We pay our respect to Elders past, present, and emerging.
+
 References
 -----------------------------------------------------
 [Holzworth et al. (2018)] Holzworth, D., Huth, N. I., Fainges, J., Brown, H., Zurcher, E., Cichota, R., Verrall, S., Herrmann, N. I., Zheng, B., & Snow, V. (2018). APSIM Next Generation: Overcoming challenges in modernising a farming systems model. Environmental Modelling & Software, 103, 43-51. https://doi.org/10.1016/j.envsoft.2018.02.002
+
+
+
 
 
 Example: Basic Sphinx project for Read the Docs
