@@ -3,26 +3,23 @@ Simple Continuous Cropping
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
 For example, when crop models are used to simulate various treatments of an agricultural field trial, 
 each treatment is typically represented by a single crop cycle simulation. 
-This even holds true if the experimental data stems from multi-year trials on identical plots.
-Crop model simulations of such single crop cycles are typically used for crop model calibration and evaluation, as well as subsequent more analytical investigations. 
-These may include exploring the effects of different management practices or changing environmental conditions on crop growth and yield.
+This even holds true if the experimental data stem from continuous multi-year trials on identical plots.
+Crop model simulations of such single crop cycles are typically used for crop model calibration and evaluation, and are then employed for more analytical purposes subsequently. 
+These may include exploring the effects of different management practices or changing environmental conditions, such as climate change, on crop growth, crop yield, and further outcome indicators.
 
 This section expands on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop grown continuously over multiple years.
-Thereby, we consider both the case of carrying over the simulation state from one crop cycle to the next
-while briefly also comparing it to resetting the simulation state at the beginning of each new crop cycle.
+We primarily consider carrying over the simulation state from one crop cycle to the next and, for comparison, resetting it at the start of each new cycle.
 
 
 Long-term simulation of a single crop with state carry-over
 -------------------------------------
+Extending the simulation of a single crop cycle to the repeated, continuous growth of the same crop over multiple years can easily be achieved in APSIM.
+It predominently entails:
+- Extending the start and end dates of the simulation in the clock-node of the simulation tree to the desired multi-year period.
+- Specifying rule-based management actions - such as for sowing, fertilisation, and irrigation - based on desired triggers, such as fixed dates, or more commonly, soil water and precipitation thresholds.
 
-
-
-
-`Sorghum APSIM example <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
-
-For instance, consider the example APSIM file ``Sorghum.apsimx`` included with the APSIM installation, 
+For instance, consider the two widely used example APSIM files ``Sorghum.apsimx`` and ``Wheat.apsimx`` included with the APSIM installation,
 which you can access by selecting "Open an Example" from the top toolbar of the APSIM graphical user interface (GUI).
-
 
 .. figure:: _static/APSIMscreenshot_topLevelToolbar.png
    :alt: APSIM top-level toolbar
@@ -30,6 +27,13 @@ which you can access by selecting "Open an Example" from the top toolbar of the 
    :width: 100%
 
    Top toolbar from the APSIM GUI, showing the "Open an Example" button.
+
+Instead of the simulation of the crops over a single season, both files simulate continuous crop growth over a period of 100 years, from 1900 to 2000.
+
+
+
+`Sorghum APSIM example <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+
 
 This example file simulates irrigated sorghum in Dalby, Queensland, Australia. However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
 this example file simulates the continuous growth of sorghum over a period of 100 years, from 1900 to 2000.
