@@ -16,3 +16,7 @@ a[href="_sources/index.rst.txt"] {
     margin-top: auto;
     padding-top: 2em;  /* optional spacing */
 }
+
+.rtd-pro-ad {
+    margin-top: 200px;  /* or adjust as needed */
+}
