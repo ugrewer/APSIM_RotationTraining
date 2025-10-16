@@ -12,3 +12,13 @@
       - `APSIM Next Generation Documentation <https://apsimnextgeneration.netlify.app/>`_
       - `Official APSIM Website <https://www.apsim.info/>`_
 
+
+Contents
+--------
+
+.. toctree::
+
+   Home <self>
+   introduction
+   usage
+   api
