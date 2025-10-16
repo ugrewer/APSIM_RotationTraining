@@ -19,7 +19,7 @@ Contents
 .. toctree::
 
    Home <self>
-   simple continuous cropping
+   continuous cropping of a single crop
    downloads
    usage
    api
