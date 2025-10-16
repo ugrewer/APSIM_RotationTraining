@@ -6,7 +6,7 @@ For instance, consider the example APSIM file "Sorghum.apsimx" included with the
 .. image:: _static/APSIMscreenshot_topLevelToolbar.JPG
    :alt: APSIM_topLevelToolbar
    :align: center
-   :width: 50%
+   :width: 100%
 
 
 
