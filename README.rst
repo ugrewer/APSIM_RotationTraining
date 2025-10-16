@@ -35,7 +35,7 @@ We acknowledges the First Nations of southern Queensland and their ongoing conne
 References
 -----------------------------------------------------
 
-.. _Holzworth et al. (2018):
+.. _Holzworth et al., 2018:
 
 Holzworth, D., Huth, N. I., Fainges, J., Brown, H., Zurcher, E., Cichota, R., Verrall, S., Herrmann, N. I., Zheng, B., & Snow, V. (2018). *APSIM Next Generation: Overcoming challenges in modernising a farming systems model.* Environmental Modelling & Software, 103, 43–51. https://doi.org/10.1016/j.envsoft.2018.02.002
 
