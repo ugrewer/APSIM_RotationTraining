@@ -19,6 +19,7 @@ Contents
 .. toctree::
 
    Home <self>
-   simple long-term simulation
+   simple continuous cropping
+   downloads
    usage
    api
