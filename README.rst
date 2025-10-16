@@ -13,11 +13,11 @@ Cropping system models enable the simulation of continuous crop production on a 
 This tutorial is intended to guide users through the process of setting up and executing APSIM simulations for continuous cropping and crop rotation scenarios.
 It focuses on the technical specification and correct code implementation within APSIM and provides practical examples alongside step-by-step instructions.
 This material does not offer any introduction to the theory of crop physiology, soil science, or soil-plant-atmosphere interactions. 
-Furthermore, it does not serve as a general introduction the the APSIM model and is designed for users who have a basic understanding of APSIM and are familiar with using its General User Interface for basic crop simulation analyses.
+Furthermore, it does not serve as a general introduction to the APSIM model and is designed for users who have a basic understanding of APSIM and are familiar with using its General User Interface for basic crop simulation analyses.
 For foundational and reference material, please consult the `APSIM Next Generation documentation <https://apsimnextgeneration.netlify.app/>`_ and the `APSIM website <https://www.apsim.info/>`_.
 This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide.
 
-Continuous simulations using cropping system models are widely applied in agricultural research to explore long-term impacts of management practices on crop productivity, soil characteristics, and resource use efficiency. 
+The simulation of crop rotations with cropping system models aims to explore long-term impacts of management practices and the structure of cropping systems on crop productivity, soil characteristics, and resource use efficiency. 
 Typical research questions include evaluating the sustainability of crop rotations, assessing the effects of climate variability or change on production systems, optimising fertilizer and irrigation strategies, and estimating trade-offs between yield, environmental outcomes, and economic returns. 
 In this context, the APSIM model is particularly valuable for simulating complex, multi-year scenarios that are difficult or impractical to study through field trials or the analysis of survey data.
 
