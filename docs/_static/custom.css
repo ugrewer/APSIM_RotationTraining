@@ -13,7 +13,7 @@ a[href="_sources/index.rst.txt"] {
 
 /* Push ad box to bottom */
 .rst-ethical-sidebar {
-    margin-top: auto;
+    margin-top: 200px;
     padding-top: 2em;  /* optional spacing */
 }
 
