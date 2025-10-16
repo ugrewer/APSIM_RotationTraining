@@ -1,12 +1,16 @@
 Simple Long-Term Simulation
 =====
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop.
-For instance, consider the example APSIM file Sorghum.apsimx included with the APSIM installation, which you can access by selecting "Open an Example" from the top toolbar of the APSIM graphical user interface.
+For instance, consider the example APSIM file ``Sorghum.apsimx`` included with the APSIM installation, which you can access by selecting "Open an Example" from the top toolbar of the APSIM graphical user interface.
 
-.. image:: _static/APSIMscreenshot_topLevelToolbar.JPG
-   :alt: APSIM_topLevelToolbar
+
+.. figure:: _static/APSIMscreenshot_topLevelToolbar.JPG
+   :alt: APSIM top-level toolbar
    :align: center
    :width: 100%
+
+   Screenshot of the APSIM top toolbar, showing the "Open an Example" button.
+
 
 
 cycle, from sowing to harvest
