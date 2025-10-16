@@ -8,7 +8,7 @@ Continuous Cropping and Crop Rotations Using the APSIM Cropping Systems Model
 
 A Comprehensive Tutorial for APSIM Users
 -----------------------------------------------------
-The Agricultural Production Systems sIMulator (APSIM) is a biophysical, mass-balance model that mathematically represents crop growth and development, accounting for interactions among soil, plant, and atmosphere components `Holzworth et al. (2018)`_.
+The Agricultural Production Systems sIMulator (APSIM) is a biophysical, mass-balance model that mathematically represents crop growth and development, accounting for interactions among soil, plant, and atmosphere components (`Holzworth et al. (2018)`_).
 Cropping system models enable the simulation of continuous crop production on a given field, explicitly capturing the intertemporal, season-to-season dynamics of soil water and nutrient resources.
 This tutorial is intended to guide users through the process of setting up and executing APSIM simulations for continuous cropping and crop rotation scenarios.
 It focuses on the technical specification and correct code implementation within APSIM and provides practical examples alongside step-by-step instructions.
