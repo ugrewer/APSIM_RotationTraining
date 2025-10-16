@@ -26,7 +26,10 @@ This includes defining crop sequences, transition rules, and associated crop man
 Implementing such scenarios often involves coordinating multiple APSIM components, which can be technically challenging without guidance.
 This tutorial introduces several approaches for representing continuous cropping in APSIM, including the use of the APSIM Rotation Manager, a graphical interface designed to simplify the specification of crop rotation sequences.
 
-
+APSIM websites
+-----------------------------------------------------
+- `APSIM Next Generation documentation <https://apsimnextgeneration.netlify.app/>`_
+- `APSIM website <https://www.apsim.info/>`_
 
 Acknowledgment of Country
 -----------------------------------------------------
