@@ -4,7 +4,7 @@ The most classical starting point in the learning and usage of crop models is th
 For instance, consider the example APSIM file ``Sorghum.apsimx`` included with the APSIM installation, which you can access by selecting "Open an Example" from the top toolbar of the APSIM graphical user interface.
 
 
-.. figure:: _static/APSIMscreenshot_topLevelToolbar.JPG
+.. figure:: _static/APSIMscreenshot_topLevelToolbar.png
    :alt: APSIM top-level toolbar
    :align: center
    :width: 100%
