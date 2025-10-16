@@ -19,6 +19,6 @@ Contents
 .. toctree::
 
    Home <self>
-   introduction
+   simple long-term simulation
    usage
    api
