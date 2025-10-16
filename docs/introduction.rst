@@ -15,7 +15,7 @@ Introduction
 
 
 Example: Basic Sphinx project for Read the Docs
-===============================================
+-------------------------------------
 
 .. image:: https://readthedocs.org/projects/example-sphinx-basic/badge/?version=latest
     :target: https://example-sphinx-basic.readthedocs.io/en/latest/?badge=latest

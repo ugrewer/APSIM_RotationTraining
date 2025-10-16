@@ -15,7 +15,7 @@ It focuses on the technical specification and correct code implementation within
 This material does not offer any introduction to the theory of crop physiology, soil science, or soil-plant-atmosphere interactions. 
 Furthermore, it does not serve as a general introduction to the APSIM model and is designed for users who have a basic understanding of APSIM and are familiar with using its General User Interface for basic crop simulation analyses.
 For foundational and reference material as well as for installation instructions, please consult the `APSIM Next Generation documentation <https://apsimnextgeneration.netlify.app/>`_ and the `APSIM website <https://www.apsim.info/>`_.
-This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide.
+This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide. The material was developed and tested with APSIM version 2025.10.7895. Using substantially older versions of APSIM may prevent the included APSIM files from running or produce differing results.
 
 The simulation of crop rotations with cropping system models aims to explore long-term impacts of management practices and the structure of cropping systems on crop productivity, soil characteristics, and resource use efficiency. 
 Typical research questions include evaluating the sustainability of crop rotations, assessing the effects of climate variability or change on production systems, optimising fertilizer and irrigation strategies, and estimating trade-offs between yield, environmental outcomes, and economic returns. 
