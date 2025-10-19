@@ -11,7 +11,7 @@ This section expands on this classical starting point by demonstrating how to se
 We primarily consider carrying over the simulation state from one crop cycle to the next and, for comparison, resetting it at the start of each new cycle.
 
 
-Long-term simulation of a single crop with state carry-over
+Continuous simulation of a single crop with state carry-over
 -------------------------------------
 Extending the simulation of a single crop cycle to the repeated, continuous growth of the same crop over multiple years can easily be achieved in APSIM.
 It predominently entails:
@@ -30,10 +30,9 @@ which you can access by selecting "Open an Example" from the top toolbar of the 
    Top toolbar from the APSIM GUI, showing the "Open an Example" button.
 
 Instead of simulating the respective crop over a single season, both files simulate continuous crop growth over a period of 100 years, from 1900 to 2000.
-
-
-
-`Sorghum APSIM example <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+You can explore both files and the simulation results by opening and running them in your own time.
+To better understand the steps and details of continuous simulations of single crops, we will utilise a modified version of the file ``Sorghum.apsimx`` as a starting point.
+It can be accessed here (for users that would like to follow along, which is highly recommended): `Continuous Sorghum with carry over <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
 
 
 This example file simulates irrigated sorghum in Dalby, Queensland, Australia. However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
