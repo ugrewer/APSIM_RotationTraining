@@ -13,9 +13,9 @@ Cropping system models enable the simulation of continuous crop production on a 
 This tutorial is intended to guide users through the process of setting up and executing APSIM simulations for continuous cropping and crop rotation scenarios.
 It focuses on the technical specification and correct code implementation within APSIM and provides practical examples alongside step-by-step instructions.
 This material does not offer any introduction to the theory of crop physiology, soil science, or soil-plant-atmosphere interactions. 
-Furthermore, it does not serve as a general introduction to the APSIM model and is designed for users who have a basic understanding of APSIM and are familiar with using its General User Interface for basic crop simulation analyses.
+Furthermore, it does not serve as a general introduction to the APSIM model and is designed for users who have a basic understanding of APSIM and are familiar with using its Graphical User Interface for basic crop simulation analyses.
 For foundational and reference material as well as for installation instructions, please consult the `APSIM Next Generation documentation <https://apsimnextgeneration.netlify.app/>`_ and the `APSIM website <https://www.apsim.info/>`_.
-This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide. The material was developed and tested with APSIM version 2025.10.7895. Using substantially older versions of APSIM may prevent the included APSIM files from running or produce differing results.
+This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide. The material was developed and tested with APSIM version *2025.10.7895*. Using substantially older versions of APSIM may prevent the included APSIM files from running or produce differing results.
 
 The simulation of crop rotations with cropping system models aims to explore long-term impacts of management practices and the structure of cropping systems on crop productivity, soil characteristics, and resource use efficiency. 
 Typical research questions include evaluating the sustainability of crop rotations, assessing the effects of climate variability or change on production systems, optimising fertilizer and irrigation strategies, and estimating trade-offs between yield, environmental outcomes, and economic returns. 
@@ -30,7 +30,7 @@ This tutorial introduces several approaches for representing continuous cropping
 APSIM Acknowledgement
 -----------------------------------------------------
 The APSIM Initiative would appreciate an acknowledgement in your research paper if you or your team have utilised APSIM in its development. For ease, we suggest the following wording:
-Acknowledgment is made to the APSIM Initiative which takes responsibility for quality assurance and a structured innovation programme for APSIM's modelling software, which is provided free for research and development use (see apsim.info for details).
+"Acknowledgment is made to the APSIM Initiative which takes responsibility for quality assurance and a structured innovation programme for APSIM's modelling software, which is provided free for research and development use (see apsim.info for details)."
 
 Acknowledgment of Country
 -----------------------------------------------------

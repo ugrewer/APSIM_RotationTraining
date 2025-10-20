@@ -2,13 +2,14 @@ Continuous Cropping of a Single Crop
 =====
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
 For example, when crop models are used to simulate the observed crop growth from agricultural field trials, 
-each trial treatment is typically represented by a single crop cycle simulation. 
-This even holds true if the experimental data stem from continuous multi-year trials on identical plots.
+each trial treatment is typically represented by the simulation of a single crop cycle. 
+This is even the most common practice when the experimental data stem from continuous multi-year trials on identical plots.
 Crop model simulations of such single crop cycles are typically used for crop model calibration and evaluation, and are then employed for more analytical purposes subsequently. 
 These may include exploring the effects of different management practices or changing environmental conditions, such as climate change, on crop growth, crop yield, and further outcome indicators.
 
-This section expands on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop grown continuously over multiple years.
-We primarily consider carrying over the simulation state from one crop cycle to the next and, for comparison, resetting it at the start of each new cycle.
+This section expands on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
+Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
+For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
 
 
 Continuous simulation of a single crop with state carry-over
@@ -43,7 +44,7 @@ the ``Clock`` node.
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Clock.png
    :alt: APSIM Clock node
    :align: center
-   :width: 100%
+   :width: 80%
 
    Clock node from the APSIM GUI, showing the start and end dates of the simulation.
 
@@ -91,7 +92,7 @@ Generally, when working with APSIM, it is useful to remember that the GUI is mea
 However, for users that prefer to utilise **Code Editors** (such as VS Code, Sublime Text, etc.), 
 the simulation tree that is visualised by the APSIM GUI can also directly be edited via a text editor, 
 as it is simply a representation of an underlying JSON file.
-When you open the current example APSIM file ``Sorghum_continuous_carryOver.apsimx`` in a text editor, it looks like this:
+When you open the current example APSIM file `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_ in a text editor, it looks like this:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_VSCodeView.png
    :alt: APSIM VSCodeView
