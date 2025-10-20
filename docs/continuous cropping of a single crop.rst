@@ -7,11 +7,12 @@ This is the most common approach even when the experimental data come from conti
 Crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
 Once calibrated, the crop model can be employed for more analytical purposes, 
 such as assessing the impact of a shift in management practices or changing environmental conditions (e.g., climate change) 
-on crop growth, crop yield, and further outcome indicators. 
+on crop growth processes, crop yield, and further outcome indicators. 
 
 The section at hand builds on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
 Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
 For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
+In a subsequent step, more complex crop rotation scenarios will be considered.
 
 
 Continuous Single Crop Simulation with State Carry-Over
@@ -20,7 +21,7 @@ Extending the simulation of a single crop cycle to the repeated, continuous grow
 It predominently entails:
 
 - Extending the start and end dates of the simulation in the clock-node of the simulation tree to the desired multi-year period.
-- Specifying rule-based management actions - such as for sowing, fertilisation, and irrigation - based on desired triggers, such as fixed dates, or more commonly, soil water and precipitation thresholds.
+- Specifying rule-based management actions - such as for sowing, fertilisation, and irrigation - based on desired triggers, such as fixed dates, or more commonly, state variable thresholds.
 
 For instance, consider the two example APSIM files ``Sorghum.apsimx`` and ``Wheat.apsimx`` included with the APSIM installation,
 which you can access by selecting "Open an Example" from the top toolbar of the APSIM graphical user interface (GUI).
@@ -35,7 +36,7 @@ Instead of simulating the respective crop over a single season, both files simul
 You can explore both files and the simulation results by opening and running them in your own time.
 
 To better understand the steps and details of continuous simulations of single crops, we will utilise a modified version of the file ``Sorghum.apsimx`` as a starting point.
-It can be accessed here: `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+It can be accessed here: `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
 For obtaining the best value from this guide, we suggest you to open the file in your local copy of the APSIM software and follow along for the remainder of the tutorial.
 
 This example file simulates sorghum in Dalby (Queensland, Australia). However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
@@ -53,13 +54,13 @@ A core aspect of continuous simulations is to specify the timing of all core man
 The most simple option is the specification of fixed dates. 
 This can be a suitable choice for thought experiments, such as the analysis of consistently planting early or late in the season.
 However, the more common choice for continuous simulations is to define the timing of management actions based on state-variables reaching certain thresholds.
-This could refer to a minimum level of soil water content, a cumulative rainfall threshold, a certain crop developmental stage being reached, or a time period elapsed since the last management action, et cetera.
-Such a ``SowingRule`` can be specified via a *manager script*. 
+This could refer to a minimum level of soil water content, a cumulative rainfall threshold, a certain crop developmental stage being reached, or a time period elapsed since the last management action, among other thresholds.
+Such ``SowingRules`` are specified via *manager scripts*. 
 For our example, when clicking on the ``SowingRule`` node in the simulation tree, you can see that sorghum is sown if the following criteria are fulfilled:
 
 - The date falls within the sowing window from 1st November to 10th January.
-- The extractable soil water exceeds 120 mm.
-- The cumulative rainfall exceeds 50 mm in a 7-day period preceding the date.
+- Extractable soil water exceeds 120 mm.
+- Cumulative rainfall exceeds 50 mm in the preceding 7-day period.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRule.png
    :alt: APSIM Clock node
@@ -77,17 +78,18 @@ You can see further alternative sowing rules by clicking on ``Home`` > ``Managem
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
 While these predefined *manager scripts* provide many functionalities, APSIM transparently exposes the underlying **C# code** under the ``Script`` tab.
-Instead of using predefined *manager scripts*, this easily allows users to write their own customised rules for management actions.
-For users not familiar with C#, the predefined *manager scripts* are useful starting points, that allow sub-elements to be modified or removed as needed.
+Instead of using predefined *manager scripts*, this directly allows users to write their own customised rules for management actions.
+For users who are not familiar with C#, the predefined *manager scripts* provide a useful starting point for modifying and extending rules as needed.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRuleScript.png
    :alt: APSIM SowingRuleScript
    :width: 80%
 
-   The **Script** tab of the sowing rule manager script, showing the parts of the underlying C# code.
+   The **C# code** of the sowing rule accessible via the **Script** tab.
 
 Generally, when working with APSIM, it is useful to remember that the GUI is meant as an aid to conducting crop modelling with APSIM.
-However, for users that prefer to utilise **Code Editors** (such as VS Code, Sublime Text, etc.), 
+However, it is not obligatory to use the GUI for all tasks.
+For users that prefer to utilise **Code Editors** (such as VS Code, Sublime Text, etc.), 
 the simulation tree that is visualised by the APSIM GUI can also directly be edited via a text editor, 
 as it is simply a representation of an underlying JSON file.
 When you open the current example APSIM file in a text editor, its first rows look like this:
@@ -96,12 +98,12 @@ When you open the current example APSIM file in a text editor, its first rows lo
    :alt: APSIM VSCodeView
    :width: 80%
 
-   The **JSON File** structure of an APSIMX-file.
+   The **JSON File** structure of an **apsimx-file**.
 
 Equivalently as for sowing, the timing of fertiliser application is also defined based on another variable.
 Here, all fertiliser is applied at sowing. 
 However, we also could apply top-up fertiliser upon reaching a later crop development stage.
-The predefined *manager script* **Fertilise at sowing** implements this.
+The predefined *manager script* ``Fertilise at sowing`` implements this.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_FertiliserManager.png
    :alt: APSIM Fertiliser Manager
@@ -113,6 +115,17 @@ When conducting multi-year simulations, a range of outcome variables can be of i
 As always, crop yield is a key variable.
 In addition, also soil nutrient and soil water conditions may be highly relevant.
 In this example, we included separate graphs for crop yield, soil organic carbon, and soil volumetric water content (each across the full soil profile).
+To conveniently include the sum of certain state variables across the full soil profile in the simulation results,
+we added the following code to our results variables in the node ``DailyReport``:
+
+.. code-block:: console
+
+    # Total soil organic carbon across the soil profile
+    Sum([Soil].Nutrient.Organic.C) as SoilOrganicC_fullProfile
+
+    # Total volumetric water content across the soil profile
+    Sum([Soil].Water.Volumetric) as SoilWatVolumetric_fullProfile
+
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_GrainYield.png
    :alt: APSIM Grain Yield
