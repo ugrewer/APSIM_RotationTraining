@@ -10,3 +10,10 @@ a[href="_sources/index.rst.txt"] {
     flex-direction: column;
     min-height: 100vh;  /* full viewport height */
 }
+
+/* Make text not float around figures */
+figure {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
