@@ -76,6 +76,16 @@ You can see a range of alternative sowing rules by clicking on ``Home`` > ``Mana
 
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
+While these predefined ``manager scripts`` provide many functionalities, APSIM transparently exposes the underlying **C# code** under the ``Script`` tab.
+Instead of using predefined ``manager scripts``, this easily allows users to write their own customised rules for management actions.
+For users not familiar with C#, the predefined ``manager scripts`` are useful starting points, that allow sub-elements to be modified or removed as needed.
+
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRuleScript.png
+   :alt: APSIM Clock node
+   :align: center
+   :width: 100%
+
+   The **Script** tab of the sowing rule manager script, showing the parts of the underlying C# code.
 
 
 
