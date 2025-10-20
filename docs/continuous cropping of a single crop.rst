@@ -4,10 +4,10 @@ The most classical starting point in the learning and usage of crop models is th
 For instance, when crop models are used to simulate the observed crop growth from agricultural field trials, 
 each trial treatment is typically represented by simulating a single crop cycle. 
 This is the most common approach even when the experimental data come from continuous, multi-year trials on identical plots.
-Such crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
-Once calibrated, crop model simulations can be employed for more analytical purposes, 
-such as assessing the impact of different management practices or changing environmental conditions (e.g., climate change)
- on crop growth, crop yield, and further outcome indicators.) 
+Crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
+Once calibrated, the crop model can be employed for more analytical purposes, 
+such as assessing the impact of a shift in management practices or changing environmental conditions (e.g., climate change) 
+on crop growth, crop yield, and further outcome indicators. 
 
 This section builds on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
 Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
