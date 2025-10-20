@@ -3,7 +3,7 @@
    :align: right
    :width: 170px
 
-Continuous Cropping and Crop Rotations Using the APSIM Cropping Systems Model
+Continuous Cropping Using the APSIM Cropping Systems Model
 ===============================================
 
 
