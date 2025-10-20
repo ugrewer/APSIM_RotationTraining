@@ -162,6 +162,7 @@ Now, navigate to ``Home`` > ``Management toolbox`` > ``Other`` in the APSIM GUI,
 copy the manager ``Reset on date`` and paste it into the ``Paddock`` node of the simulation ``ContinuousSorghum_Reset``.
 An alterantive manager to ``Reset on date`` could have been the option ``Reset on sowing``.
 As next step, select the ``Reset on date`` manager, set the date to **1-May** and ensure that all three state variables (water, soil nutrients, surface organic matter) are reset.
+By now, your *apsimx-file* should look like the following: `Sorghum_continuous_carryOver_reset.apsimx <_APSIM_code/Sorghum_continuous_carryOver_reset/Sorghum_continuous_carryOver_reset.apsimx>`_.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_ResetManager.png
    :alt: APSIM ResetManager

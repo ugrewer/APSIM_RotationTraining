@@ -1194,7 +1194,7 @@
           "AnnotationLocation": 0,
           "DisabledSeries": [],
           "LegendOutsideGraph": false,
-          "Name": "SOC",
+          "Name": "SoilWater",
           "ResourceName": null,
           "Children": [
             {
@@ -1212,7 +1212,7 @@
               "LineThickness": 0,
               "TableName": "DailyReport",
               "XFieldName": "Clock.Today",
-              "YFieldName": "SoilOrganicC_fullProfile",
+              "YFieldName": "SoilWatVolumetric_fullProfile",
               "X2FieldName": null,
               "Y2FieldName": null,
               "ShowInLegend": false,
@@ -1262,7 +1262,7 @@
           "AnnotationLocation": 0,
           "DisabledSeries": [],
           "LegendOutsideGraph": false,
-          "Name": "SoilWater",
+          "Name": "SOC",
           "ResourceName": null,
           "Children": [
             {
@@ -1280,7 +1280,7 @@
               "LineThickness": 0,
               "TableName": "DailyReport",
               "XFieldName": "Clock.Today",
-              "YFieldName": "SoilWatVolumetric_fullProfile",
+              "YFieldName": "SoilOrganicC_fullProfile",
               "X2FieldName": null,
               "Y2FieldName": null,
               "ShowInLegend": false,
@@ -2579,7 +2579,7 @@
           "AnnotationLocation": 0,
           "DisabledSeries": [],
           "LegendOutsideGraph": false,
-          "Name": "SOC",
+          "Name": "SoilWater",
           "ResourceName": null,
           "Children": [
             {
@@ -2597,7 +2597,7 @@
               "LineThickness": 0,
               "TableName": "DailyReport",
               "XFieldName": "Clock.Today",
-              "YFieldName": "SoilOrganicC_fullProfile",
+              "YFieldName": "SoilWatVolumetric_fullProfile",
               "X2FieldName": null,
               "Y2FieldName": null,
               "ShowInLegend": false,
@@ -2647,7 +2647,7 @@
           "AnnotationLocation": 0,
           "DisabledSeries": [],
           "LegendOutsideGraph": false,
-          "Name": "SoilWater",
+          "Name": "SOC",
           "ResourceName": null,
           "Children": [
             {
@@ -2665,7 +2665,7 @@
               "LineThickness": 0,
               "TableName": "DailyReport",
               "XFieldName": "Clock.Today",
-              "YFieldName": "SoilWatVolumetric_fullProfile",
+              "YFieldName": "SoilOrganicC_fullProfile",
               "X2FieldName": null,
               "Y2FieldName": null,
               "ShowInLegend": false,
@@ -2787,7 +2787,7 @@
       "AnnotationLocation": 0,
       "DisabledSeries": [],
       "LegendOutsideGraph": false,
-      "Name": "SOC",
+      "Name": "SoilWater",
       "ResourceName": null,
       "Children": [
         {
@@ -2805,7 +2805,7 @@
           "LineThickness": 0,
           "TableName": "DailyReport",
           "XFieldName": "Clock.Today",
-          "YFieldName": "SoilOrganicC_fullProfile",
+          "YFieldName": "SoilWatVolumetric_fullProfile",
           "X2FieldName": null,
           "Y2FieldName": null,
           "ShowInLegend": false,
@@ -2855,7 +2855,7 @@
       "AnnotationLocation": 0,
       "DisabledSeries": [],
       "LegendOutsideGraph": false,
-      "Name": "SoilWater",
+      "Name": "SOC",
       "ResourceName": null,
       "Children": [
         {
@@ -2873,7 +2873,7 @@
           "LineThickness": 0,
           "TableName": "DailyReport",
           "XFieldName": "Clock.Today",
-          "YFieldName": "SoilWatVolumetric_fullProfile",
+          "YFieldName": "SoilOrganicC_fullProfile",
           "X2FieldName": null,
           "Y2FieldName": null,
           "ShowInLegend": false,
