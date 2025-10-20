@@ -52,7 +52,8 @@ The most simple option is the specification of fixed dates.
 This can be a suitable choice for thought experiments, such as the analysis of consistently planting very early or late in the season.
 However, the more common choice for continuous simulations is to define the timing of management actions based on state-variables reaching certain thresholds.
 This could refer to a minimum level of soil water content, a cumulative rainfall threshold, a certain crop developmental stage being reached, or a time period elapsed since the last management action (e.g., to emulate on-farm labour constaints).
-When considering the **SowingRule** ``manager script`` specified in the example file, you can see that the sorghum is sown if the following criteria are fulfilled:
+When considering the example at hand, the **SowingRule** is specified via a ``manager script``. 
+When clicking on the corresponding node in the simulation tree, you can see that sorghum is sown if the following criteria are fulfilled:
 
 - The date falls within the sowing window from 1st November to 10th January.
 - The extractable soil water exceeds 120 mm.
@@ -63,9 +64,17 @@ When considering the **SowingRule** ``manager script`` specified in the example 
    :align: center
    :width: 100%
 
-   The sowing rule manager script indicating the required conditions for sowing to be initiated by the APSIM.
+   The sowing rule manager script indicating the required conditions for sowing to be initiated by APSIM.
 
+As always in APSIM, you can see that many pre-defined function are available through predefined ``manager scripts``.
+You can see a range of alternative sowing rules by clicking on ``Home`` > ``Management toolbox`` > ``Plant``.
 
+.. figure:: _static/APSIMscreenshot_MgmtToolbox.png
+   :alt: APSIM Clock node
+   :align: center
+   :width: 100%
+
+   Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
 
 
