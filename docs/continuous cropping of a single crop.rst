@@ -72,7 +72,7 @@ You can see a range of alternative sowing rules by clicking on ``Home`` > ``Mana
 .. figure:: _static/APSIMscreenshot_MgmtToolbox.png
    :alt: APSIM Clock node
    :align: center
-   :width: 100%
+   :width: 50%
 
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
@@ -87,7 +87,18 @@ For users not familiar with C#, the predefined ``manager scripts`` are useful st
 
    The **Script** tab of the sowing rule manager script, showing the parts of the underlying C# code.
 
+Generally, when working with APSIM, it is useful to remember that the GUI is meant as an aid to conducting crop modelling with APSIM.
+However, for users that prefer to utilise **Code Editors** (such as VS Code, Sublime Text, etc.), 
+the simulation tree that is visualised by the APSIM GUI can also directly be edited via a text editor, 
+as it is simply a representation of an underlying JSON file.
+When you open the current example APSIM file ``Sorghum_continuous_carryOver.apsimx`` in a text editor, it looks like this:
 
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_VSCodeView.png
+   :alt: APSIM Clock node
+   :align: center
+   :width: 50%
+
+   The **JSON File** structure of an APSIMX-file.
 
 
 
