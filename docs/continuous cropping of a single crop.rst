@@ -90,7 +90,7 @@ Generally, when working with APSIM, it is useful to remember that the GUI is mea
 However, for users that prefer to utilise **Code Editors** (such as VS Code, Sublime Text, etc.), 
 the simulation tree that is visualised by the APSIM GUI can also directly be edited via a text editor, 
 as it is simply a representation of an underlying JSON file.
-When you open the current example APSIM file in a text editor, its first rows looks like this:
+When you open the current example APSIM file in a text editor, its first rows look like this:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_VSCodeView.png
    :alt: APSIM VSCodeView
