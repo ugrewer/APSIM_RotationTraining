@@ -1,7 +1,7 @@
 .. image:: _static/ApsimNextGenerationLogo.png
    :alt: APSIM NextGen Logo
    :align: right
-   :width: 140px
+   :width: 160px
 
 Continuous Cropping and Crop Rotations Using the APSIM Cropping Systems Model
 ===============================================
