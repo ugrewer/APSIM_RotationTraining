@@ -27,7 +27,6 @@ which you can access by selecting "Open an Example" from the top toolbar of the 
 
 .. figure:: _static/APSIMscreenshot_topLevelToolbar.png
    :alt: APSIM top-level toolbar
-   :align: left
    :width: 100%
 
    Top toolbar from the APSIM GUI, showing the "Open an Example" button.
@@ -47,7 +46,6 @@ the ``Clock`` node.
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Clock.png
    :alt: APSIM Clock node
    :width: 80%
-   :class: no-float
 
    Clock node from the APSIM GUI, showing the start and end dates of the simulation.
 
@@ -65,7 +63,6 @@ For our example, when clicking on the ``SowingRule`` node in the simulation tree
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRule.png
    :alt: APSIM Clock node
-   :align: left
    :width: 80%
 
    The sowing rule manager script indicating the required conditions for sowing to be initiated by APSIM.
@@ -75,7 +72,6 @@ You can see further alternative sowing rules by clicking on ``Home`` > ``Managem
 
 .. figure:: _static/APSIMscreenshot_MgmtToolbox.png
    :alt: APSIM MgmtToolbox
-   :align: left
    :width: 35%
 
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
@@ -86,7 +82,6 @@ For users not familiar with C#, the predefined *manager scripts* are useful star
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRuleScript.png
    :alt: APSIM SowingRuleScript
-   :align: left
    :width: 80%
 
    The **Script** tab of the sowing rule manager script, showing the parts of the underlying C# code.
@@ -110,7 +105,6 @@ The predefined *manager script* **Fertilise at sowing** implements this.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_FertiliserManager.png
    :alt: APSIM Fertiliser Manager
-   :align: left
    :width: 80%
 
    The fertilisation *manager script*.
@@ -122,7 +116,6 @@ In this example, we included separate graphs for crop yield, soil organic carbon
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_GrainYield.png
    :alt: APSIM Grain Yield
-   :align: left
    :width: 80%
 
    Sorghum grain yield - continuous cropping with state carry-over.
@@ -146,7 +139,6 @@ The resulting tree structure, should look similar to the below example:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_TreeStructure.png
    :alt: APSIM TreeStructure
-   :align: left
    :width: 80%
 
    Updated structure of the simulation tree: Comparing state carry-over and resetting.
@@ -158,7 +150,6 @@ As next step, select the ``Reset on date`` manager, set the date to **1-May** an
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_ResetManager.png
    :alt: APSIM ResetManager
-   :align: left
    :width: 50%
 
    Manager script for annual resetting of state variables: water, soil nutrients, and surface organic matter.
