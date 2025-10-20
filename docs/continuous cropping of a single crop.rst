@@ -144,12 +144,12 @@ Further, the high level of yield variability can be noted, ranging from 2.9 t/ha
 Continuous Single Crop Simulation Without State Carry-Over
 -------------------------------------
 Let us now compare the above results to the simulation result when resetting major state variables after each crop cycle. 
-Specifically, we will reset soil water, soil nutrient, and surface organic matter pools on the 1st May every year.
+Specifically, we will reset soil water, soil nutrient, and surface organic matter pools every year.
 For this purpose, let us first save the current example file under the new name *Sorghum_continuous_carryOver_reset.apsimx*.
-We then copy the entire simulation tree "Continuous_Sorghum" and paste it back into the root node ``Simulations``.
+We then copy the entire simulation tree ``Continuous_Sorghum`` and paste it back into the root node ``Simulations``.
 This gives us two identical sub-simulations. Let us rename the first to ``ContinuousSorghum_CarryOver`` and the second to ``ContinuousSorghum_Reset``.
-From any of the two sub-simulations, please also copy all three graph nodes and paste them into the root node ``Simulations``. 
-Expand each graph node and change the value for  ``Colour`` to *Vary by SimulationName*.
+From any of the two sub-simulations, please also copy all three *graph nodes* ("Sorghum Yield", "SOC", "SoilWater") and paste them into the root node ``Simulations``. 
+Expand each graph node and change the value of ``Colour`` to *Vary by SimulationName*.
 The resulting tree structure, should look similar to the below example:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_TreeStructure.png
