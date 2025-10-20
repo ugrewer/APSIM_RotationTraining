@@ -171,7 +171,17 @@ As next step, select the ``Reset on date`` manager, set the date to **1-May** an
 
 
 Once completed, save the file, click on the top-level ``Simulations`` node and then click ``Run``.
+Then navigate to the *graph node* "Sorghum Yield" located under the root node ``Simulations``.
+You should see two timeseries of results:
 
+- In black: results for the simulation **with** state carry-over (continuous simulation)
+- In yellow: results for the simulation **without** state carry-over (annual reset on sowing)
+
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
+   :alt: APSIM GrainYieldComparison
+   :width: 80%
+
+   Timeseries of sorghum grain yield for continuous simulation (black) and annual resetting (yellow).
 
 
 
