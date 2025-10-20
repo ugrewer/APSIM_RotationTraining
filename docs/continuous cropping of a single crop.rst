@@ -111,7 +111,7 @@ The predefined *manager script* **Fertilise at sowing** implements this.
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_FertiliserManager.png
    :alt: APSIM Fertiliser Manager
    :align: center
-   :width: 50%
+   :width: 80%
 
    The fertilisation *manager script*.
 
@@ -123,7 +123,7 @@ In this example, we included separate graphs for crop yield, soil organic carbon
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_GrainYield.png
    :alt: APSIM Grain Yield
    :align: center
-   :width: 50%
+   :width: 80%
 
    Sorghum grain yield - continuous cropping with state carry-over.
 
