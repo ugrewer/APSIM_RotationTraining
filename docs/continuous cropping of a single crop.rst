@@ -116,7 +116,7 @@ As always, crop yield is a key variable.
 In addition, also soil nutrient and soil water conditions may be highly relevant.
 In this example, we included separate graphs for crop yield, soil organic carbon, and soil volumetric water content (each across the full soil profile).
 To conveniently include the sum of certain state variables across the full soil profile in the simulation results,
-we added the following code to our results variables in the node ``DailyReport``:
+we added the following code to our results variables in the *results node* ``DailyReport``:
 
 .. code-block:: console
 
@@ -126,6 +126,12 @@ we added the following code to our results variables in the node ``DailyReport``
     # Total volumetric water content across the soil profile
     Sum([Soil].Water.Volumetric) as SoilWatVolumetric_fullProfile
 
+Please now run the simulation by clicking ``Save`` and then ``Run``.
+You can now inspect the results by selecting the *graph node* ``Sorghum Yield``.
+As you can seen, in only 9 of the 15 years a sorghum crop was harvested.
+Accordingly, in the remaining years, either the sowing conditions were not satisfied (so that no crop was planted)
+or the crop failed prior to producing any grain yield.
+Further, the high level of yield variability can be noted, ranging from 2.9 t/ha to 8.8 t/ha.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_GrainYield.png
    :alt: APSIM Grain Yield
@@ -133,10 +139,6 @@ we added the following code to our results variables in the node ``DailyReport``
 
    Sorghum grain yield - continuous cropping with state carry-over.
 
-As can be seen from the results, in only 9 of the 15 years a sorghum crop was harvested.
-Accordingly, in the remaining years, either the sowing conditions were not satisfied (so that no crop was planted)
-or the crop failed prior to producing any grain yield.
-Further, the high level of yield variability can be noted, ranging from the lowest level of 2.9 t/ha to its highest level at 8.8 t/ha.
 
 
 Continuous Single Crop Simulation Without State Carry-Over
