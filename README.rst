@@ -1,4 +1,4 @@
-.. image:: _static/ApsimNextGeneration.png
+.. image:: _static/ApsimNextGenerationLogo.png
    :alt: APSIM NextGen Logo
    :align: right
    :width: 200px

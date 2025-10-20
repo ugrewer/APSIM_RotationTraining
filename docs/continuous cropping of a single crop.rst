@@ -31,16 +31,22 @@ which you can access by selecting "Open an Example" from the top toolbar of the 
 
 Instead of simulating the respective crop over a single season, both files simulate continuous crop growth over a period of 100 years, from 1900 to 2000.
 You can explore both files and the simulation results by opening and running them in your own time.
+
 To better understand the steps and details of continuous simulations of single crops, we will utilise a modified version of the file ``Sorghum.apsimx`` as a starting point.
-It can be accessed here (for users that would like to follow along, which is highly recommended): `Continuous Sorghum with carry over <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+It can be accessed here (for users that would like to follow along, which is highly recommended): `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+This example file simulates sorghum in Dalby, Queensland, Australia. However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
+the simulation runs continuously from its ***start date*** on 1/1/1985 to its ***end date*** on 31/12/1999, covering a total of 15 years.
+In the simulation tree structure shown on the left-hand side of the APSIM GUI, you can inspect these values by navigating to
+the ``Clock`` node.
+
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Clock.png
+   :alt: APSIM Clock node
+   :align: center
+   :width: 100%
+
+   Clock node from the APSIM GUI, showing the start and end dates of the simulation.
 
 
-This example file simulates irrigated sorghum in Dalby, Queensland, Australia. However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
-this example file simulates the continuous growth of sorghum over a period of 100 years, from 1900 to 2000.
-
-a single sorghum crop grown in a tropical environment in Queensland, Australia.
-
-cycle, from sowing to harvest
 
 
 
