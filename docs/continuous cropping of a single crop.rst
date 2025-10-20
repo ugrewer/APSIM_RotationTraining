@@ -36,7 +36,8 @@ Instead of simulating the respective crop over a single season, both files simul
 You can explore both files and the simulation results by opening and running them in your own time.
 
 To better understand the steps and details of continuous simulations of single crops, we will utilise a modified version of the file ``Sorghum.apsimx`` as a starting point.
-It can be accessed here (for users that would like to follow along, which is highly recommended): `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+It can be accessed here: `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_
+For obtaining the best value from this guide, we suggest you to open the file in your local copy of the APSIM software and follow along for the remainder of the tutorial.
 
 This example file simulates sorghum in Dalby (Queensland, Australia). However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
 the simulation runs continuously from its **start date** on 1/01/1985 to its **end date** on 31/12/1999, covering a total of 15 years.
@@ -75,7 +76,7 @@ You can see further alternative sowing rules by clicking on ``Home`` > ``Managem
 .. figure:: _static/APSIMscreenshot_MgmtToolbox.png
    :alt: APSIM MgmtToolbox
    :align: center
-   :width: 50%
+   :width: 35%
 
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
