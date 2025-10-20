@@ -14,7 +14,7 @@ Thereby, we primarily consider the case of simulating the continuous carry-over 
 For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
 
 
-Continuous simulation of a single crop: with state carry-over
+Continuous single crop with state carry-over
 -------------------------------------
 Extending the simulation of a single crop cycle to the repeated, continuous growth of the same crop over multiple years can easily be achieved in APSIM.
 It predominently entails:
@@ -133,7 +133,7 @@ or the crop failed prior to producing any grain yield.
 Further, the high level of yield variability can be noted, ranging from the lowest level of 2.9 t/ha to its highest level at 8.8 t/ha.
 
 
-Continuous simulation of a single crop: without state carry-over
+Continuous single crop without state carry-over
 -------------------------------------
 Let us now compare the above results to the simulation result when resetting major state variables after each crop cycle. 
 Specifically, we will reset soil water, soil nutrient, and surface organic matter pools on the 1st May every year.
