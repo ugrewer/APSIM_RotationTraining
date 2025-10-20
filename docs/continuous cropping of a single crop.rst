@@ -179,15 +179,55 @@ You should see two timeseries of results:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
    :alt: APSIM GrainYieldComparison
-   :width: 80%
+   :width: 100%
 
    Timeseries of sorghum grain yield for continuous simulation (black) and annual resetting (yellow).
 
+There are a number of interesting patterns in the simulation results. 
+Both simulation setups produce rather similar results towards the beginning of the timeseries.
+They observe both sufficient conditions for sowing a crop on the first occurance (1 Nov 1985- 10 Jan 1986).
+Until the first crop harvest in April 1986, the *continuous-simulation* considered all changes in soil water and nutrients
+from 1 Jan 1985. Instead, the *reset-simulation* once reset conditions on 1 May 1985.
+This provided a small advantage to the *reset-simulation*, but did not introduce any major differences.
+
+Instead, the next cultivation year (1986/87) is skipped by both simulation scenarios due to not meeting the sowing threshold.
+This gives the *continuous-simulation* the advantage of storing additional soil water, while the *reset-simulation*
+falls back to the initial condition of a 50% filled soil profile on 1 May of every year.
+As a consequence, in the next cultivation year (1987/88) the *continuous-simulation* (8.8 t/ha) produces a considerably higher yield
+than the *reset-simulation* (6.8 t/ha).
+
+In the subsequent years (1988/89 & 1989/90), the opposite trend can be observed: When the soil profile is dried up from the preceding season(s),
+the *reset-simulation* benefits from arbitrarily bouncing back to a 50% filled soil profile and observes higher yields as a consequence.
+
+Another interesting pattern can be seen in the cultivation season 1991/92: 
+Here, only the under the *continuous-simulation* the conditions of the sowing rule are fulfilled,
+as it benefits from additional soil water storage from directly preceding fallow seasons.
+Instead, the *reset-simulation* does not observe sufficient conditions to initiate a sowing event.
+
+Let us now consider the timeseries results for volumetric water and organic carbon across the entire soil profile.
+
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
+   :alt: APSIM SoilWaterComparison
+   :width: 100%
+
+   Timeseries of **volumetric water content** across the soil profile for continuous simulation (black) and annual resetting (yellow).
 
 
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
+   :alt: APSIM SOCComparison
+   :width: 100%
 
+   Timeseries of **soil organic carbon** across the soil profile for continuous simulation (black) and annual resetting (yellow).
 
+Here, we can confirm the above interpretation: 
+The *continuous-simulation* is characterised by much larger fluctuations towards a cumulatively filled as well as depleted soil profile.
+This is a consequence of the ability to carry over both a particularly filled as well as depleted soil profile into a subsequent season.
+Instead, the *reset-simulation* observes much less fluctuation and amplitude, as the annual resetting avoids the prolonged observation of any extreme values.
+The same pattern is also visible in the timeseries results for Soil Organic Carbon. 
+Besides the aforementioned impact of soil water resetting on biomass production, this pattern is further driven by the resetting of surface organic matter.
 
+An understanding of this principle pattern is useful for any crop modeller, for instance when interpreting results from the long-term simulations
+conducted by the `Agricultural Model Intercomparison and Improvement Project <https://agmip.org/>`_.
 
 
 
