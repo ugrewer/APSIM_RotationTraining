@@ -2,7 +2,7 @@ Continuous Cropping of a Single Crop
 =====
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
 For instance, when crop models are used to simulate the observed crop growth from agricultural field trials, 
-each trial treatment is typically represented by simulating a single crop cycle. 
+each trial treatment is represented by simulating a single crop cycle. 
 This is the most common approach even when the experimental data come from continuous, multi-year trials on identical plots.
 Crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
 Once calibrated, the crop model can be employed for more analytical purposes, 
