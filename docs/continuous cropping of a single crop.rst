@@ -55,8 +55,8 @@ The most simple option is the specification of fixed dates.
 This can be a suitable choice for thought experiments, such as the analysis of consistently planting early or late in the season.
 However, the more common choice for continuous simulations is to define the timing of management actions based on state-variables reaching certain thresholds.
 This could refer to a minimum level of soil water content, a cumulative rainfall threshold, a certain crop developmental stage being reached, or a time period elapsed since the last management action, et cetera.
-Such a **SowingRule** can be specified via a *manager script*. 
-For our example, when clicking on the **SowingRule** node in the simulation tree, you can see that sorghum is sown if the following criteria are fulfilled:
+Such a ``SowingRule`` can be specified via a *manager script*. 
+For our example, when clicking on the ``SowingRule`` node in the simulation tree, you can see that sorghum is sown if the following criteria are fulfilled:
 
 - The date falls within the sowing window from 1st November to 10th January.
 - The extractable soil water exceeds 120 mm.
@@ -65,7 +65,7 @@ For our example, when clicking on the **SowingRule** node in the simulation tree
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRule.png
    :alt: APSIM Clock node
    :align: center
-   :width: 100%
+   :width: 80%
 
    The sowing rule manager script indicating the required conditions for sowing to be initiated by APSIM.
 
@@ -86,7 +86,7 @@ For users not familiar with C#, the predefined *manager scripts* are useful star
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRuleScript.png
    :alt: APSIM SowingRuleScript
    :align: center
-   :width: 100%
+   :width: 80%
 
    The **Script** tab of the sowing rule manager script, showing the parts of the underlying C# code.
 
@@ -127,9 +127,42 @@ In this example, we included separate graphs for crop yield, soil organic carbon
 
    Sorghum grain yield - continuous cropping with state carry-over.
 
-As can be seen from the results, in only 8 of the 15 years a sorghum crop was harvested.
+As can be seen from the results, in only 9 of the 15 years a sorghum crop was harvested.
 Accordingly, in the remaining years, either the sowing conditions were not satisfied (so that no crop was planted)
 or the crop failed prior to producing any grain yield.
+Further, the high level of yield variability can be noted, ranging from the lowest level of 2.9 t/ha to its highest level at 8.8 t/ha.
+
+
+Continuous simulation of a single crop without state carry-over
+-------------------------------------
+Let us now compare the above results to the simulation result when resetting major state variables after each crop cycle. 
+Specifically, we will reset soil water, soil nutrient, and surface organic matter pools on the 1st May every year.
+For this purpose, let us first save the current example file under the new name *Sorghum_continuous_carryOver_reset.apsimx*.
+We then copy the entire simulation tree "Continuous_Sorghum" and paste it back into the root node ``Simulations``.
+This gives us two identical sub-simulations. Let us rename the first to ``ContinuousSorghum_CarryOver`` and the second to ``ContinuousSorghum_Reset``.
+From any of the two sub-simulations, please also copy all three graph nodes and paste them into the root node ``Simulations``. 
+Expand each graph node and change the value for  ``Colour`` to *Vary by SimulationName*.
+The resulting tree structure, should look similar to the below example:
+
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_TreeStructure.png
+   :alt: APSIM TreeStructure
+   :align: center
+   :width: 50%
+
+   Updated structure of the simulation tree: Comparing state carry-over and resetting.
+
+Now, navigate to ``Home`` > ``Management toolbox`` > ``Other`` in the APSIM GUI, 
+copy the manager ``Reset on date`` and paste it into the ``Paddock`` node of the simulation ``ContinuousSorghum_Reset``.
+An alterantive manager to ``Reset on date`` could have been the option ``Reset on sowing``.
+As next step, select the ``Reset on date`` manager, set the date to **1-May** and ensure that all three state variables (water, soil nutrients, surface organic matter) are reset.
+Once completed, save the file, click on the top-level ``Simulations`` node and then click ``Run``.
+
+
+
+
+
+
+
 
 
 
