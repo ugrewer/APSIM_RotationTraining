@@ -1,13 +1,15 @@
 Continuous Cropping of a Single Crop
 =====
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
-For example, when crop models are used to simulate the observed crop growth from agricultural field trials, 
-each trial treatment is typically represented by the simulation of a single crop cycle. 
-This is even the most common practice when the experimental data stem from continuous multi-year trials on identical plots.
-Crop model simulations of such single crop cycles are typically used for crop model calibration and evaluation, and are then employed for more analytical purposes subsequently. 
-These may include exploring the effects of different management practices or changing environmental conditions, such as climate change, on crop growth, crop yield, and further outcome indicators.
+For instance, when crop models are used to simulate the observed crop growth from agricultural field trials, 
+each trial treatment is typically represented by simulating a single crop cycle. 
+This is the most common approach even when the experimental data come from continuous, multi-year trials on identical plots.
+Such crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
+Once calibrated, crop model simulations can be employed for more analytical purposes, 
+such as assessing the impact of different management practices or changing environmental conditions (e.g., climate change)
+ on crop growth, crop yield, and further outcome indicators.) 
 
-This section expands on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
+This section builds on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
 Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
 For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
 
