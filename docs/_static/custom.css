@@ -17,3 +17,8 @@ figure {
     margin: 0 auto;
     text-align: center;
 }
+div.figure {
+    float: none !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
