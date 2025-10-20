@@ -65,6 +65,9 @@
 
 ### ignore specific directories
 
+# past training material
+pastTrainingMaterial/
+
 # application settings
 .vscode/
 
