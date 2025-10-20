@@ -207,14 +207,14 @@ Instead, the *reset-simulation* does not observe sufficient conditions to initia
 
 Let us now consider the timeseries results for volumetric water and organic carbon across the entire soil profile.
 
-.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_SoilWaterComparison.png
    :alt: APSIM SoilWaterComparison
    :width: 100%
 
    Timeseries of **volumetric water content** across the soil profile for continuous simulation (black) and annual resetting (yellow).
 
 
-.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_GrainYieldComparison.png
+.. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Reset_SOCComparison.png
    :alt: APSIM SOCComparison
    :width: 100%
 
@@ -228,7 +228,7 @@ The same pattern is also visible in the timeseries results for Soil Organic Carb
 Besides the aforementioned impact of soil water resetting on biomass production, this pattern is further driven by the resetting of surface organic matter.
 
 An understanding of this principle pattern is useful for any crop modeller, for instance when interpreting results from the long-term simulations
-conducted by the `Agricultural Model Intercomparison and Improvement Project <https://agmip.org/>`_.
+conducted by the `Agricultural Model Intercomparison and Improvement Project (AgMIP) <https://agmip.org/>`_.
 
 The above section provided you with an introduction of how to transition from the simulation of a single crop cycle, from sowing to harvest, 
 to the simulation of continuous cropping with state variables that carry-over from season to season.
