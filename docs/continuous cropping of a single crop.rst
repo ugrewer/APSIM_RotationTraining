@@ -52,7 +52,7 @@ The most simple option is the specification of fixed dates.
 This can be a suitable choice for thought experiments, such as the analysis of consistently planting very early or late in the season.
 However, the more common choice for continuous simulations is to define the timing of management actions based on state-variables reaching certain thresholds.
 This could refer to a minimum level of soil water content, a cumulative rainfall threshold, a certain crop developmental stage being reached, or a time period elapsed since the last management action (e.g., to emulate on-farm labour constaints).
-When considering the example at hand, the **SowingRule** is specified via a ``manager script``. 
+When considering the example at hand, the **SowingRule** is specified via a *manager script*. 
 When clicking on the corresponding node in the simulation tree, you can see that sorghum is sown if the following criteria are fulfilled:
 
 - The date falls within the sowing window from 1st November to 10th January.
@@ -66,22 +66,22 @@ When clicking on the corresponding node in the simulation tree, you can see that
 
    The sowing rule manager script indicating the required conditions for sowing to be initiated by APSIM.
 
-As always in APSIM, you can see that many pre-defined function are available through predefined ``manager scripts``.
+As always in APSIM, you can see that many pre-defined function are available through predefined *manager scripts*.
 You can see a range of alternative sowing rules by clicking on ``Home`` > ``Management toolbox`` > ``Plant``.
 
 .. figure:: _static/APSIMscreenshot_MgmtToolbox.png
-   :alt: APSIM Clock node
+   :alt: APSIM MgmtToolbox
    :align: center
    :width: 50%
 
    Overview of predefined sowing rules under the **Plant** folder in the APSIM Management toolbox.
 
-While these predefined ``manager scripts`` provide many functionalities, APSIM transparently exposes the underlying **C# code** under the ``Script`` tab.
-Instead of using predefined ``manager scripts``, this easily allows users to write their own customised rules for management actions.
-For users not familiar with C#, the predefined ``manager scripts`` are useful starting points, that allow sub-elements to be modified or removed as needed.
+While these predefined *manager scripts* provide many functionalities, APSIM transparently exposes the underlying **C# code** under the ``Script`` tab.
+Instead of using predefined *manager scripts*, this easily allows users to write their own customised rules for management actions.
+For users not familiar with C#, the predefined *manager scripts* are useful starting points, that allow sub-elements to be modified or removed as needed.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_SowingRuleScript.png
-   :alt: APSIM Clock node
+   :alt: APSIM SowingRuleScript
    :align: center
    :width: 100%
 
@@ -94,7 +94,7 @@ as it is simply a representation of an underlying JSON file.
 When you open the current example APSIM file ``Sorghum_continuous_carryOver.apsimx`` in a text editor, it looks like this:
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_VSCodeView.png
-   :alt: APSIM Clock node
+   :alt: APSIM VSCodeView
    :align: center
    :width: 50%
 
