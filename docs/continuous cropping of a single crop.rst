@@ -46,8 +46,8 @@ the ``Clock`` node.
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_Clock.png
    :alt: APSIM Clock node
-   :align: left
    :width: 80%
+   :class: no-float
 
    Clock node from the APSIM GUI, showing the start and end dates of the simulation.
 
@@ -99,7 +99,6 @@ When you open the current example APSIM file in a text editor, its first rows lo
 
 .. figure:: _static/APSIMscreenshot_ContSorghumCarryOver_VSCodeView.png
    :alt: APSIM VSCodeView
-   :align: left
    :width: 80%
 
    The **JSON File** structure of an APSIMX-file.
