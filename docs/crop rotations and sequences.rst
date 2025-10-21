@@ -1,7 +1,10 @@
 Crop Rotations and Sequences
 =====
-The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
-
+When simulating crop production on a field over an extended time period,
+the previous assumption of continuously cutlivating a single crop with fixed management practices is hardly ever applicable.
+In order to represent fixed crop rotations as well as highly flexible crop sequences, APSIM provides the *model* ``RotationManager``.
+In the following, we will first have a look at the basic usage of the ``RotationManager`` *model*.
+Subsequently, we will present various approaches to representing highly user-specific crop rotation and crop sequencing scenarios of increasing complexity.
 
 
 Subheading
