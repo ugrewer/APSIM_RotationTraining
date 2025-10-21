@@ -2,20 +2,22 @@ Continuous Cropping of a Single Crop
 =====
 The most classical starting point in the learning and usage of crop models is the simulation of a single crop cycle, from sowing to harvest.
 For instance, when crop models are used to simulate the observed crop growth from agricultural field trials, 
-each trial treatment is represented by simulating a single crop cycle. 
+each trial treatment is represented by a single crop cycle simulation. 
 This is the most common approach even when the experimental data come from continuous, multi-year trials on identical plots.
 Crop model simulations of single crop cycles are typically used for crop model calibration and evaluation. 
 Once calibrated, the crop model can be employed for more analytical purposes, 
 such as assessing the impact of a shift in management practices or changing environmental conditions (e.g., climate change) 
 on crop growth processes, crop yield, and further outcome indicators. 
 
-The section at hand builds on this classical starting point by demonstrating how to set up and run a simple long-term simulation of a single crop that is grown continuously over multiple years.
+This section introduces the simulation of continuous cropping. 
+It builds directly on the classical starting point of single crop cycle simulations 
+by demonstrating how to extend a single crop simulation across multiple, consecutive growing seasons.
 Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
 For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
-In a subsequent step, more complex crop rotation scenarios will be considered.
+In a subsequent step, the continuous simulation of more complex crop rotation scenarios will be considered.
 
 
-Continuous Single Crop Simulation with State Carry-Over
+Simulation with State Carry-Over
 -------------------------------------
 Extending the simulation of a single crop cycle to the repeated, continuous growth of the same crop over multiple years can easily be achieved in APSIM.
 It predominently entails:
@@ -141,7 +143,7 @@ Further, the high level of yield variability can be noted, ranging from 2.9 t/ha
 
 
 
-Continuous Single Crop Simulation Without State Carry-Over
+Simulation Without State Carry-Over
 -------------------------------------
 Let us now compare the above results to the simulation result when resetting major state variables after each crop cycle. 
 Specifically, we will reset soil water, soil nutrient, and surface organic matter pools every year.
