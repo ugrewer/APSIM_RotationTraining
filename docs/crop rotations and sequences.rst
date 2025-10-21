@@ -1,20 +1,27 @@
 Crop Rotations and Sequences
 =====
-When simulating crop production on a field over an extended time period,
-the previous assumption of continuously cutlivating a single crop with fixed management practices is hardly ever applicable.
-In order to represent fixed crop rotations as well as highly flexible crop sequences, APSIM provides the *model* ``RotationManager``.
+When simulating crop production on a field over an extended period, 
+the previous assumption of continuously cultivating a single crop with fixed management practices is rarely applicable. 
+To represent predetermined crop rotations of multiple crops as well as highly flexible crop sequences, APSIM provides the ``RotationManager`` *model*. 
 In the following, we will first have a look at the basic usage of the ``RotationManager`` *model*.
-Subsequently, we will present various approaches to representing highly user-specific crop rotation and crop sequencing scenarios of increasing complexity.
+Subsequently, we will present various approaches for representing increasingly complex, user-specific crop rotation and sequencing scenarios.
 
-
-Subheading
+Basic Overview of the RotationManager Model
 -------------------------------------
 
 
 
 
 
+Subheading
+-------------------------------------
 
+Subheading
+-------------------------------------
+
+
+Subheading
+-------------------------------------
 
 Example: Basic Sphinx project for Read the Docs
 -------------------------------------

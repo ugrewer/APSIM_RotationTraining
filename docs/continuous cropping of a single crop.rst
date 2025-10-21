@@ -143,7 +143,7 @@ Further, the high level of yield variability can be noted, ranging from 2.9 t/ha
 
 
 
-Simulation Without State Carry-Over
+Simulation without State Carry-Over
 -------------------------------------
 Let us now compare the above results with a simulation that resets major *state variables* after each crop cycle.
 Specifically, soil water, soil nutrient, and surface organic matter pools will be reset every year.
