@@ -10,11 +10,11 @@ such as assessing the impact of a shift in management practices or changing envi
 on crop growth processes, crop yield, and further outcome indicators. 
 
 This section introduces the simulation of continuous cropping. 
-It builds directly on the classical starting point of single crop cycle simulations 
-by demonstrating how to extend a single crop simulation across multiple, consecutive growing seasons.
+It builds upon the classical single crop cycle approach
+by demonstrating how to simulate the continuous cropping of such a single crop across multiple, consecutive growing seasons.
 Thereby, we primarily consider the case of simulating the continuous carry-over of soil water and nutrient states between subsequent crop cycles. 
 For comparison, we also briefly consider the alternative case of resetting soil water and nutrient states at the beginning of each crop cycle.
-In a subsequent step, the continuous simulation of more complex crop rotation scenarios will be considered.
+A subsequent section of this tutorial will then focus on the continuous simulation of more complex crop rotation scenarios.
 
 
 Simulation with State Carry-Over
