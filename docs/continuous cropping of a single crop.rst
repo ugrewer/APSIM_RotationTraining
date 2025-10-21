@@ -235,6 +235,8 @@ A thorough understanding of these principle differences between crop model simul
 For instance, it can inform the interpretation of results from popular long-term simulation studies that employ the resetting of *state variables*, 
 such as the `Agricultural Model Intercomparison and Improvement Project (AgMIP) <https://agmip.org/>`_.
 
+Conclusion
+-------------------------------------
 The above section provided you with an introduction of how to transition from the simulation of a single crop cycle, from sowing to harvest, 
 to continuous cropping with *state variables* that carry over between seasons.
 However, the above setup is not suitable to represent different alternating crops, such as of fixed crop rotations.

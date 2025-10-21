@@ -20,6 +20,7 @@ Contents
 
    Home <self>
    continuous cropping of a single crop
+   simulating crop rotations
    downloads
    usage
    api
