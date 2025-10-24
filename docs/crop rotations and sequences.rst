@@ -22,6 +22,37 @@ expand the  ``Management`` folder, and double click on ``RotationManager``
 
    Adding the Rotation Manager model to the simulation tree.
 
+The ``RotationManager`` consists of a graphical bubble-chart with which you can represent a crop rotation.
+For our first example, we will aim at generating the crop rotation "Sorghum-Fallow-Mungbean-Fallow".
+The crop rotation exclusively comprises summer crops and is rigidly predefined, 
+without accommodating alternative crop choices in response to varying environmental conditions.
+At the starting point, the ``RotationManager`` is blank.
+To add your first crop, right-click on the black canvas and select *"Add node"*.
+Rename the *node* (i.e., bubble) to "Sorghum".
+In the right-hand bottom corner, you may also add a further description (optional) and change the node colour.
+For example, we selected a colour that is similar to the colour of sorghum heads. 
+Please also select the tick boxes *"Top Level"* and *"Verbose Mode"*.
+Subsequently, repeat these steps three further times to generate a total of four nodes for each plot occupation in the crop rotation.
+Please drag the nodes on the canvas into the order of the intended rotatation "Sorghum-Fallow-Mungbean-Fallow".
+Further, do not name several nodes identically (e.g., two nodes called "Fallow") as this would prevent us from uniquely identifying to which node we are referring to later.
+To easily distinguish between the two fallows, we name them Fallow_postSG for the fallow following sorghum, and Fallow_postMB for the fallow following mungbean.
+Your bubble chart should now look similar to one of the below figures.
+There are many ways how you can graphically organise the bubble chart.
+Two common ways are to structure it as row sequence or circle.
+
+.. figure:: _static/APSIMscreenshot_BubbleChart_basic_row.png
+   :alt: Adding Rotation Manager
+   :width: 100%
+
+   Bubble chart of a simple crop rotation - organised as row sequence.
+
+.. figure:: _static/APSIMscreenshot_BubbleChart_basic_circle.png
+   :alt: Adding Rotation Manager
+   :width: 100%
+
+   Bubble chart of a simple crop rotation - organised as circle.
+
+
 
 
 Subheading
