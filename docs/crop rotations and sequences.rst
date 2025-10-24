@@ -6,10 +6,21 @@ To represent predetermined crop rotations of multiple crops as well as highly fl
 In the following, we will first have a look at the basic usage of the ``RotationManager`` *model*.
 Subsequently, we will present various approaches for representing increasingly complex, user-specific crop rotation and sequencing scenarios.
 
-Basic Overview of the RotationManager Model
+Basic Overview of the Rotation Manager
 -------------------------------------
+In the following section, we will develop a simple crop rotation scenario in APSIM from the ground up.
+As starting point, we will again utilise the earlier simulation of continuous Sorghum in Dalby: 
+`Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
+Please save the file under the new name *"CropRotation_basic.apsimx"* and also rename the simulation node from *"Continuous_Sorghum"* to *"CropRotation_basic"*.
+To add the ``RotationManager`` *model* to the simulation tree, right-click on the ``Paddock`` node, click on ``Add model...``, 
+expand the  ``Management`` folder, and double click on ``RotationManager`` 
+(alternatively, you can drag-and-drop the ``RotationManager`` onto the ``Paddock`` node).
 
+.. figure:: _static/APSIMscreenshot_addingRotationManager.png
+   :alt: Adding Rotation Manager
+   :width: 100%
 
+   Adding the Rotation Manager model to the simulation tree.
 
 
 
