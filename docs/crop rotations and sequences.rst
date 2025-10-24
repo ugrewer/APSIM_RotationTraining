@@ -11,10 +11,10 @@ Basic Overview of the Rotation Manager
 In the following section, we will develop a simple crop rotation scenario in APSIM from the ground up.
 As starting point, we will again utilise the earlier simulation of continuous Sorghum in Dalby: 
 `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
-Please save the file under the new name *"CropRotation_basic.apsimx"* and also rename the simulation node from *"Continuous_Sorghum"* to *"CropRotation_basic"*.
-To add the ``RotationManager`` *model* to the simulation tree, right-click on the ``Paddock`` node, click on ``Add model...``, 
+Please save the file under the new name *"CropRotation_basic.apsimx"* and also rename the simulation *node* from *"Continuous_Sorghum"* to *"CropRotation_basic"*.
+To add the ``RotationManager`` *model* to the simulation tree, right-click on the ``Paddock`` *node*, click on ``Add model...``, 
 expand the  ``Management`` folder, and double click on ``RotationManager`` 
-(alternatively, you can drag-and-drop the ``RotationManager`` onto the ``Paddock`` node).
+(alternatively, you can drag-and-drop the ``RotationManager`` onto the ``Paddock`` *node*).
 
 .. figure:: _static/APSIMscreenshot_addingRotationManager.png
    :alt: Adding Rotation Manager
@@ -22,41 +22,64 @@ expand the  ``Management`` folder, and double click on ``RotationManager``
 
    Adding the Rotation Manager model to the simulation tree.
 
-The ``RotationManager`` consists of a graphical bubble-chart with which you can represent a crop rotation.
+The ``RotationManager`` consists of a graphical bubble chart with which you can represent a crop rotation.
 For our first example, we will aim at generating the crop rotation "Sorghum-Fallow-Mungbean-Fallow".
 The crop rotation exclusively comprises summer crops and is rigidly predefined, 
 without accommodating alternative crop choices in response to varying environmental conditions.
 At the starting point, the ``RotationManager`` is blank.
 To add your first crop, right-click on the black canvas and select *"Add node"*.
 Rename the *node* (i.e., bubble) to "Sorghum".
-In the right-hand bottom corner, you may also add a further description (optional) and change the node colour.
+In the right-hand bottom corner, you may also add a further description (optional) and change the *node* colour.
 For example, we selected a colour that is similar to the colour of sorghum heads. 
 Please also select the tick boxes *"Top Level"* and *"Verbose Mode"*.
-Subsequently, repeat these steps three further times to generate a total of four nodes for each plot occupation in the crop rotation.
-Please drag the nodes on the canvas into the order of the intended rotatation "Sorghum-Fallow-Mungbean-Fallow".
-Further, do not name several nodes identically (e.g., two nodes called "Fallow") as this would prevent us from uniquely identifying to which node we are referring to later.
+Subsequently, repeat these steps three further times to generate a total of four *nodes* for each plot occupation in the crop rotation.
+Please drag the *nodes* on the canvas into the order of the intended rotatation "Sorghum-Fallow-Mungbean-Fallow".
+Further, do not name several *nodes* identically (e.g., two *nodes* called "Fallow") as this would prevent us from uniquely identifying to which *node* we are referring to later.
 To easily distinguish between the two fallows, we name them Fallow_postSG for the fallow following sorghum, and Fallow_postMB for the fallow following mungbean.
 Your bubble chart should now look similar to one of the below figures.
 There are many ways how you can graphically organise the bubble chart.
 Two common ways are to structure it as row sequence or circle.
 
 .. figure:: _static/APSIMscreenshot_BubbleChart_basic_row.png
-   :alt: Adding Rotation Manager
+   :alt: BubbleChart_basic_row
    :width: 100%
 
    Bubble chart of a simple crop rotation - organised as row sequence.
 
 .. figure:: _static/APSIMscreenshot_BubbleChart_basic_circle.png
-   :alt: Adding Rotation Manager
+   :alt: BubbleChart_basic_circle
    :width: 100%
 
    Bubble chart of a simple crop rotation - organised as circle.
 
+While the *nodes* represent the different possible field occupations, the next step is to connect the *nodes* with arcs.
+Arcs define the transitions the we request APSIM to simulate.
+Please add a single arc each for the desired transitions of our rotation plan "Sorghum-Fallow-Mungbean-Fallow".
+For this, right-click on a *node* and select ``Add arc``, drag the arc to the *node* it shall transition to,
+and click on the *node* to lock-in the arc.
+Optionally, you can rename the arcs to more descriptive labels.
+The resulting bubble chart should look similar to the following:
+
+.. figure:: _static/APSIMscreenshot_BubbleChart_nodesWithArcs.png
+   :alt: BubbleChart_nodesWithArcs
+   :width: 100%
+
+   Addition of arcs to bubble chart.
+
+The above bubble chart gives us the basic crop rotation structure that we will work with for this example.
+It exactly identifies in which sequence crops and fallows will be simulated.
+When clicking on any of the arches, you will see that these transition rules require two arguments:
+
+- **Conditions** that specify under which circumstances the simulation will transition from the starting node of the arc to the ending node of the arc
+- **Actions** that specify which activities are carried out as part of the transition.
+
+At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection. 
 
 
-
-Subheading
+Conditions and Actions to Transition between Plot States
 -------------------------------------
+
+
 
 Subheading
 -------------------------------------
