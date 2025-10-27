@@ -119,13 +119,28 @@ Let us start with ``SowHarvest_sorghum``:
 When you inspect once more the earlier *manager* script from the continuous sorghum simulation (Sorghum_continuous_carryOver),
 you will see that there were some more sorghum-specific parameters in the *manager* script.
 These were *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
-However, these sorghum-specific parameters are not available in the crop-generic *manager* script that we are using here.
+However, these sorghum-specific parameters are not included in the crop-generic *manager* script that we are using here.
 This provides us with a good opportunity to explore another core ability that one needs to flexibly generate APSIM simulations: 
 To modify the **C# code** of *manager* scripts.
 
-Let us first explore which impact it had to change parameter values in the user interface.
-After having selected ``SowHarvest_sorghum`` in the simulation tree, select the ``Script`` tab.
-This exposes the background **C# code** that we have been modifying by updating values in the user interface.
+Let us first explore the background **C# code** that is generating the *manager* user interface which we have been modifying.
+For this, select ``SowHarvest_sorghum`` in the simulation tree, and then click on the ``Script`` tab.
+The respective **C# code** is also displayed in the code block below.
+If you do not have a lot of past exposure or own experience with programming languages, the below notably may mean nothing to you - which is just fine.
+It is important to note, that a whole lot of APSIM modelling can be achieved without modifying any **C# code**.
+What we are exploring here is to make light modifications to existing code which does not require a thorough understanding of *C#* nor an advanced knowledge of the code base of APSIM.
+Even if you never plan to conduct such code modifications yourself, the below provides you with a high level understanding of the programmatic functioning of the tool, which will be useful by itself.
+
+For those interested, let us have a brief conceptual overview of the below ``SowHarvest_sorghum`` script.
+This *C#* file defines a custom APSIM management script inside the *Models* namespace - a logical grouping of related classes. 
+The *using* statements at the top import external APSIM and .NET libraries, allowing access to components such as *soils*, *weather*, *plants*, and utility functions. 
+The *Script* class itself inherits from APSIM’s base *Model* class and implements the *IStructureDependency* interface, 
+meaning it integrates with APSIM’s simulation framework. 
+Inside the class, linked components (e.g., *Clock*, *Soil*, *Crop*) are automatically connected to other simulation modules. 
+The script subscribes to simulation events like *StartOfSimulation* or *DoManagement*, 
+and defines methods and properties that determine when to sow or harvest a crop. 
+Overall, the code provides a structured way to embed dynamic crop management logic directly into an APSIM simulation.
+
 
 .. code-block:: csharp
    :caption: APSIM management script *"SowHarvest_sorghum"* written in C#
@@ -277,14 +292,7 @@ This exposes the background **C# code** that we have been modifying by updating 
 
 
 
-This C# file defines a custom APSIM management script inside the Models namespace — a logical grouping of related classes. 
-The using statements at the top import external APSIM and .NET libraries, allowing access to components such as soil, weather, plants, and utility functions. 
-The Script class itself inherits from APSIM’s base Model class and implements the IStructureDependency interface, 
-meaning it integrates with APSIM’s simulation framework. 
-Inside the class, linked components (e.g., Clock, Soil, Crop) are automatically connected to other simulation modules. 
-The script subscribes to simulation events like StartOfSimulation or DoManagement, 
-and defines methods and properties that determine when to sow or harvest a crop. 
-Overall, the code provides a structured way to embed dynamic crop management logic directly into an APSIM simulation.
+
 
 
 
