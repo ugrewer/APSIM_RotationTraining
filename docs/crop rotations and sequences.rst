@@ -140,7 +140,7 @@ What we are exploring here is to make light modifications to existing code which
 Even if you never plan to conduct such code modifications yourself, this section provides you with a high level understanding of the programmatic functioning of the APSIM user interface, which will be useful by itself.
 
 For those interested, let us have a brief conceptual overview of the ``SowHarvest_sorghum`` *manager* script (otherwise, feel free to skip this paragraph).
-This *C#* file defines a custom APSIM management script inside the *Models* namespace - a logical grouping of related classes. 
+This *C#* script is a custom APSIM management script inside the *Models* namespace - a logical grouping of related classes. 
 The *using* statements at the top import external APSIM and .NET libraries, allowing access to components such as soils, weather, plants, and utility functions. 
 The *Script* class itself inherits from APSIM’s base *Model* class and implements the *IStructureDependency* interface. 
 Inside the class, linked components (e.g., *Clock*, *Soil*, *Crop*) are automatically connected to other simulation modules. 
@@ -148,10 +148,10 @@ The script subscribes to simulation events like *StartOfSimulation* or *DoManage
 and defines methods and properties that determine when to sow or harvest a crop. 
 Overall, the code provides a structured way to embed dynamic crop management logic directly into an APSIM simulation.
 
-What we want to do now is to modify the above script so that it is able to accept parameter values 
+What we want to do now is to modify the above script so that it is able to accept values 
 for the Sorghum-specific parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
 Thereby, these variables need to be specified in a way that is interpretable by APSIM (i.e, corresponding to predefined classes in APSIM).
-This can be achieved by consulting the `APSIM documentation for sorghum <https://docs.apsim.info/validation/Sorghum>`_ as well as the publicly available `APSIM Source Code <https://github.com/APSIMInitiative/ApsimX`_ for the sorghum model.
+This can be achieved by consulting the `APSIM documentation for sorghum <https://docs.apsim.info/validation/Sorghum>`_ as well as the publicly available `APSIM Source Code <https://github.com/APSIMInitiative/ApsimX>`_ for the sorghum model.
 Instead, let us here first learn another shortcut that does not require much understanding of **C# code**:
 Selecting a suitable existing *manager* script, and copying the relevant **C# code** into our target *manager* script.
 
@@ -173,12 +173,13 @@ Specifically, what we are after are the highlighted segments below:
 Let us copy the highlighted code and paste it into the *manager* script ``SowHarvest_sorghum``, specifically after the code segment:
 
 .. code-block:: csharp
+    :caption: C# code section in the manager script *"SowHarvest_sorghum"*, after which sorghum-specific code should be added
     public double Population { get; set; }
 
 The updated **C# code** should look like the following:
 
 .. code-block:: csharp
-   :caption: APSIM management script *"SowHarvest_sorghum"* written in C# (prior to any changes)
+   :caption: APSIM management script *"SowHarvest_sorghum"* with sorghum-specific additions
    :linenos:
    
     using APSIM.Core;
