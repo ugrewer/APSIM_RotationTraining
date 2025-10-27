@@ -128,7 +128,7 @@ After having selected ``SowHarvest_sorghum`` in the simulation tree, select the 
 This exposes the background **C# code** that we have been modifying by updating values in the user interface.
 
 .. code-block:: csharp
-   :caption: Example APSIM management script written in C#
+   :caption: APSIM management script *"SowHarvest_sorghum"* written in C#
    :linenos:
    
     using APSIM.Core;
