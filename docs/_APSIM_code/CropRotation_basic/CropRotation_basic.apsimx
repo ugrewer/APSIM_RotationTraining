@@ -978,6 +978,23 @@
                 "        [Description(\"Plant population (/m2)\")]",
                 "        public double Population { get; set; }",
                 "",
+                "        [Description(\"Enter skip row configuration : \")]",
+                "        public RowConfigurationType RowConfiguration { get; set; }",
+                "        [Description(\"Tillering Method\")]",
+                "        public TilleringMethodType TilleringMethod { get; set; } = 0;",
+                "        [Description(\"Enter Fertile Tiller No. : \")]",
+                "        public double Ftn { get; set; }",
+                "        public enum TilleringMethodType ",
+                "        {",
+                "            RuleOfThumb = -1,",
+                "            FixedTillering = 0,",
+                "            DynamicTillering = 1",
+                "        }",
+                "        public enum RowConfigurationType ",
+                "        {",
+                "            Solid, SingleSkip, DoubleSkip",
+                "        }",
+                "",
                 "        public Accumulator accumulatedRain { get; private set; }",
                 "        private bool afterInit = false;",
                 "                ",
@@ -1106,6 +1123,18 @@
                 {
                   "Key": "Population",
                   "Value": "10"
+                },
+                {
+                  "Key": "RowConfiguration",
+                  "Value": "Solid"
+                },
+                {
+                  "Key": "TilleringMethod",
+                  "Value": "FixedTillering"
+                },
+                {
+                  "Key": "Ftn",
+                  "Value": "0"
                 }
               ],
               "Name": "SowHarvest_sorghum",

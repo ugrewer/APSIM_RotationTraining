@@ -116,7 +116,7 @@ Let us start with ``SowHarvest_sorghum``:
 - Ensure that the *"Must sow?"* tickbox is unticked. If ticked, the script enforces that a crop is sown at the end of the sowing window, even if sowing conditions are not satisfied.
 - Update the sowing properties to mirror the earlier parameters used for simulating sorghum in Dalby (Cultiar: Buster; Sowing depth: 30mm; Row spacing: 750mm; Plant population: 10 plants/m2).
 
-When you inspect once more the earlier *manager* script from the continuous sorghum simulation (Sorghum_continuous_carryOver),
+When you inspect once more the earlier *manager* script from the continuous sorghum simulation (*Sorghum_continuous_carryOver.apsimx*),
 you will see that there were some more sorghum-specific parameters in the *manager* script.
 These were *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
 However, these sorghum-specific parameters are not included in the crop-generic *manager* script that we are using here.
@@ -131,9 +131,9 @@ It is important to note, that a whole lot of APSIM modelling can be achieved wit
 What we are exploring here is to make light modifications to existing code which does not require a thorough understanding of *C#* nor an advanced knowledge of the code base of APSIM.
 Even if you never plan to conduct such code modifications yourself, the below provides you with a high level understanding of the programmatic functioning of the tool, which will be useful by itself.
 
-For those interested, let us have a brief conceptual overview of the below ``SowHarvest_sorghum`` script.
+For those interested, let us have a brief conceptual overview of the below c script.
 This *C#* file defines a custom APSIM management script inside the *Models* namespace - a logical grouping of related classes. 
-The *using* statements at the top import external APSIM and .NET libraries, allowing access to components such as *soils*, *weather*, *plants*, and utility functions. 
+The *using* statements at the top import external APSIM and .NET libraries, allowing access to components such as soils, weather, plants, and utility functions. 
 The *Script* class itself inherits from APSIM’s base *Model* class and implements the *IStructureDependency* interface, 
 meaning it integrates with APSIM’s simulation framework. 
 Inside the class, linked components (e.g., *Clock*, *Soil*, *Crop*) are automatically connected to other simulation modules. 
@@ -143,7 +143,7 @@ Overall, the code provides a structured way to embed dynamic crop management log
 
 
 .. code-block:: csharp
-   :caption: APSIM management script *"SowHarvest_sorghum"* written in C#
+   :caption: APSIM management script *"SowHarvest_sorghum"* written in C# (prior to any changes)
    :linenos:
    
     using APSIM.Core;
@@ -287,22 +287,202 @@ Overall, the code provides a structured way to embed dynamic crop management log
         }
     }
 
+What we want to do now is to modify the above script so that it is able to accept parameter values 
+for the Sorghum-specific parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
+Thereby, these variables need to be specified in a way, that they are understandable by APSIM (i.e, corresponding to the predefined classes in APSIM).
+This can be achieved by consulting the `APSIM documentation for sorghum <https://docs.apsim.info/validation/Sorghum>`_ as well as the publicly available `APSIM Source Code <https://github.com/APSIMInitiative/ApsimX`_ for the sorghum model.
+Instead, let us here first learn another shortcut that does not require much understanding of **C# code**:
+Selecting a suitable existing *manager* script, and copying the relevant **C# code** into our target *manager* script.
 
+In the previously utilised *manager* script from the continuous sorghum simulation (*Sorghum_continuous_carryOver.apsimx*),
+we know that the three sorghum-specific variables are defined in a correct manner.
+In the user interface, when clicking on the *manager* script ``SowingRule``  we can easily see the three variables being defined as follows:
 
+.. figure:: _static/APSIMscreenshot_SorghumParamUserInterface.png
+   :alt: SorghumParamUserInterface
+   :width: 50%
 
+When we then navigate to the ``Script`` tab, we can search for the same keywords and find the corresponding **C# code**.
+Specifically, what we are after are the highlighted segments below:
 
+.. figure:: _static/APSIMscreenshot_SorghumParamCSharpCode.png
+   :alt: SorghumParamCSharpCode
+   :width: 50%
 
+Let us copy the highlighted code and paste it into the *manager* script ``SowHarvest_sorghum``, specifically after the code segment:
 
+.. code-block:: csharp
+    public double Population { get; set; }
 
+The updated **C# code** should look like the following:
 
+.. code-block:: csharp
+   :caption: APSIM management script *"SowHarvest_sorghum"* written in C# (prior to any changes)
+   :linenos:
+   
+    using APSIM.Core;
+    using Models.Interfaces;
+    using APSIM.Shared.Utilities;
+    using Models.Utilities;
+    using Models.Soils;
+    using Models.PMF;
+    using Models.PMF.Organs;
+    using Models.Core;
+    using System;
+    using System.Linq;
+    using Models.Climate;
+    using APSIM.Numerics;
 
+    namespace Models
+    {
+        [Serializable]
+        public class Script : Model, IStructureDependency
+        {
+            [Link] private Clock Clock;
+            [Link] private Summary Summary;
+            [Link] private Soil Soil;
+            [Link]
+            private ISoilWater waterBalance;
+            
+            public IStructure Structure { private get; set; }
+            //[Link] Simulation Simulation;
 
+            [Separator("Script Configuration")]
+            [Description("Crop to manage")]
+            public IPlant Crop { get; set; }
 
-For this, when select the ``Script`` tab on the top of the 
-; Fertile tillers: 0
+            [Separator("Sowing Conditions")]
+            [Description("Start of sowing window (d-mmm)")]
+            public string StartDate { get; set; }
+            [Description("End of sowing window (d-mmm)")]
+            public string EndDate { get; set; }
+            [Description("Minimum extractable soil water for sowing (mm)")]
+            public double MinESW { get; set; }
+            [Description("Accumulated rainfall required for sowing (mm)")]
+            public double MinRain { get; set; }
+            [Description("Duration of rainfall accumulation (d)")]
+            public int RainDays { get; set; }
+            [Tooltip("If enabled, and if sowing conditions are not met, the crop will be sown on the final day of the sowing window.")]
+            [Description("Must sow (yes/no)")]
+            public bool MustSow { get; set; }
 
+            [Separator("Sowing Properties")]
+            [Description("Cultivar to be sown")]
+            [Display(Type = DisplayType.CultivarName)]
+            public string CultivarName { get; set; }
+            [Description("Sowing depth (mm)")]
+            public double SowingDepth { get; set; }
+            [Description("Row spacing (mm)")]
+            public double RowSpacing { get; set; }
+            [Description("Plant population (/m2)")]
+            public double Population { get; set; }
 
+            [Description("Enter skip row configuration : ")]
+            public RowConfigurationType RowConfiguration { get; set; }
+            [Description("Tillering Method")]
+            public TilleringMethodType TilleringMethod { get; set; } = 0;
+            [Description("Enter Fertile Tiller No. : ")]
+            public double Ftn { get; set; }
+            public enum TilleringMethodType 
+            {
+                RuleOfThumb = -1,
+                FixedTillering = 0,
+                DynamicTillering = 1
+            }
+            public enum RowConfigurationType 
+            {
+                Solid, SingleSkip, DoubleSkip
+            }
 
+            public Accumulator accumulatedRain { get; private set; }
+            private bool afterInit = false;
+                    
+            [EventSubscribe("StartOfSimulation")]
+            private void OnSimulationCommencing(object sender, EventArgs e)
+            {
+                if (Crop == null)
+                    throw new Exception("Crop must not be null in rotations");
+                accumulatedRain = new Accumulator(this, "[Weather].Rain", RainDays);
+                Summary.WriteMessage(this, this.FullPath + " - Commence, crop=" + (Crop as Model).Name, MessageType.Diagnostic);
+                afterInit = true;
+                MonthlyHarvestedWt = 0;
+            }
+            
+            [EventSubscribe("DoManagement")]
+            private void DoManagement(object sender, EventArgs e)
+            {
+                accumulatedRain.Update();
+            }
+
+            // Test whether we can sow a crop today
+            // +ve number - yes
+            // 0          - no
+            // -ve number - no, out of scope (planting window)
+            [Units("0-1")]
+            public int CanSow
+            {
+                get
+                {
+                    if (!afterInit)
+                        return 0;
+                    bool isPossibleToday = false;
+                    bool inWindow = DateUtilities.WithinDates(StartDate, Clock.Today, EndDate);
+                    bool endOfWindow = DateUtilities.DatesEqual(EndDate, Clock.Today);
+                    if (!Crop.IsAlive && inWindow && accumulatedRain.Sum > MinRain && MathUtilities.Sum(waterBalance.ESW) > MinESW)
+                        isPossibleToday = true;
+
+                    if (isPossibleToday)
+                        return 1;
+            
+                    if (!Crop.IsAlive && endOfWindow && MustSow)
+                        return 1;
+
+                    if (!Crop.IsAlive && !inWindow)
+                        return -1;
+                    return 0;
+                }
+            }
+
+            public void SowCrop()
+            {
+                Summary.WriteMessage(this, this.FullPath + " -  sowing " + (Crop as Model).Name, MessageType.Diagnostic);
+                Crop.Sow(population: Population, cultivar: CultivarName, depth: SowingDepth, rowSpacing: RowSpacing);    
+            }
+
+            [Units("0-1")] 
+            public int CanHarvest
+            {
+                get
+                {
+                    if (!afterInit)
+                        return (0);
+                    //Summary.WriteMessage(this, "canLeave:" + Crop.IsReadyForHarvesting, MessageType.Diagnostic);
+                    return Crop.IsReadyForHarvesting ? 1 : 0;
+                }
+            }
+
+            public void HarvestCrop()
+            {
+                Summary.WriteMessage(this, this.FullPath + " -  harvesting " + (Crop as Model).Name, MessageType.Diagnostic);
+                MonthlyHarvestedWt = (  Structure.FindChild<IModel>("Grain", relativeTo: (INodeModel)Crop) as ReproductiveOrgan).Wt;
+                Crop.Harvest();
+                Crop.EndCrop();
+            }
+            
+            public double MonthlyHarvestedWt {get; set;}
+            [EventSubscribe("StartOfMonth")]
+            private void DoStartOfMonth(object sender, EventArgs e)
+            {
+                MonthlyHarvestedWt = 0;
+            }
+        }
+    }
+
+In the thus modified *manager* script ``SowHarvest_sorghum`` we can switch back from the ``Script`` tab to the ``Parameters`` tab.
+Now, we should be able to modify the three target parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"* to their desired values:
+solid row configuration, fixed tillering method, and zero fertile tillers.
+
+The above provided an example of a work routing of how to implement minor changes to *manager* script, without thorough knowledge or skills in *C#* programming.
 
 
 Subheading
