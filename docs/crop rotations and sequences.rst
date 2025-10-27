@@ -34,7 +34,7 @@ For example, we selected a colour that is similar to the colour of sorghum heads
 Please also select the tick boxes *"Top Level"* and *"Verbose Mode"*.
 Subsequently, repeat these steps three further times to generate a total of four *nodes* for each plot occupation in the crop rotation.
 Please drag the *nodes* on the canvas into the order of the intended rotatation "Sorghum-Fallow-Mungbean-Fallow".
-Further, do not name several *nodes* identically (e.g., two *nodes* called "Fallow") as this would prevent us from uniquely identifying to which *node* we are referring to later.
+Further, do not name several *nodes* identically (e.g., avoid that two *nodes* are called "Fallow") as this would prevent us from uniquely identifying to which *node* we are referring to later.
 To easily distinguish between the two fallows, we name them Fallow_postSG for the fallow following sorghum, and Fallow_postMB for the fallow following mungbean.
 Your bubble chart should now look similar to one of the below figures.
 There are many ways how you can graphically organise the bubble chart.
@@ -58,6 +58,7 @@ Please add a single arc each for the desired transitions of our rotation plan "S
 For this, right-click on a *node* and select ``Add arc``, drag the arc to the *node* it shall transition to,
 and click on the *node* to lock-in the arc.
 Optionally, you can rename the arcs to more descriptive labels.
+For example, below we chose the labels "Enter Sorghum", "Exit Sorghum", "Enter Mungbean", "Exit Mungbean".
 The resulting bubble chart should look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_BubbleChart_nodesWithArcs.png
@@ -70,7 +71,7 @@ The above bubble chart gives us the basic crop rotation structure that we will w
 It exactly identifies in which sequence crops and fallows will be simulated.
 When clicking on any of the arches, you will see that these transition rules require two arguments:
 
-- **Conditions** that specify under which circumstances the simulation will transition from the starting node of the arc to the ending node of the arc
+- **Conditions** that specify under which circumstances the simulation will transition from the starting node of the arc to the ending node of the arc.
 - **Actions** that specify which activities are carried out as part of the transition.
 
 At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection. 
@@ -78,8 +79,29 @@ At this stage, we did not yet specify any conditions and actions, which is the f
 
 Transitioning between Plot States
 -------------------------------------
+To have a clean starting point for the definition of crop management rules, 
+please first delete the current ``Manager folder`` from the simulation tree (under the ``Paddock`` *node*).
+Let us now utilise one of the principles we mentioned earlier:
+Instead of writing **C# code** from scratch, 
+we can use scripts from both the *Management toolbox* as well as example *APSIMX files* that are distributed with the software as our starting point.
+For this, navigate to ``Home`` > ``Open an example`` and opent the example file *"Rotation.apsimx"*.
+This is an example crop rotation file that is distributed with APSIM and that you may want to explore at your own time in more detail.
+Here, we will copy a useful script that manages crop sowing and harvesting and use it within our simulation.
+To copy the script, expand the simulation tree and navigate to ``Crop Pasture`` > ``Field``, copy the ``OatsManager``, 
+and paste it into the ``Paddock`` *node* of our simulation *"CropRotation_basic"*.
+As we will need two of these manager scripts, paste it a second time into the ``Paddock`` *node*.
+Rename the manger *nodes* to ``SorghumManager`` and ``MungbeanManager``.
 
+For fertilisation, we can instead continue to use our previous manager script.
+Please copy the ``Fertilise at sowing`` script, so that we again have two versions of it.
+Rename the managers to ``SowFert_sorghum`` and ``SowFert_mungbean``.
+The resulting simulation tree should now look similar to the following:
 
+.. figure:: _static/APSIMscreenshot_SimTreeWithManagers.png
+   :alt: SimTreeWithManagers
+   :width: 100%
+
+   Simulation tree with updated manager scripts.
 
 Subheading
 -------------------------------------
