@@ -90,16 +90,16 @@ Here, we will copy a useful script that manages crop sowing and harvesting and u
 To copy the script, expand the simulation tree and navigate to ``Crop Pasture`` > ``Field``, copy the ``OatsManager``, 
 and paste it into the ``Paddock`` *node* of our simulation *"CropRotation_basic"*.
 As we will need two of these manager scripts, paste it a second time into the ``Paddock`` *node*.
-Rename the manger *nodes* to ``SorghumManager`` and ``MungbeanManager``.
+Rename the manger *nodes* to ``SowHarvest_sorghum`` and ``SowHarvest_mungbean``.
 
 For fertilisation, we can instead continue to use our previous manager script.
 Please copy the ``Fertilise at sowing`` script, so that we again have two versions of it.
-Rename the managers to ``SowFert_sorghum`` and ``SowFert_mungbean``.
+Rename the managers to ``Fert_sorghum`` and ``Fert_mungbean``.
 The resulting simulation tree should now look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_SimTreeWithManagers.png
    :alt: SimTreeWithManagers
-   :width: 35%
+   :width: 50%
 
    Simulation tree with updated manager scripts.
 
