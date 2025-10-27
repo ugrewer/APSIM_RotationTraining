@@ -127,8 +127,10 @@ Let us first explore which impact it had to change parameter values in the user 
 After having selected ``SowHarvest_sorghum`` in the simulation tree, select the ``Script`` tab.
 This exposes the background **C# code** that we have been modifying by updating values in the user interface.
 
-.. code-block:: console
-
+.. code-block:: csharp
+   :caption: Example APSIM management script written in C#
+   :linenos:
+   
     using APSIM.Core;
     using Models.Interfaces;
     using APSIM.Shared.Utilities;
@@ -269,6 +271,20 @@ This exposes the background **C# code** that we have been modifying by updating 
             }
         }
     }
+
+
+
+
+
+
+This C# file defines a custom APSIM management script inside the Models namespace — a logical grouping of related classes. 
+The using statements at the top import external APSIM and .NET libraries, allowing access to components such as soil, weather, plants, and utility functions. 
+The Script class itself inherits from APSIM’s base Model class and implements the IStructureDependency interface, 
+meaning it integrates with APSIM’s simulation framework. 
+Inside the class, linked components (e.g., Clock, Soil, Crop) are automatically connected to other simulation modules. 
+The script subscribes to simulation events like StartOfSimulation or DoManagement, 
+and defines methods and properties that determine when to sow or harvest a crop. 
+Overall, the code provides a structured way to embed dynamic crop management logic directly into an APSIM simulation.
 
 
 
