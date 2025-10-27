@@ -16,7 +16,7 @@
     {
       "$type": "Models.Core.Simulation, Models",
       "Descriptors": null,
-      "Name": "Continuous_Sorghum",
+      "Name": "CropRotation_basic",
       "ResourceName": null,
       "Children": [
         {
@@ -1085,6 +1085,101 @@
                 }
               ],
               "Name": "Fertilise at sowing",
+              "ResourceName": null,
+              "Children": [],
+              "Enabled": true,
+              "ReadOnly": false
+            },
+            {
+              "$type": "Models.Management.RotationManager, Models",
+              "Nodes": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 1,
+                  "Name": "Sorghum",
+                  "Location": "434, 77",
+                  "Colour": "158, 77, 77"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 2,
+                  "Name": "Fallow_postSG",
+                  "Location": "634, 241",
+                  "Colour": "192, 191, 188"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 3,
+                  "Name": "Mungbean",
+                  "Location": "430, 394",
+                  "Colour": "97, 172, 126"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 4,
+                  "Name": "Fallow_postMB",
+                  "Location": "245, 235",
+                  "Colour": "192, 191, 188"
+                }
+              ],
+              "Arcs": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 2,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 5,
+                  "Name": "Exit Sorghum",
+                  "Location": "517, 140",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 2,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 6,
+                  "Name": "Enter Mungbean",
+                  "Location": "543, 317",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 7,
+                  "Name": "Exit Mungbean",
+                  "Location": "339, 325",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 8,
+                  "Name": "Enter Sorghum",
+                  "Location": "348, 152",
+                  "Colour": ""
+                }
+              ],
+              "TopLevel": true,
+              "InitialState": null,
+              "Verbose": true,
+              "Name": "RotationManager",
               "ResourceName": null,
               "Children": [],
               "Enabled": true,

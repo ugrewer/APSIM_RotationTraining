@@ -76,7 +76,7 @@ When clicking on any of the arches, you will see that these transition rules req
 At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection. 
 
 
-Conditions and Actions to Transition between Plot States
+Transitioning between Plot States
 -------------------------------------
 
 
