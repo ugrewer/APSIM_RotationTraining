@@ -174,6 +174,7 @@ Let us copy the highlighted code and paste it into the *manager* script ``SowHar
 
 .. code-block:: csharp
     :caption: C# code section in the manager script *"SowHarvest_sorghum"*, after which sorghum-specific code should be added
+    
     public double Population { get; set; }
 
 The updated **C# code** should look like the following:
