@@ -99,7 +99,7 @@ The resulting simulation tree should now look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_SimTreeWithManagers.png
    :alt: SimTreeWithManagers
-   :width: 100%
+   :width: 35%
 
    Simulation tree with updated manager scripts.
 
