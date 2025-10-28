@@ -365,7 +365,7 @@ The resulting simulation tree should now look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_AddedMungbeanModel.png
    :alt: AddedMungbeanModel
-   :width: 50%
+   :width: 35%
 
    Simulation tree with added *Mungbean* crop model.
 
@@ -387,7 +387,8 @@ The final *manager* script ``SowHarvest_mungbean`` should look similar to the fo
 
 
 Next, we select the *manager* script ``Fert_sorghum``.
-We see 
+Here, we can see that all values are already as we intend them to be and no further changes are needed.
+Instead, when selecting  ``Fert_mungbean``, we see that the target crop is still blank and we have to select *Mungbean* from the drop-down list.
 
 
 
