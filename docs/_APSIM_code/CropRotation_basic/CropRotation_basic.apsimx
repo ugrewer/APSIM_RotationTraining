@@ -1302,11 +1302,11 @@
                 },
                 {
                   "Key": "StartDate",
-                  "Value": "10-apr"
+                  "Value": "1-oct"
                 },
                 {
                   "Key": "EndDate",
-                  "Value": "10-jun"
+                  "Value": "30-dec"
                 },
                 {
                   "Key": "MinESW",
