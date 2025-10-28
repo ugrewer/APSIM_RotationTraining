@@ -808,6 +808,14 @@
               "ReadOnly": false
             },
             {
+              "$type": "Models.PMF.Plant, Models",
+              "Name": "Mungbean",
+              "ResourceName": "Mungbean",
+              "Children": [],
+              "Enabled": true,
+              "ReadOnly": false
+            },
+            {
               "$type": "Models.Surface.SurfaceOrganicMatter, Models",
               "SurfOM": [],
               "Canopies": [],
@@ -1290,7 +1298,7 @@
               "Parameters": [
                 {
                   "Key": "Crop",
-                  "Value": ""
+                  "Value": "[Mungbean]"
                 },
                 {
                   "Key": "StartDate",
@@ -1302,35 +1310,35 @@
                 },
                 {
                   "Key": "MinESW",
-                  "Value": "50"
+                  "Value": "120"
                 },
                 {
                   "Key": "MinRain",
-                  "Value": "10"
+                  "Value": "50"
                 },
                 {
                   "Key": "RainDays",
-                  "Value": "14"
+                  "Value": "7"
                 },
                 {
                   "Key": "MustSow",
-                  "Value": "True"
+                  "Value": "False"
                 },
                 {
                   "Key": "CultivarName",
-                  "Value": "Drummond"
+                  "Value": "CeleraII"
                 },
                 {
                   "Key": "SowingDepth",
-                  "Value": "30"
+                  "Value": "40"
                 },
                 {
                   "Key": "RowSpacing",
-                  "Value": "250"
+                  "Value": "500"
                 },
                 {
                   "Key": "Population",
-                  "Value": "120"
+                  "Value": "25"
                 }
               ],
               "Name": "SowHarvest_mungbean",

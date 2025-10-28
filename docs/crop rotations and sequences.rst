@@ -114,7 +114,7 @@ Let us start with ``SowHarvest_sorghum``:
 - As we copied the crop *manager* from a winter crop (oats), the sowing window is unreasonable. Update its start and end date to the values we previously used for Sorghum in Dalby (start: 1-nov; end: 10-jan).
 - For the required soil moisture and rainfall conditions, we also insert the values from our previous sorghum simulation in Dalby (Min. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
 - Ensure that the *"Must sow?"* tickbox is unticked. If ticked, the script enforces that a crop is sown at the end of the sowing window, even if sowing conditions are not satisfied.
-- Update the sowing properties to mirror the earlier parameters used for simulating sorghum in Dalby (Cultiar: Buster; Sowing depth: 30mm; Row spacing: 750mm; Plant population: 10 plants/m2).
+- Update the sowing properties to mirror the earlier parameters used for simulating sorghum in Dalby (Cultivar: Buster; Sowing depth: 30mm; Row spacing: 750mm; Plant population: 10 plants/m2).
 
 
 Simple modifications of C# scripts
@@ -369,6 +369,25 @@ The resulting simulation tree should now look similar to the following:
 
    Simulation tree with added *Mungbean* crop model.
 
+When we now navigate again to the *manager* script ``SowHarvest_sorghum``, you are able to select *Mungbean* from the drop-down list as the target crop.
+Further modifications that we need to conduct to ``SowHarvest_sorghum`` are:
+
+- Update the sowing window start and end dates to desired values for mungbean around Dalby (start: 1-oct; end: 30-dec).
+- Update the soil moisture and rainfall conditions required for sowing (in. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
+- Again ensure that the *"Must sow?"* tickbox is unticked.
+- Select a set of desired sowing properties for mungbean around Dalby (Cultivar: CeleraII; Sowing depth: 40mm; Row spacing: 500mm; Plant population: 25 plants/m2).
+
+The final *manager* script ``SowHarvest_sorghum`` should look similar to the following:
+
+.. figure:: _static/APSIMscreenshot_MungbeanManager.png
+   :alt: MungbeanManager
+   :width: 80%
+
+   Simulation tree with added *Mungbean* crop model.
+
+
+Next, we select the *manager* script ``Fert_sorghum``.
+We see 
 
 
 
