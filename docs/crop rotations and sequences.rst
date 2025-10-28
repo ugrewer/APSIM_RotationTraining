@@ -414,14 +414,38 @@ The completed box of **"Conditions"** and **"Actions"** should look like the fol
 
    Transition rules for the arc *"Enter Sorghum"*.
 
-
+In a similar fashion, we have to step through all remaining three transition rules. 
+For this, please click on each arc
 
 In summary, 
 
 .. code-block:: csharp
-    :caption: *Conditions* code for the arc *"Enter Sorghum"*
+    :caption: List of transition rules
 
+    //// Arc: Enter Sorghum
+    // Conditions
     [SowHarvest_sorghum].Script.CanSow
+    // Actions
+    [SowHarvest_sorghum].Script.SowCrop()
+
+    //// Arc: Exit Sorghum
+    // Conditions
+    [SowHarvest_sorghum].Script.CanHarvest
+    // Actions
+    [SowHarvest_sorghum].Script.HarvestCrop()
+
+    //// Arc: Enter Mungbean
+    // Conditions
+    [SowHarvest_mungbean].Script.CanSow
+    // Actions
+    [SowHarvest_mungbean].Script.SowCrop()
+
+    //// Arc: Exit Mungbean
+    // Conditions
+    [SowHarvest_mungbean].Script.CanHarvest
+    // Actions
+    [SowHarvest_mungbean].Script.HarvestCrop()
+
 
 Crop-Soil interaction
 ----------------------------------------
