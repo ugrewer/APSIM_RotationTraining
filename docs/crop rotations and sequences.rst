@@ -74,8 +74,11 @@ When clicking on any of the arcs, you will see that these transition rules requi
 - **Conditions** that specify under which circumstances the simulation will transition from the starting node of the arc to the ending node of the arc.
 - **Actions** that specify which activities are carried out as part of the transition.
 
-At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection. 
-
+At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection.
+Another issue that we have not yet specified is in which state our rotation should start on the first day of the simulation.
+For this, please navigate with your cursor to the *"Properties"* box on the bottom of the user interface.
+In the drop-down menu ``Initial State``, please select *"Fallow_postMB"* as the state in which we start the simulation.
+ 
 
 Transitioning between Plot States
 ----------------------------------------
@@ -450,7 +453,7 @@ Once you have completed this task, you can compare your choices to the correct *
 With this, we have completed the setup of a basic Rotation Manager model in APSIM.
 
 
-Crop-Soil interaction
+Crop-soil interaction
 ----------------------------------------
 Each crop type comes with its own ability and constraints in accessing water.
 As we started out with an example *APSIMX file* that only focussed on Sorghum, we currently only have specifications for the Plant Available Water Capacity (PAWC) of Sorghum.
@@ -472,7 +475,7 @@ Please note that the general soil physical properties can be seen and modified u
 Since we introduced mungbean into this simulation, we have to generate a similar ``MungbeanSoil`` *node*.
 For this, let us copy ``SorghumSoil`` and rename the copy to ``MungbeanSoil``.
 Values of crop-soil interactions are usually experimentally determined and should not be specified out of thin air.
-However, as we are only aiming here at demonstrating the technical handling of APSIM, we only conduct some examplary changes to these parameter values for the sake of illustration.
+However, as we are only aiming here at demonstrating the technical handling of APSIM, we only introduce some examplary and arbitrary changes to these parameter values for the sake of illustration.
 Here, we assume that mungbean would be characterised by higher LL values, since mungbean has a shallower root system than sorghum's deep, fibrous roots.
 We also assume that KL values for mungbean are lower than for sorghum, meaning that the extraction rate of mungbean roots is lower.
 Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the following:
@@ -482,6 +485,27 @@ Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the follo
    :width: 50%
 
    Updated crop-soil interaction parameters for mungbean.
+
+
+Logging and visualising results
+----------------------------------------
+Currently, our simulation records results variables as specified in the *Report nodes* ``DailyReport`` and ``HarvestReport``.
+To update the reporting of result variables to our current case, copy the ``HarvestReport`` and rename the two *Report nodes* to ``HarvestReport_sorghum`` and ``HarvestReport_mungbean``.
+You can leave ``HarvestReport_sorghum`` as it is.
+Instead, please replace all references to *"[Sorghum]"* in ``HarvestReport_mungbean`` to *"[Mungbean]"*.
+Thereby, make sure to update both the *"Report variables"* (top) as well as the *"Report events"* (bottom).
+
+In addition to this standard recording of simulation results, the ``RotationManager`` also provides a useful graphical 
+
+We also have to adjust the results figure accordingly. Select the *node* ``Sorghum Yield`` and rename it to ``Crop Yield``.
+Expand the *node*, generate a copy of ``Series``, and rename the two items to ``Yield_sorghum`` and ``Yield_mungbean``.
+Select ``Yield_sorghum`` and 
+
+Sorghum Yield
+
+Rotation rugplot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 
