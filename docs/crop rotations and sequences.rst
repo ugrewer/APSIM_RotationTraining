@@ -180,7 +180,9 @@ Let us copy the highlighted code and paste it into the *manager* script ``SowHar
 
     public double Population { get; set; }
 
-The updated **C# code** should look like the following:
+The updated **C# code** should look like the following.
+The code additions can be found in lines 58-73.
+The remainder of the code remained unchanged from the template that we used.
 
 .. code-block:: csharp
    :caption: APSIM management script *"SowHarvest_sorghum"* with sorghum-specific additions
@@ -415,12 +417,11 @@ The completed box of **"Conditions"** and **"Actions"** should look like the fol
    Transition rules for the arc *"Enter Sorghum"*.
 
 In a similar fashion, we have to step through all remaining three transition rules. 
-For this, please click on each arc
-
-In summary, 
+For this, please click on each arc and select the suitable conditions and actions by using IntelliSense.
+Once you have completed this task, you can compare your choices to the correct **C# code** below.
 
 .. code-block:: csharp
-    :caption: List of transition rules
+    :caption: List of transition rules of the RotationManager
 
     //// Arc: Enter Sorghum
     // Conditions
@@ -446,10 +447,34 @@ In summary,
     // Actions
     [SowHarvest_mungbean].Script.HarvestCrop()
 
+With this, we have completed the setup of a basic Rotation Manager model in APSIM.
+
 
 Crop-Soil interaction
 ----------------------------------------
+Each crop type comes with its own ability and constraints in accessing water.
+As we started out with an example *APSIMX file* that only focussed on Sorghum, we currently only have specifications for the Plant Available Water Capacity (PAWC) of Sorghum.
+To inspect the specific values, please expand the *Soil node* ``HRS``, then expand the ``Physical`` *node*, and select ``SorghumSoil``.
+Here, you can see the specific values for: 
 
+- Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the terms *Crop Lower Limit*. Below this value, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
+- Water Extraction Coefficient (KL). The KL factor specifies the maximum fraction of available water (above LL15) that a plant’s roots can extract from a soil layer per day under non-limiting conditions. It reflects both root and soil properties (e.g., root density and soil hydraulic conductivity, etc.).
+- Root Exploration Factor (XF). The XF factor limits root penetration in a soil layer, describing the fraction of the layer accessible to roots. At XF==1, roots can fully explore the layer, while at XF==0, roots cannot grow into that layer. Values in between reflect partial restriction (e.g., due to physical or chemical constraints).
+
+Please note that the general soil physical properties can be seen and modified under the parent *node* ``Physical``.
+Since we introduced mungbean into this simulation, we have to generate a similar ``MungbeanSoil`` *node*.
+For this, let us copy ``SorghumSoil`` and rename the copy to ``MungbeanSoil``.
+Values of crop-soil interactions are usually experimentally determined and should not be specified out of thin air.
+However, as we are only aiming here at demonstrating the technical handling of APSIM, we only conduct some examplary changes to these parameter values for the sake of illustration.
+Here, we assume that mungbean would be characterised by higher LL values, since mungbean has a shallower root system than sorghum's deep, fibrous roots.
+We also assume that KL values for mungbean are lower than for sorghum, meaning that the extraction rate of mungbean roots is lower.
+Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the following:
+
+.. figure:: _static/APSIMscreenshot_MungbeanSoil.png
+   :alt: MungbeanSoil
+   :width: 50%
+
+   Updated crop-soil interaction parameters for Mungbean.
 
 
 

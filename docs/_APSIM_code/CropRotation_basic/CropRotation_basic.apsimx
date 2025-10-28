@@ -418,6 +418,86 @@
                       "Children": [],
                       "Enabled": true,
                       "ReadOnly": false
+                    },
+                    {
+                      "$type": "Models.Soils.SoilCrop, Models",
+                      "LL": [
+                        0.24,
+                        0.24,
+                        0.275,
+                        0.295,
+                        0.29,
+                        0.33,
+                        0.35,
+                        0.36,
+                        0.355,
+                        0.365
+                      ],
+                      "KL": [
+                        0.05,
+                        0.05,
+                        0.05,
+                        0.05,
+                        0.04,
+                        0.04,
+                        0.04,
+                        0.03,
+                        0.03,
+                        0.02
+                      ],
+                      "XF": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ],
+                      "LLMetadata": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                      ],
+                      "KLMetadata": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                      ],
+                      "XFMetadata": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                      ],
+                      "Name": "MungbeanSoil",
+                      "ResourceName": null,
+                      "Children": [],
+                      "Enabled": true,
+                      "ReadOnly": false
                     }
                   ],
                   "Enabled": true,
@@ -849,7 +929,7 @@
                   "Transparent": false,
                   "ID": 2,
                   "Name": "Fallow_postSG",
-                  "Location": "586, 241",
+                  "Location": "584, 241",
                   "Colour": "192, 191, 188"
                 },
                 {
@@ -893,8 +973,14 @@
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 2,
                   "DestinationID": 3,
-                  "Conditions": [],
-                  "Actions": [],
+                  "Conditions": [
+                    "[SowHarvest_mungbean].Script.CanSow",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_mungbean].Script.SowCrop()",
+                    ""
+                  ],
                   "ID": 6,
                   "Name": "Enter Mungbean",
                   "Location": "543, 317",
@@ -904,8 +990,14 @@
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 3,
                   "DestinationID": 4,
-                  "Conditions": [],
-                  "Actions": [],
+                  "Conditions": [
+                    "[SowHarvest_mungbean].Script.CanHarvest",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_mungbean].Script.HarvestCrop()",
+                    ""
+                  ],
                   "ID": 7,
                   "Name": "Exit Mungbean",
                   "Location": "339, 325",
