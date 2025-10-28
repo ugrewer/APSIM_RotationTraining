@@ -369,15 +369,15 @@ The resulting simulation tree should now look similar to the following:
 
    Simulation tree with added *Mungbean* crop model.
 
-When we now navigate again to the *manager* script ``SowHarvest_sorghum``, you are able to select *Mungbean* from the drop-down list as the target crop.
-Further modifications that we need to conduct to ``SowHarvest_sorghum`` are:
+When we now navigate again to the *manager* script ``SowHarvest_mungbean``, you are able to select *Mungbean* from the drop-down list as the target crop.
+Further modifications that we need to conduct to ``SowHarvest_mungbean`` are:
 
 - Update the sowing window start and end dates to desired values for mungbean around Dalby (start: 1-oct; end: 30-dec).
 - Update the soil moisture and rainfall conditions required for sowing (in. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
 - Again ensure that the *"Must sow?"* tickbox is unticked.
 - Select a set of desired sowing properties for mungbean around Dalby (Cultivar: CeleraII; Sowing depth: 40mm; Row spacing: 500mm; Plant population: 25 plants/m2).
 
-The final *manager* script ``SowHarvest_sorghum`` should look similar to the following:
+The final *manager* script ``SowHarvest_mungbean`` should look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_MungbeanManager.png
    :alt: MungbeanManager
