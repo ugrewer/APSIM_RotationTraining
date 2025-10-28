@@ -381,7 +381,7 @@ The final *manager* script ``SowHarvest_mungbean`` should look similar to the fo
 
 .. figure:: _static/APSIMscreenshot_MungbeanManager.png
    :alt: MungbeanManager
-   :width: 80%
+   :width: 50%
 
    Simulation tree with added *Mungbean* crop model.
 
