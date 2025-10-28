@@ -354,10 +354,21 @@ The above provided an example of a work routing that implements minor changes to
 Updating the remaining manager scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 With the *manager* script ``SowHarvest_sorghum`` being finalised, we still need to update the remaining three *manager* scripts.
+The remaining updates are much simpler.
 Let us continue with ``SowHarvest_mungbean``.
 When clicking on the drop-down list *"Crop to manage"* we see that the only choice is sorghum, while mungbean is not available.
 In fact, when you look at the simulation tree, you see that ``Sorghum`` is the only crop model that we have included in our simulation.
-To add the mungbean crop model, right-click on ``Paddock`` *node*, select ``Add model...``, expand the ``PMF`` folder (for: Plant Modelling Framework; `Brown et al., 2014`_),
+To add the mungbean crop model, right-click on ``Paddock`` *node*, select ``Add model...``, 
+expand the ``PMF`` folder (for: Plant Modelling Framework; `Brown et al., 2014`_), and double-click on the ``Mungbean`` crop model 
+(or alternatively drag-and-drop the ``Mungbean`` crop model onto the simulation tree under ``Paddock``).
+The resulting simulation tree should now look similar to the following:
+
+.. figure:: _static/APSIMscreenshot_AddedMungbeanModel.png
+   :alt: AddedMungbeanModel
+   :width: 50%
+
+   Simulation tree with added *Mungbean* crop model.
+
 
 
 
