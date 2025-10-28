@@ -69,7 +69,7 @@ The resulting bubble chart should look similar to the following:
 
 The above bubble chart gives us the basic crop rotation structure that we will work with for this example.
 It exactly identifies in which sequence crops and fallows will be simulated.
-When clicking on any of the arches, you will see that these transition rules require two arguments:
+When clicking on any of the arcs, you will see that these transition rules require two arguments:
 
 - **Conditions** that specify under which circumstances the simulation will transition from the starting node of the arc to the ending node of the arc.
 - **Actions** that specify which activities are carried out as part of the transition.
@@ -385,11 +385,46 @@ The final *manager* script ``SowHarvest_mungbean`` should look similar to the fo
 
    Simulation tree with added *Mungbean* crop model.
 
-
 Next, we select the *manager* script ``Fert_sorghum``.
 Here, we can see that all values are already as we intend them to be and no further changes are needed.
 Instead, when selecting  ``Fert_mungbean``, we see that the target crop is still blank and we have to select *Mungbean* from the drop-down list.
+Now, all manager scripts have been finalised.
 
+
+Specifying transition rules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Let us now return to the ``RotationManager`` *node* and see if we can advance the question of how to transition between the various plot states.
+After selecting the arc *"Enter Sorghum"*, we see that the **"Conditions"** and **"Actions"** fields in the bottom right-hand corner are still blank.
+As we remember, we defined a set of conditions for when we want a crop to be sown in the *manager* scripts ``SowHarvest_sorghum`` and ``SowHarvest_mungbean``.
+Here, we want to link to those *manager* scripts to let them impose their conditions for sowing.
+For this, we click into the **"Conditions"** box and add a reference to the *manager* script by typing ``[SowHarvest_sorghum]``.
+When you add a dot (.) after this reference, IntelliSense displays a drop-down list of available properties and methods.
+Here, we are interested to access the ``Script`` property, that we have modified earlier ourselves.
+After adding another dot (.) we can then access the sowing condition that we defined in the **C# code** that was called ``CanSow``.
+
+Next, we want to specify the **"Actions"** that shall be conducted if this condition is fulfilled.
+For this we equivalently click into the **"Conditions"** box, again add the reference to the *manager* script by typing ``[SowHarvest_sorghum]``,
+append a dot (.) and the ``Script`` property, append another dot (.) and select the action ``SowCrop()``.
+
+The completed box of **"Conditions"** and **"Actions"** should look like the following:
+
+.. figure:: _static/APSIMscreenshot_EnterSorghumTransitions.png
+   :alt: EnterSorghumTransitions
+   :width: 50%
+
+   Transition rules for the arc *"Enter Sorghum"*.
+
+
+
+In summary, 
+
+.. code-block:: csharp
+    :caption: *Conditions* code for the arc *"Enter Sorghum"*
+
+    [SowHarvest_sorghum].Script.CanSow
+
+Crop-Soil interaction
+----------------------------------------
 
 
 

@@ -909,8 +909,14 @@
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 4,
                   "DestinationID": 1,
-                  "Conditions": [],
-                  "Actions": [],
+                  "Conditions": [
+                    "[SowHarvest_sorghum].Script.CanSow",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_sorghum].Script.SowCrop()",
+                    ""
+                  ],
                   "ID": 8,
                   "Name": "Enter Sorghum",
                   "Location": "348, 152",
