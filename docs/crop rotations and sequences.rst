@@ -455,6 +455,13 @@ Crop-Soil interaction
 Each crop type comes with its own ability and constraints in accessing water.
 As we started out with an example *APSIMX file* that only focussed on Sorghum, we currently only have specifications for the Plant Available Water Capacity (PAWC) of Sorghum.
 To inspect the specific values, please expand the *Soil node* ``HRS``, then expand the ``Physical`` *node*, and select ``SorghumSoil``.
+
+.. figure:: _static/APSIMscreenshot_SorghumSoil.png
+   :alt: SorghumSoil
+   :width: 100%
+
+   Crop-soil interaction parameters for sorghum.
+
 Here, you can see the specific values for: 
 
 - Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the terms *Crop Lower Limit*. Below this value, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
@@ -474,7 +481,7 @@ Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the follo
    :alt: MungbeanSoil
    :width: 50%
 
-   Updated crop-soil interaction parameters for Mungbean.
+   Updated crop-soil interaction parameters for mungbean.
 
 
 
