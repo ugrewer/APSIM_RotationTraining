@@ -527,7 +527,7 @@ The resulting figure for ``Crop Yield`` should look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_CropRotationYield.png
    :alt: CropRotationYield
-   :width: 80%
+   :width: 100%
 
    Sorghum and mungbean crop yield over time.
 
@@ -539,7 +539,7 @@ Results Interpretation
 
 .. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
    :alt: CropRotationRugplot
-   :width: 50%
+   :width: 80%
 
    Rugplot showing the progression in paddock occupation over time.
 
