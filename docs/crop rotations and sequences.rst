@@ -537,6 +537,17 @@ Results Interpretation
 
 
 
+.. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
+   :alt: CropRotationRugplot
+   :width: 50%
+
+   Rugplot showing the progression in paddock occupation over time.
+
+
+
+
+
+
 
 
 Subheading
