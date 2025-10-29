@@ -119,7 +119,7 @@
                 "[Mungbean].Leaf.LAI"
               ],
               "EventNames": [
-                "[Sorghum].Harvesting"
+                "[Mungbean].Harvesting"
               ],
               "GroupByVariableName": null,
               "Name": "HarvestReport_mungbean",
@@ -1044,7 +1044,18 @@
               "Verbose": true,
               "Name": "RotationManager",
               "ResourceName": null,
-              "Children": [],
+              "Children": [
+                {
+                  "$type": "Models.Management.RotationRugplot, Models",
+                  "SimulationName": "CropRotation_basic",
+                  "CurrentPaddockString": null,
+                  "Name": "RotationRugplot",
+                  "ResourceName": null,
+                  "Children": [],
+                  "Enabled": true,
+                  "ReadOnly": false
+                }
+              ],
               "Enabled": true,
               "ReadOnly": false
             },
@@ -1624,14 +1635,14 @@
               "XAxis": 3,
               "YAxis": 0,
               "ColourArgb": 0,
-              "FactorToVaryColours": null,
+              "FactorToVaryColours": "Graph series",
               "FactorToVaryMarkers": null,
               "FactorToVaryLines": null,
               "Marker": 0,
               "MarkerSize": 0,
               "Line": 0,
               "LineThickness": 0,
-              "TableName": "HarvestReport",
+              "TableName": "HarvestReport_sorghum",
               "XFieldName": "Clock.Today",
               "YFieldName": "Sorghum.Grain.Wt",
               "X2FieldName": null,
@@ -1653,16 +1664,16 @@
               "XAxis": 3,
               "YAxis": 0,
               "ColourArgb": 0,
-              "FactorToVaryColours": null,
+              "FactorToVaryColours": "Graph series",
               "FactorToVaryMarkers": null,
               "FactorToVaryLines": null,
               "Marker": 0,
               "MarkerSize": 0,
               "Line": 0,
               "LineThickness": 0,
-              "TableName": "HarvestReport",
+              "TableName": "HarvestReport_mungbean",
               "XFieldName": "Clock.Today",
-              "YFieldName": "Sorghum.Grain.Wt",
+              "YFieldName": "Mungbean.Grain.Wt",
               "X2FieldName": null,
               "Y2FieldName": null,
               "ShowInLegend": false,
