@@ -453,7 +453,7 @@ Once you have completed this task, you can compare your choices to the correct *
 With this, we have completed the setup of a basic Rotation Manager model in APSIM.
 
 
-Crop-soil interaction
+Crop-Soil Interactions
 ----------------------------------------
 Each crop type comes with its own ability and constraints in accessing water.
 As we started out with an example *APSIMX file* that only focussed on Sorghum, we currently only have specifications for the Plant Available Water Capacity (PAWC) of Sorghum.
@@ -487,24 +487,54 @@ Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the follo
    Updated crop-soil interaction parameters for mungbean.
 
 
-Logging and visualising results
+Performing the Simulation and Recording Results
 ----------------------------------------
-Currently, our simulation records results variables as specified in the *Report nodes* ``DailyReport`` and ``HarvestReport``.
-To update the reporting of result variables to our current case, copy the ``HarvestReport`` and rename the two *Report nodes* to ``HarvestReport_sorghum`` and ``HarvestReport_mungbean``.
-You can leave ``HarvestReport_sorghum`` as it is.
+With the overall structure of the simulation being finalised, we can now update the results variables that we want to be recorded, perform the simulation, and visualise results.
+
+Recording Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+At present, the simulation records output variables as specified in the *Report nodes* ``DailyReport`` and ``HarvestReport``.
+To update result variables for our current case, copy the ``HarvestReport`` and rename the two *Report nodes* to ``HarvestReport_sorghum`` and ``HarvestReport_mungbean``.
+You can leave ``HarvestReport_sorghum`` as is.
 Instead, please replace all references to *"[Sorghum]"* in ``HarvestReport_mungbean`` to *"[Mungbean]"*.
 Thereby, make sure to update both the *"Report variables"* (top) as well as the *"Report events"* (bottom).
 
-In addition to this standard recording of simulation results, the ``RotationManager`` also provides a useful graphical 
+In addition to this standard recording of simulation results, 
+the ``RotationManager`` also provides the useful graphical interface ``RotationRugplot`` to inspect the progression of the simulation over time.
+To enable it, right-click on ``RotationManager``, click on ``Add model...``, expand the *Management* folder, 
+and double-click on ``RotationRugplot`` (alternatively, you can drag-and-drop the ``RotationRugplot`` onto the ``RotationManager`` *node*).
 
-We also have to adjust the results figure accordingly. Select the *node* ``Sorghum Yield`` and rename it to ``Crop Yield``.
-Expand the *node*, generate a copy of ``Series``, and rename the two items to ``Yield_sorghum`` and ``Yield_mungbean``.
-Select ``Yield_sorghum`` and 
-
-Sorghum Yield
-
-Rotation rugplot
+Performing the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+All aspects of the simulation have now been specified.
+In the top menu bar of APSIM, you can now select ``Save`` and then ``Run`` to perform the simulation.
+This should lead to a progress bar being visualised and subsequently a message indicating that the simulation has successfully being completed.
+If an error message appears instead, carefully examine the details and identify where your file differs from the data entry shown in this tutorial.
+
+Visualising Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The only remaining step is to adjust the results figures to our current analysis.
+It is good to keep in mind that the visualisation tools in APSIM are provided for convenience.
+They are especially useful for exploring if the simulation is functioning as intended, or if any corrections and modifications are necessary.
+Instead, when interested at generating outputs for external use (journal publications, reports, etc.), users can also generate figures by loading numeric APSIM results into their preferred programming tool for data visualisation (such as R or Python).
+Select the *node* ``Sorghum Yield`` and rename it to ``Crop Yield``.
+Expand the *node*, generate a copy of ``Series``, and rename the two items to ``Yield_sorghum`` and ``Yield_mungbean``.
+Select ``Yield_sorghum`` and change the drop-down value for *"Data Source"* to ``HarvestReport_sorghum``.
+Change the drop-down value for *"Colour"* to *"Vary by Graph series"*.
+Equivalenty, select ``Yield_mungbean`` and change the drop-down value for *"Data Source"* to ``HarvestReport_mungbean``.
+Further, change the drop-down value for *"Y"* to *"Mungbean.Grain.Wt"*.
+The resulting figure for ``Crop Yield`` should look similar to the following:
+
+.. figure:: _static/APSIMscreenshot_CropRotationYield.png
+   :alt: CropRotationYield
+   :width: 80%
+
+   Sorghum and mungbean crop yield over time.
+
+
+Results Interpretation
+----------------------------------------
+
 
 
 
