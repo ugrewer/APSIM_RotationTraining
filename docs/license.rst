@@ -6,8 +6,8 @@ This tutorial and its associated materials are distributed under the
 
 You are free to:
 
-- Share — copy and redistribute the material in any medium or format  
-- Adapt — remix, transform, and build upon the material  
+- **Share**:        copy and redistribute the material in any medium or format  
+- **Adapt**:        remix, transform, and build upon the material  
 
 Under the following terms:
 
