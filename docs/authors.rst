@@ -4,7 +4,6 @@ Authors
 This tutorial was developed by the following members of the APSIM reference panel for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025):
 
 **Person 1**
-
 .. image:: _static/UniSQ_logo.jpg
    :width: 220px
    :align: right
@@ -13,8 +12,10 @@ This tutorial was developed by the following members of the APSIM reference pane
 - **Department:** Centre for Sustainable Agricultural Systems  
 - **Institution:** University of Southern Queensland  
 
-**Person 2**
 
+
+
+**Person 2**
 .. image:: _static/UQ_logo.png
    :width: 220px
    :align: right
