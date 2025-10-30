@@ -20,7 +20,8 @@ Contents
 
    Home <self>
    continuous cropping of a single crop
-   crop rotations and sequences
+   basic crop rotations
+   flexible cropping sequences
    downloads
    usage
    api
