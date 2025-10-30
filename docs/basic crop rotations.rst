@@ -421,7 +421,7 @@ The completed box of **"Conditions"** and **"Actions"** should look like the fol
 
 .. figure:: _static/APSIMscreenshot_EnterSorghumTransitions.png
    :alt: EnterSorghumTransitions
-   :width: 80%
+   :width: 60%
 
    Transition rules for the arc *"Enter Sorghum"*.
 
