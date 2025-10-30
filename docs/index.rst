@@ -22,6 +22,7 @@ Contents
    continuous cropping of a single crop
    basic crop rotations
    flexible cropping sequences
+   crop sequences on fixed dates
+   conclusion
    downloads
-   usage
-   api
+   authors
