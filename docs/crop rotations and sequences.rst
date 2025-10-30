@@ -32,10 +32,10 @@ Rename the *node* (i.e., bubble) to "Sorghum".
 In the right-hand bottom corner, you may also add a further description (optional) and change the *node* colour.
 For example, we selected a colour that is similar to the colour of sorghum heads. 
 Please also select the tick boxes *"Top Level"* and *"Verbose Mode"*.
-Subsequently, repeat these steps three further times to generate a total of four *nodes* for each plot occupation in the crop rotation.
+Subsequently, repeat these steps three further times to generate a total of four *nodes* for each field occupancy in the crop rotation.
 Please drag the *nodes* on the canvas into the order of the intended rotatation "Sorghum-Fallow-Mungbean-Fallow".
 Further, do not name several *nodes* identically (e.g., avoid that two *nodes* are called "Fallow") as this would prevent us from uniquely identifying to which *node* we are referring to later.
-To easily distinguish between the two fallows, we name them Fallow_postSG for the fallow following sorghum, and Fallow_postMB for the fallow following mungbean.
+To easily distinguish between the two fallows, we name them *"Fallow_postSG"* for the fallow following sorghum, and *"Fallow_postMB"* for the fallow following mungbean.
 Your bubble chart should now look similar to one of the below figures.
 There are many ways how you can graphically organise the bubble chart.
 Two common ways are to structure it as row sequence or circle.
@@ -52,7 +52,7 @@ Two common ways are to structure it as row sequence or circle.
 
    Bubble chart of a simple crop rotation - organised as circle.
 
-While the *nodes* represent the different possible field occupations, the next step is to connect the *nodes* with arcs.
+While the *nodes* represent the different possible options of field occupancy, the next step is to connect the *nodes* with arcs.
 Arcs define the transitions the we request APSIM to simulate.
 Please add a single arc each for the desired transitions of our rotation plan "Sorghum-Fallow-Mungbean-Fallow".
 For this, right-click on a *node* and select ``Add arc``, drag the arc to the *node* it shall transition to,
@@ -354,7 +354,7 @@ Now, we should be able to modify the three target parameters *"skip row configur
 solid row configuration, fixed tillering method, and zero fertile tillers.
 
 The above provided an example of a work routing that implements minor changes to a *manager* script, without thorough knowledge or skills in *C#* programming.
-If you are interested to have a more mechanistic understanding of flexibly modifying **C# code** in APSIM, the APSIM tutorials 
+If you are interested in gaining a more mechanistic understanding of how to flexibly modify **C# code** in APSIM, the tutorials
 `Build a model <https://apsimnextgeneration.netlify.app/development/tutorial/buildmodeltutorial/>`_ and
 `How PMF functions work <https://apsimnextgeneration.netlify.app/development/tutorial/howpmffunctionswork/>`_
 are valuable resources.
@@ -368,7 +368,7 @@ The remaining updates are much simpler.
 Let us continue with ``SowHarvest_mungbean``.
 When clicking on the drop-down list *"Crop to manage"* we see that the only choice is sorghum, while mungbean is not available.
 In fact, when you look at the simulation tree, you see that ``Sorghum`` is the only crop model that we have included in our simulation.
-To add the mungbean crop model, right-click on ``Paddock`` *node*, select ``Add model...``, 
+To add the mungbean crop model, right-click on the ``Paddock`` *node*, select ``Add model...``, 
 expand the ``PMF`` folder (for: Plant Modelling Framework; `Brown et al., 2014`_), and double-click on the ``Mungbean`` crop model 
 (or alternatively drag-and-drop the ``Mungbean`` crop model onto the simulation tree under ``Paddock``).
 The resulting simulation tree should now look similar to the following:
@@ -383,7 +383,7 @@ When we now navigate again to the *manager* script ``SowHarvest_mungbean``, you 
 Further modifications that we need to conduct to ``SowHarvest_mungbean`` are:
 
 - Update the sowing window start and end dates to desired values for mungbean around Dalby (start: 1-oct; end: 30-dec).
-- Update the soil moisture and rainfall conditions required for sowing (in. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
+- Update the soil moisture and rainfall conditions required for sowing (Min. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
 - Again ensure that the *"Must sow?"* tickbox is unticked.
 - Select a set of desired sowing properties for mungbean around Dalby (Cultivar: CeleraII; Sowing depth: 40mm; Row spacing: 500mm; Plant population: 25 plants/m2).
 
@@ -547,6 +547,26 @@ The resulting figure for ``Crop Yield`` should look similar to the following:
 
 Results Interpretation
 ----------------------------------------
+As first step of the results interpretation, we will have inspect the Rugplot.
+The Rugplot visualises the progression of crops and fallows that occupy our field.
+Specifically, the bar on the left-hand side shows the field occupancy from the start of the simulation (top) towards the end (bottom).
+We can see that the simulation starts out with the state *"Fallow_postMB"*, as we had specified.
+We then see that the field occupancy changes sequentially as Sorghum-Fallow-Mungbean-Fallow.
+In this way, we can confirm that the simulation is progressing with the intended crop sequence and that there is no error that we have to correct.
+Another major takeaway that we can derive from the Rugplot is that fallows are of varying length.
+This means, that our sowing rule in various summer seasons are not met and no crop is sown.
+
+Besides this first overview of field occupancy, the Rugplot displays on the right-hand side for each state:
+
+- The transition rule that is checked for (e.g., can sorghum be sown)
+- The results value of the transition rule
+
+E.g., in the here displayed example Rugplot, we see that on the 8th Jan 1985, towards the beginning of the simulation,
+the field *state* is *"Fallow_postMB"*, the transition rule that is checked for is if sorghum can be sown, and the result value of the transition rule is -1.
+As defined by the **C# code** in the manager script ``SowHarvest_sorghum``, the value -1 is returned if the conditions for sowing a crop are not fulfilled.
+
+
+
 
 
 
@@ -554,7 +574,7 @@ Results Interpretation
    :alt: CropRotationRugplot
    :width: 80%
 
-   Rugplot showing the progression in paddock occupation over time.
+   Rugplot showing the progression of field occupancy over time.
 
 
 
