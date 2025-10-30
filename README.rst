@@ -27,6 +27,16 @@ Implementing such scenarios often involves coordinating multiple APSIM component
 This tutorial introduces several approaches for representing continuous cropping in APSIM, including the use of the APSIM Rotation Manager, a graphical interface designed to simplify the specification of crop rotation sequences.
 
 
+Suggested Citation
+-----------------------------------------------------
+When referencing or utilising material from this tutorial, we suggest using the following citation:
+[ADD SUGGESTED CITATION HERE]
+
+.. note::
+
+   **Person, A., & Person, B. (2025).** *Advanced APSIM Training Tutorial: Flexible Cropping Sequences.*  
+   APSIM Initiative. Retrieved from https://apsim-training.readthedocs.io
+
 APSIM Acknowledgement
 -----------------------------------------------------
 The APSIM Initiative would appreciate an acknowledgement in your research paper if you or your team have utilised APSIM in its development. For ease, we suggest the following wording:

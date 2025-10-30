@@ -1,7 +1,7 @@
 Authors
 =======
 
-This tutorial was developed by the following members of the **APSIM reference panel** for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025):
+This tutorial was developed by the following members of the **APSIM reference panel** for the APSIM Advanced Training Workshop held in conjunction with the 26th **International Congress on Modelling and Simulation** (MODSIM 2025):
 
 **Person 1**
 
@@ -12,8 +12,7 @@ This tutorial was developed by the following members of the **APSIM reference pa
 - **Role:** Research Fellow in Bio-Economic Modelling  
 - **Department:** Centre for Sustainable Agricultural Systems  
 - **Institution:** University of Southern Queensland  
- 
- 
+- **ORCID:** [Add ORCID link]
  
  
 **Person 2**
@@ -25,3 +24,4 @@ This tutorial was developed by the following members of the **APSIM reference pa
 - **Role:** Principal Farming Systems Modeller  
 - **Department:** Queensland Alliance for Agriculture and Food Innovation  
 - **Institution:** The University of Queensland
+- **ORCID:** [Add ORCID link]
