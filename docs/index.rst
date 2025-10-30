@@ -26,3 +26,4 @@ Contents
    conclusion
    downloads
    authors
+   license
