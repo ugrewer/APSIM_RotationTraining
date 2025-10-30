@@ -30,16 +30,15 @@ This tutorial introduces several approaches for representing continuous cropping
 Suggested Citation
 -----------------------------------------------------
 When referencing or utilising material from this tutorial, we suggest using the following citation:
-[ADD SUGGESTED CITATION HERE]
 
-.. note::
+.. Suggested Citation::
 
-   **Person, A., & Person, B. (2025).** *Advanced APSIM Training Tutorial: Flexible Cropping Sequences.*  
-   APSIM Initiative. Retrieved from https://apsim-training.readthedocs.io
+   **Person, A., & Person, B. (2025).** *Continuous Cropping Using the APSIM Cropping Systems Model. A Comprehensive Tutorial for APSIM Users*  
+   APSIM Initiative. Retrieved from: https://apsim-rotationtraining.readthedocs.io
 
 APSIM Acknowledgement
 -----------------------------------------------------
-The APSIM Initiative would appreciate an acknowledgement in your research paper if you or your team have utilised APSIM in its development. For ease, we suggest the following wording:
+The APSIM Initiative appreciates acknowledgement in publications that utilise APSIM. We suggest the following wording for convenience:
 "Acknowledgment is made to the APSIM Initiative which takes responsibility for quality assurance and a structured innovation programme for APSIM's modelling software, which is provided free for research and development use (see apsim.info for details)."
 
 Acknowledgment of Country
