@@ -18,7 +18,13 @@
 # -- Project information -----------------------------------------------------
 
 project = "APSIM Crop Rotation Tutorial"
-copyright = "2025, University of Southern Queensland and The University of Queensland, for the APSIM Initiative. Licensed under `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_ (Attribution–NonCommercial–ShareAlike)."
+copyright = (
+    "2025, University of Southern Queensland and The University of Queensland, "
+    "for the APSIM Initiative. Licensed under CC BY-NC-SA 4.0 "
+    "(Attribution–NonCommercial–ShareAlike). "
+    "See https://creativecommons.org/licenses/by-nc-sa/4.0/ for details."
+)
+copyright_old = "2025, University of Southern Queensland and The University of Queensland, for the APSIM Initiative. Licensed under `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_ (Attribution–NonCommercial–ShareAlike)."
 author = "Uwe Grewer (UniSQ), Peter de Voil (UQ)"
 
 
