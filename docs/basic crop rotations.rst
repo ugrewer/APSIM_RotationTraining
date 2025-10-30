@@ -28,7 +28,7 @@ For our first example, we will aim at generating the crop rotation "Sorghum-Fall
 The crop rotation exclusively comprises summer crops and is rigidly predefined, 
 without accommodating alternative crop choices in response to varying environmental conditions.
 At the starting point, the ``RotationManager`` is blank.
-To add your first crop, right-click on the black canvas and select *"Add node"*.
+To add your first crop, right-click on the blank canvas and select *"Add node"*.
 Rename the *node* (i.e., bubble) to "Sorghum".
 In the right-hand bottom corner, you may also add a further description (optional) and change the *node* colour.
 For example, we selected a colour that is similar to the colour of sorghum heads. 
@@ -76,8 +76,8 @@ When clicking on any of the arcs, you will see that these transition rules requi
 - **Actions** that specify which activities are carried out as part of the transition.
 
 At this stage, we did not yet specify any conditions and actions, which is the focus of the next subsection.
-Another issue that we have not yet specified is in which state our rotation should start on the first day of the simulation.
-For this, please navigate with your cursor to the *"Properties"* box on the bottom of the user interface.
+Another aspect we have not yet defined is the initial state of our rotation at the start of the simulation.
+For this, please navigate with your cursor to the *"Properties"* box on the bottom of the ``RotationManager``.
 In the drop-down menu ``Initial State``, please select *"Fallow_postMB"* as the state in which we start the simulation.
  
 
@@ -88,7 +88,7 @@ please first delete the current ``Manager folder`` from the simulation tree (und
 Let us now utilise one of the principles we mentioned earlier:
 Instead of writing **C# code** from scratch, 
 we can use scripts from both the *Management toolbox* as well as example *APSIMX files* that are distributed with the software as our starting point.
-For this, navigate to ``Home`` > ``Open an example`` and opent the example file *"Rotation.apsimx"*.
+For this, navigate to ``Home`` > ``Open an example`` and open the example file *"Rotation.apsimx"*.
 This is an example crop rotation file that is distributed with APSIM and that you may want to explore at your own time in more detail.
 Here, we will copy a useful script that manages crop sowing and harvesting and use it within our simulation.
 To copy the script, expand the simulation tree and navigate to ``Crop Pasture`` > ``Field``, copy the ``OatsManager``, 
@@ -108,13 +108,13 @@ The resulting simulation tree should now look similar to the following:
    Simulation tree with updated *manager* scripts.
 
 Copying existing manger scripts saved us a lot of coding work.
-While this gives us the correct structure of crop management actions that we want to conduct,
-we still need to ensure that the parameter values are all as we want them.
+While this gives us the correct structure of crop management actions that we want to conduct, 
+we still need to ensure that all parameter values are set as intended.
 For this, we will step through each *manager* script and modify all necessary parameter values.
 
 Let us start with ``SowHarvest_sorghum``:
 
-- Set the *Crop to manage* to *Sorghum* by selecting it from the drop down list.
+- Set *"Crop to manage"* to *"Sorghum"* by selecting it from the drop down list.
 - As we copied the crop *manager* from a winter crop (oats), the sowing window is unreasonable. Update its start and end date to the values we previously used for Sorghum in Dalby (start: 1-nov; end: 10-jan).
 - For the required soil moisture and rainfall conditions, we also insert the values from our previous sorghum simulation in Dalby (Min. ESW: 120mm; Acc. Rain: 50mm; Rain duration: 7 days).
 - Ensure that the *"Must sow?"* tickbox is unticked. If ticked, the script enforces that a crop is sown at the end of the sowing window, even if sowing conditions are not satisfied.
@@ -126,7 +126,7 @@ Simple Modifications of C# Scripts
 When you inspect once more the earlier *manager* script from the continuous sorghum simulation (*Sorghum_continuous_carryOver.apsimx*),
 you will see that there were some more sorghum-specific parameters in the *manager* script.
 These were *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
-However, these sorghum-specific parameters are not included in the crop-generic *manager* script that we are using here.
+However, these sorghum-specific parameters are not included in the more generic *manager* script that we are using here.
 This provides us with a good opportunity to explore another core capability required to flexibly generate APSIM simulations: 
 modifying the **C# code** of *manager* scripts.
 
@@ -138,7 +138,7 @@ For this, select ``SowHarvest_sorghum`` in the simulation tree, and then click o
    :alt: CsharpScript_Exp
    :width: 80%
 
-   APSIM management script *"SowHarvest_sorghum"* written in C# (prior to any changes).
+   Partial screenshot of the APSIM management script *"SowHarvest_sorghum"* written in C# (prior to any changes).
 
 The above displays the first parts of the **C# code** in the ``SowHarvest_sorghum`` *manager* script that you can fully scroll through on your own screen.
 If you have little past exposure or own experience with programming languages, the **C# code** may not mean much to you — and that is perfectly fine.
@@ -156,9 +156,9 @@ and defines methods and properties that determine when to sow or harvest a crop.
 Overall, the code provides a structured way to embed dynamic crop management logic directly into an APSIM simulation.
 
 What we want to do now is to modify the above script so that it is able to accept values 
-for the Sorghum-specific parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
+for the sorghum-specific parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"*.
 Thereby, these variables need to be specified in a way that is interpretable by APSIM (i.e, corresponding to predefined classes in APSIM).
-This can be achieved by consulting the `APSIM documentation for sorghum <https://docs.apsim.info/validation/Sorghum>`_ as well as the publicly available `APSIM Source Code <https://github.com/APSIMInitiative/ApsimX>`_ for the sorghum model.
+This can be achieved by consulting the `APSIM documentation for sorghum <https://docs.apsim.info/validation/Sorghum>`_ as well as the publicly available `APSIM Source Code <https://github.com/APSIMInitiative/ApsimX>`_ of the sorghum crop model.
 Instead, let us here first learn another shortcut that does not require much understanding of **C# code**:
 Selecting a suitable existing *manager* script, and copying the relevant **C# code** into our target *manager* script.
 
@@ -359,7 +359,7 @@ If you are interested in gaining a more mechanistic understanding of how to flex
 `"Build a model" <https://apsimnextgeneration.netlify.app/development/tutorial/buildmodeltutorial/>`_ and
 `"How PMF functions work" <https://apsimnextgeneration.netlify.app/development/tutorial/howpmffunctionswork/>`_
 are valuable resources.
-You may also want to consult generic training material and tutorials on **C#**.
+You may also want to consult generic training material and tutorials on *C#*.
 
 
 Updating the Remaining Manager Scripts
@@ -367,7 +367,7 @@ Updating the Remaining Manager Scripts
 With the *manager* script ``SowHarvest_sorghum`` being finalised, we still need to update the remaining three *manager* scripts.
 The remaining updates are much simpler.
 Let us continue with ``SowHarvest_mungbean``.
-When clicking on the drop-down list *"Crop to manage"* we see that the only choice is sorghum, while mungbean is not available.
+When clicking on the drop-down list for *"Crop to manage"*, we see that the only choice is sorghum, while mungbean is not available.
 In fact, when you look at the simulation tree, you see that ``Sorghum`` is the only crop model that we have included in our simulation.
 To add the mungbean crop model, right-click on the ``Paddock`` *node*, select ``Add model...``, 
 expand the ``PMF`` folder (for: Plant Modelling Framework; `Brown et al., 2014`_), and double-click on the ``Mungbean`` crop model 
@@ -394,7 +394,7 @@ The final *manager* script ``SowHarvest_mungbean`` should look similar to the fo
    :alt: MungbeanManager
    :width: 50%
 
-   Simulation tree with added *Mungbean* crop model.
+   Updated parameter values for mungbean sowing and harvesting.
 
 Next, we select the *manager* script ``Fert_sorghum``.
 Here, we can see that all values are already as we intend them to be and no further changes are needed.
@@ -421,7 +421,7 @@ The completed box of **"Conditions"** and **"Actions"** should look like the fol
 
 .. figure:: _static/APSIMscreenshot_EnterSorghumTransitions.png
    :alt: EnterSorghumTransitions
-   :width: 50%
+   :width: 80%
 
    Transition rules for the arc *"Enter Sorghum"*.
 
