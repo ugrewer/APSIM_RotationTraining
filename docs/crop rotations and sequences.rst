@@ -120,7 +120,7 @@ Let us start with ``SowHarvest_sorghum``:
 - Update the sowing properties to mirror the earlier parameters used for simulating sorghum in Dalby (Cultivar: Buster; Sowing depth: 30mm; Row spacing: 750mm; Plant population: 10 plants/m2).
 
 
-Simple modifications of C# scripts
+Simple Modifications of C# Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When you inspect once more the earlier *manager* script from the continuous sorghum simulation (*Sorghum_continuous_carryOver.apsimx*),
 you will see that there were some more sorghum-specific parameters in the *manager* script.
@@ -356,7 +356,7 @@ solid row configuration, fixed tillering method, and zero fertile tillers.
 The above provided an example of a work routing that implements minor changes to a *manager* script, without thorough knowledge or skills in *C#* programming.
 
 
-Updating the remaining manager scripts
+Updating the Remaining Manager Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 With the *manager* script ``SowHarvest_sorghum`` being finalised, we still need to update the remaining three *manager* scripts.
 The remaining updates are much simpler.
@@ -396,7 +396,7 @@ Instead, when selecting  ``Fert_mungbean``, we see that the target crop is still
 Now, all manager scripts have been finalised.
 
 
-Specifying transition rules
+Specifying Transition Rules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let us now return to the ``RotationManager`` *node* and see if we can advance the question of how to transition between the various plot states.
 After selecting the arc *"Enter Sorghum"*, we see that the **"Conditions"** and **"Actions"** fields in the bottom right-hand corner are still blank.
@@ -498,6 +498,14 @@ To update result variables for our current case, copy the ``HarvestReport`` and 
 You can leave ``HarvestReport_sorghum`` as is.
 Instead, please replace all references to *"[Sorghum]"* in ``HarvestReport_mungbean`` to *"[Mungbean]"*.
 Thereby, make sure to update both the *"Report variables"* (top) as well as the *"Report events"* (bottom).
+The updated *Report nodes* should look similar to the following:
+
+.. figure:: _static/APSIMscreenshot_HarvestReport_mungbean.png
+   :alt: HarvestReport_mungbean
+   :width: 80%
+
+   Updated report node *"HarvestReport_mungbean"*.
+
 
 In addition to this standard recording of simulation results, 
 the ``RotationManager`` also provides the useful graphical interface ``RotationRugplot`` to inspect the progression of the simulation over time.
