@@ -461,7 +461,7 @@ With this, we have completed the setup of a basic Rotation Manager model in APSI
 
 Crop-Soil Interactions
 ----------------------------------------
-Each crop type comes with its own ability and constraints in accessing water.
+Each crop type comes with its own abilities and constraints in accessing water.
 As we started out with an example *APSIMX file* that only focussed on Sorghum, we currently only have specifications for the Plant Available Water Capacity (PAWC) of Sorghum.
 To inspect the specific values, please expand the *Soil node* ``HRS``, then expand the ``Physical`` *node*, and select ``SorghumSoil``.
 
@@ -473,15 +473,15 @@ To inspect the specific values, please expand the *Soil node* ``HRS``, then expa
 
 Here, you can see the specific values for: 
 
-- Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the terms *Crop Lower Limit*. Below this value, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
-- Water Extraction Coefficient (KL). The KL factor specifies the maximum fraction of available water (above LL15) that a plant’s roots can extract from a soil layer per day under non-limiting conditions. It reflects both root and soil properties (e.g., root density and soil hydraulic conductivity, etc.).
-- Root Exploration Factor (XF). The XF factor limits root penetration in a soil layer, describing the fraction of the layer accessible to roots. At XF==1, roots can fully explore the layer, while at XF==0, roots cannot grow into that layer. Values in between reflect partial restriction (e.g., due to physical or chemical constraints).
+- Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the terms *Crop Lower Limit*. Below the indicated values, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
+- Water Extraction Coefficient (KL). The KL factor specifies the maximum fraction of available water (above LL15) that a plant’s roots can extract from a soil layer per day under non-limiting conditions. It reflects both root and soil properties (e.g., root density, soil hydraulic conductivity, etc.).
+- Root Exploration Factor (XF). The XF factor limits root penetration in a soil layer, describing the fraction of the layer accessible to roots. When XF equals 1, roots can fully explore the layer, whereas when XF equals 0, root growth into that layer is entirely restricted. Values in between reflect partial restriction (e.g., due to physical or chemical constraints).
 
-Please note that the general soil physical properties can be seen and modified under the parent *node* ``Physical``.
+Please note that the general soil physical properties (such as LL15) can be seen and modified under the parent *node* ``Physical``.
 Since we introduced mungbean into this simulation, we have to generate a similar ``MungbeanSoil`` *node*.
 For this, let us copy ``SorghumSoil`` and rename the copy to ``MungbeanSoil``.
 Values of crop-soil interactions are usually experimentally determined and should not be specified out of thin air.
-However, as we are only aiming here at demonstrating the technical handling of APSIM, we only introduce some examplary and arbitrary changes to these parameter values for the sake of illustration.
+However, as we are aiming here at demonstrating the technical handling of APSIM, we only introduce some examplary and arbitrary changes to these parameter values for the sake of illustration.
 Here, we assume that mungbean would be characterised by higher LL values, since mungbean has a shallower root system than sorghum's deep, fibrous roots.
 We also assume that KL values for mungbean are lower than for sorghum, meaning that the extraction rate of mungbean roots is lower.
 Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the following:
@@ -499,7 +499,7 @@ With the overall structure of the simulation being finalised, we can now update 
 
 Recording Results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-At present, the simulation records output variables as specified in the *Report nodes* ``DailyReport`` and ``HarvestReport``.
+At present, the simulation records those variables specified in the *Report nodes* ``DailyReport`` and ``HarvestReport``.
 To update result variables for our current case, copy the ``HarvestReport`` and rename the two *Report nodes* to ``HarvestReport_sorghum`` and ``HarvestReport_mungbean``.
 You can leave ``HarvestReport_sorghum`` as is.
 Instead, please replace all references to *"[Sorghum]"* in ``HarvestReport_mungbean`` to *"[Mungbean]"*.
@@ -512,9 +512,14 @@ The updated *Report nodes* should look similar to the following:
 
    Updated report node *"HarvestReport_mungbean"*.
 
+It is important to note that APSIM is very flexible in defining very different *Report nodes*.
+The here shown option just provides one example.
+When you utilise APSIM for a very specific research objective, it is advisable to specify *Report nodes* that are most suitable to answering your research question.
 
-In addition to this standard recording of simulation results, 
-the ``RotationManager`` also provides the useful graphical interface ``RotationRugplot`` to inspect the progression of the simulation over time.
+Adding a Rugplot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In addition to such standard result recording, 
+the ``RotationManager`` offers the ``RotationRugplot`` interface for visually tracking simulation progression over time.
 To enable it, right-click on ``RotationManager``, click on ``Add model...``, expand the *Management* folder, 
 and double-click on ``RotationRugplot`` (alternatively, you can drag-and-drop the ``RotationRugplot`` onto the ``RotationManager`` *node*).
 
@@ -522,15 +527,15 @@ Performing the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 All aspects of the simulation have now been specified.
 In the top menu bar of APSIM, you can now select ``Save`` and then ``Run`` to perform the simulation.
-This should lead to a progress bar being visualised and subsequently a message indicating that the simulation has successfully being completed.
-If an error message appears instead, carefully examine the details and identify where your file differs from the data entry shown in this tutorial.
+This should lead to a progress bar being visualised and subsequently a message indicating that the simulation has successfully been completed.
+If instead an error message appears, carefully examine its details, and identify where your file differs from the data entry shown in this tutorial.
 
 Visualising Results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The only remaining step is to adjust the results figures to our current analysis.
-It is good to keep in mind that the visualisation tools in APSIM are provided for convenience.
-They are especially useful for exploring if the simulation is functioning as intended, or if any corrections and modifications are necessary.
-Instead, when interested at generating outputs for external use (journal publications, reports, etc.), users can also generate figures by loading numeric APSIM results into their preferred programming tool for data visualisation (such as R or Python).
+It is good to remember that the visualisation tools in APSIM are provided primarily for convenience. 
+They are particularly useful for checking whether the simulation is functioning as intended and for identifying if any corrections and modifications are necessary.
+Instead, when interested at generating outputs for external use (journal publications, reports, etc.), users can also generate figures by loading numeric APSIM results into their preferred tool for data visualisation (such as R, Python, Excel, Power BI).
 Select the *node* ``Sorghum Yield`` and rename it to ``Crop Yield``.
 Expand the *node*, generate a copy of ``Series``, and rename the two items to ``Yield_sorghum`` and ``Yield_mungbean``.
 Select ``Yield_sorghum`` and change the drop-down value for *"Data Source"* to ``HarvestReport_sorghum``.
@@ -548,7 +553,7 @@ The resulting figure for ``Crop Yield`` should look similar to the following:
 
 Results Interpretation
 ----------------------------------------
-As first step of the results interpretation, we will have inspect the Rugplot.
+As first step of interpreting results, we will inspect the Rugplot.
 The Rugplot visualises the progression of crops and fallows that occupy our field.
 Specifically, the bar on the left-hand side shows the field occupancy from the start of the simulation (top) towards the end (bottom).
 We can see that the simulation starts out with the state *"Fallow_postMB"*, as we had specified.
@@ -556,6 +561,12 @@ We then see that the field occupancy changes sequentially as Sorghum-Fallow-Mung
 In this way, we can confirm that the simulation is progressing with the intended crop sequence and that there is no error that we have to correct.
 Another major takeaway that we can derive from the Rugplot is that fallows are of varying length.
 This means, that our sowing rule in various summer seasons are not met and no crop is sown.
+
+.. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
+   :alt: CropRotationRugplot
+   :width: 80%
+
+   Rugplot showing the progression of field occupancy over time.
 
 Besides this first overview of field occupancy, the Rugplot displays on the right-hand side for each state:
 
@@ -566,16 +577,10 @@ E.g., in the here displayed example Rugplot, we see that on the 8th Jan 1985, to
 the field *state* is *"Fallow_postMB"*, the transition rule that is checked for is if sorghum can be sown, and the result value of the transition rule is -1.
 As defined by the **C# code** in the manager script ``SowHarvest_sorghum``, the value -1 is returned if the conditions for sowing a crop are not fulfilled.
 
-.. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
-   :alt: CropRotationRugplot
-   :width: 80%
-
-   Rugplot showing the progression of field occupancy over time.
-
 As you can see, the Rugplot is very efficient at providing a big-picture overview of the progression of the simulation.
 If we want to inspect instead a table of major simulation dates, it is more useful to directly navigate to the *Report nodes*.
 When first clicking on ``DailyReport``, you are provided with an extensive table where each row corresponds to daily outputs of the selected reporting variables.
-This kind of numeric output is useful for being synthesised by the graphing tools in APSIM or as input to numeric analysis and visualisation within external tools of your choice (R, Python, Excel, Power BI).
+This kind of numeric output is useful for being synthesised by the graphing tools in APSIM or as input to numeric analysis and visualisation within external tools of your choice.
 For direct inspection, variables reported in aggregate form, such as annual totals or averages, or those recorded upon specific events like sowing, flowering, or harvest, are generally more relevant.
 For example, the *Report nodes* ``HarvestReport_sorghum`` and ``HarvestReport_mungbean`` provide results of selected variables on the day of harvesting only.
 To inspect these values in a tabular format, click on the ``Data`` tab, after navigating to each *Report node*.
