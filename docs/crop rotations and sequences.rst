@@ -529,7 +529,7 @@ The resulting figure for ``Crop Yield`` should look similar to the following:
    :alt: CropRotationYield
    :width: 100%
 
-   Sorghum and mungbean crop yield over time.
+   Sorghum (black) and mungbean (yellow) crop yield over time.
 
 
 Results Interpretation
