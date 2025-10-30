@@ -6,7 +6,7 @@ This tutorial was developed by the following members of the APSIM reference pane
 **Person 1**
 
 .. image:: _static/UniSQ_logo.jpg
-   :width: 180px
+   :width: 220px
    :align: right
 
 - **Role:** Research Fellow in Bio-Economic Modelling  
@@ -16,7 +16,7 @@ This tutorial was developed by the following members of the APSIM reference pane
 **Person 2**
 
 .. image:: _static/UQ_logo.png
-   :width: 180px
+   :width: 220px
    :align: right
 
 - **Role:** Principal Farming Systems Modeller  
