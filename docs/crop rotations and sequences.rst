@@ -565,19 +565,31 @@ E.g., in the here displayed example Rugplot, we see that on the 8th Jan 1985, to
 the field *state* is *"Fallow_postMB"*, the transition rule that is checked for is if sorghum can be sown, and the result value of the transition rule is -1.
 As defined by the **C# code** in the manager script ``SowHarvest_sorghum``, the value -1 is returned if the conditions for sowing a crop are not fulfilled.
 
-
-
-
-
-
 .. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
    :alt: CropRotationRugplot
    :width: 80%
 
    Rugplot showing the progression of field occupancy over time.
 
+As you can see, the Rugplot is very efficient at providing a big-picture overview of the progression of the simulation.
+If we want to inspect instead a table of major simulation dates, it is more useful to directly navigate to the *Report nodes*.
+When first clicking on ``DailyReport``, you are provided with an extensive table where each row corresponds to daily outputs of the selected reporting variables.
+This kind of numeric output is useful for being synthesised by the graphing tools in APSIM or as input to numeric analysis and visualisation within external tools of your choice (R, Python, Excel, Power BI).
+For direct inspection, variables reported in aggregate form, such as annual totals or averages, or those recorded upon specific events like sowing, flowering, or harvest, are generally more relevant.
+For example, the *Report nodes* ``HarvestReport_sorghum`` and ``HarvestReport_mungbean`` provide results of selected variables on the day of harvesting only.
+To inspect these values in a tabular format, click on the ``Data`` tab, after navigating to each *Report node*.
 
+.. figure:: _static/APSIMscreenshot_HarvestReportTableSorghum.png
+   :alt: HarvestReportTableSorghum
+   :width: 80%
 
+   Table of selected results variables on the harvest day of sorghum.
+
+.. figure:: _static/APSIMscreenshot_HarvestReportTableMungbean.png
+   :alt: HarvestReportTableMungbean
+   :width: 80%
+
+   Table of selected results variables on the harvest day of mungbean.
 
 
 
