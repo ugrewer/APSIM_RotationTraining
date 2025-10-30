@@ -41,7 +41,7 @@ To better understand the steps and details of continuous simulations of single c
 It can be accessed here: `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
 For obtaining the best value from this guide, we suggest you to open the file in your local copy of the APSIM software and follow along for the remainder of the tutorial.
 
-This example file simulates sorghum in Dalby (Queensland, Australia). However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
+This example file simulates sorghum in Dalby (South-East Queensland, Australia). However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
 the simulation runs continuously from its **start date** on 1/01/1985 to its **end date** on 31/12/1999, covering a total of 15 years.
 In the simulation tree structure shown on the left-hand side of the APSIM GUI, you can inspect these values by navigating to
 the ``Clock`` node.
