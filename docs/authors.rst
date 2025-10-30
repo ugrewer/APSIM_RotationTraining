@@ -5,7 +5,7 @@ This tutorial was developed by the following contributors:
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 20 60
+   :widths: 15 25 20 40
 
    * - Name
      - Role
