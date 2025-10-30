@@ -12,7 +12,7 @@ This tutorial was developed by the following contributors:
      - Department
      - Institution
    * - Person 1
-     - Crop Modelling Specialist
+     - Research Fellow in Bio-Economic Modelling
      - Centre for Sustainable Agricultural Systems
      - University of Southern Queensland
    * - Person 2
