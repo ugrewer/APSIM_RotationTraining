@@ -554,13 +554,13 @@ The resulting figure for ``Crop Yield`` should look similar to the following:
 Results Interpretation
 ----------------------------------------
 As first step of interpreting results, we will inspect the Rugplot.
-The Rugplot visualises the progression of crops and fallows that occupy our field.
+The Rugplot visualises the progression of crops and fallows that occupy the simulated field.
 Specifically, the bar on the left-hand side shows the field occupancy from the start of the simulation (top) towards the end (bottom).
 We can see that the simulation starts out with the state *"Fallow_postMB"*, as we had specified.
 We then see that the field occupancy changes sequentially as Sorghum-Fallow-Mungbean-Fallow.
-In this way, we can confirm that the simulation is progressing with the intended crop sequence and that there is no error that we have to correct.
-Another major takeaway that we can derive from the Rugplot is that fallows are of varying length.
-This means, that our sowing rule in various summer seasons are not met and no crop is sown.
+This allows us to confirm that the simulation is progressing according to the intended crop sequence and that no errors require correction.
+Another key insight from the Rugplot is that fallow periods vary in length.
+This means, that the specified sowing condition is not met in various summer seasons and no crop is sown.
 
 .. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
    :alt: CropRotationRugplot
@@ -571,19 +571,19 @@ This means, that our sowing rule in various summer seasons are not met and no cr
 Besides this first overview of field occupancy, the Rugplot displays on the right-hand side for each state:
 
 - The transition rule that is checked for (e.g., can sorghum be sown)
-- The results value of the transition rule
+- The results value of the transition rule (e.g., -1)
 
-E.g., in the here displayed example Rugplot, we see that on the 8th Jan 1985, towards the beginning of the simulation,
-the field *state* is *"Fallow_postMB"*, the transition rule that is checked for is if sorghum can be sown, and the result value of the transition rule is -1.
+For example, in the here displayed Rugplot, we see that on the 8th Jan 1985, towards the beginning of the simulation,
+the field *state* is a fallow, the transition rule that is checked for is if sorghum can be sown, and the result value of the transition rule is -1.
 As defined by the **C# code** in the manager script ``SowHarvest_sorghum``, the value -1 is returned if the conditions for sowing a crop are not fulfilled.
 
 As you can see, the Rugplot is very efficient at providing a big-picture overview of the progression of the simulation.
-If we want to inspect instead a table of major simulation dates, it is more useful to directly navigate to the *Report nodes*.
+If we instead want to inspect a table of major simulation dates, it is more useful to directly navigate to the *Report nodes*.
 When first clicking on ``DailyReport``, you are provided with an extensive table where each row corresponds to daily outputs of the selected reporting variables.
-This kind of numeric output is useful for being synthesised by the graphing tools in APSIM or as input to numeric analysis and visualisation within external tools of your choice.
-For direct inspection, variables reported in aggregate form, such as annual totals or averages, or those recorded upon specific events like sowing, flowering, or harvest, are generally more relevant.
+This kind of numeric output is useful for being synthesised by the graphing tools in APSIM or as input to numeric analysis and visualisation within external software tools of your choice.
+For direct inspection, variables reported in aggregate form, such as annual totals or averages, or those recorded upon specific events like sowing, flowering, or harvest, are more useful.
 For example, the *Report nodes* ``HarvestReport_sorghum`` and ``HarvestReport_mungbean`` provide results of selected variables on the day of harvesting only.
-To inspect these values in a tabular format, click on the ``Data`` tab, after navigating to each *Report node*.
+To inspect these values in a tabular format, click on the ``Data`` tab, after navigating to each respective *Report node*.
 
 .. figure:: _static/APSIMscreenshot_HarvestReportTableSorghum.png
    :alt: HarvestReportTableSorghum
@@ -597,21 +597,21 @@ To inspect these values in a tabular format, click on the ``Data`` tab, after na
 
    Table of selected results variables on the harvest day of mungbean.
 
-In the report tables, you can for example easily identify all years, in which no crop has been harvested (1987, 1991, 1993, 1994, 1995, 1997),
-with the threr-year period 1993-1995 constituting the longest consecutive duration without harvest.
+In the report tables, you can easily identify all years in which no crop was harvested (1987, 1991, 1993, 1994, 1995, 1997), 
+with the three-year period from 1993 to 1995 representing the longest consecutive duration without harvest.
 
-The equivalent visual overview of the annual variation in yield is provided by the ``Crop Yield`` graph that we generated further above.
-The results indicate that sorghum yields are highly variable, with the lowest yield being less than half of the maximum observed yield.
+The equivalent figure of the annual progression in yield is provided by the ``Crop Yield`` graph which we generated and displayed earlier.
+The figure shows that sorghum yields are highly variable, with the lowest yield being less than half of the highest yield.
 The four mungbean yields instead show a small but consistent upward trend.
-Such observations can be typical entry points for further investigations about the likely causes of simulation results, 
-while possibly, they may be purely driven by year-to-year climate variability.
+Such observed patterns can be typical entry points for further investigations into the likely causes of simulation results, 
+although they may also be driven purely by year-to-year climate variability.
 
 The other graphs ``SOC`` and ``SoilWater`` show that the field observes a strong downward trend in soil organic carbon.
 We could investigate if this is driven by the low field occupancy as well as by crop residue management practices.
 Further, there is a strong interannual fluctuation of volumetric soil water without any strongly apparent long-term trend.
 
-This concludes the tutorial on defining and utilising the Rotation Manager as part of basic crop rotations.
-The final version of the *APSIMX file* that has been generated by this tutorial can be accessed for comparison purposes at: 
+This concludes the tutorial on defining and utilising the Rotation Manager for the simulation of a basic crop rotation.
+The final *APSIMX file* produced in this tutorial can be accessed for comparison at: 
 `CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_
 
 
