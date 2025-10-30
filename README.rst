@@ -31,8 +31,8 @@ Suggested Citation
 -----------------------------------------------------
 When referencing or utilising material from this tutorial, we suggest using the following citation:
 
-.. Suggested Citation::
-
+.. admonition:: Suggested Citation
+   
    **Person, A., & Person, B. (2025).** *Continuous Cropping Using the APSIM Cropping Systems Model. A Comprehensive Tutorial for APSIM Users*  
    APSIM Initiative. Retrieved from: https://apsim-rotationtraining.readthedocs.io
 
