@@ -354,6 +354,11 @@ Now, we should be able to modify the three target parameters *"skip row configur
 solid row configuration, fixed tillering method, and zero fertile tillers.
 
 The above provided an example of a work routing that implements minor changes to a *manager* script, without thorough knowledge or skills in *C#* programming.
+If you are interested to have a more mechanistic understanding of flexibly modifying **C# code** in APSIM, the APSIM tutorials 
+`Build a model <https://apsimnextgeneration.netlify.app/development/tutorial/buildmodeltutorial/>`_ and
+`How PMF functions work <https://apsimnextgeneration.netlify.app/development/tutorial/howpmffunctionswork/>`_
+are valuable resources.
+You may also want to consult generic training material and tutorials on **C#**.
 
 
 Updating the Remaining Manager Scripts
