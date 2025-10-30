@@ -1,4 +1,4 @@
-Crop Sequences on Fixed Dates
+Continuous Cropping on Fixed Dates
 ========================================
 
 
