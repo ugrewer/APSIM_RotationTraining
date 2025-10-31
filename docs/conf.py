@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "APSIM Crop Rotation Tutorial"
-copyright = "2025, UniSQ & UQ for the APSIM Initiative. CC BY-NC-SA 4.0."
+copyright = "2025, UniSQ & UQ for the APSIM Initiative. CC BY-NC-SA 4.0"
 author = "Uwe Grewer (UniSQ), Peter de Voil (UQ)"
 
 
