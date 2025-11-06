@@ -34,10 +34,36 @@ This could include, for instance, the occasional application of soil amendments 
 
 Cropping Scenario
 ----------------------------------------
+As flexible cropping scenario, we consider a hypothetical broadacre farmer in the Darling Downs region
+that is generally willing to grow both summer and winter crops, depending on seasonal conditions.
+As summer crops, the farmer commonly grows sorghum and mungbean, 
+while as winter crops, wheat and chickpea are readily available options.
 
+To keep some realism, but avoid some of the complicated detail that will be involved in simulating a real case study farm,
+we will consider here that the farmer determines the crop choice on three subsequent decisions:
 
+- Absolute water availability
+    During the sowing window, a threshold for water availability determines if a crop is sown at all or if the field is left fallow.
+    This is exactly similar to the decision logic presented in the previous tutorial section on basic crop rotations.
 
+- Crop sequence (Disease pressure and nitrogen management)
+    The continuous cropping of cereals or legumes can lead to increased disease pressure and suboptimal nitrogen management.
+    Here we will implement the following simple rule: If the previous two cultivated crops were cereals,
+    the next crop must be a legume. Instead, if the previous crop was a legume, the next crop must be a cereal.
 
+- Time of season and relative water availability
+    The above two rules will determine in most seasons which crop will be sown.
+    However, the above still leaves flexibility in some seasons, where none of the above rules is binding 
+    (e.g., when the past two crops were a legume followed by a cereal, the above rules do not determine which crop will be sown).
+    In such cases, the farmer will sow a legume if sowing conditions are fulfilled early in the season,
+    and otherwise sow cereals.
+
+The above rules have been chosen on purpose for this tutorial, 
+as they demonstrate how to implement conditions that depend on both 
+(i) the progression of the simulation (i.e., the previous crops grown), and 
+(ii) the prevailing environmental conditions (i.e., water availability).
+While the specific rules that you will require for your own study cases are likely to differ,
+many cases can be represented by the general logic presented here.
 
 
 
