@@ -101,7 +101,10 @@ please note that there are many possible ways to represent the desired crop sequ
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withBreakPeriod.png" alt="BubbleChart_flexible_withBreakPeriod" width="80%">
 
    <p>
-    As an additional step, we can already add names to each of the transitions (i.e., arcs) in the bubble chart.
+    For the remainder of the tutorial, we will proceed with the first solution shown above.
+    We also recommend that you continue working with the same setup,
+    as this will make it easier to follow along.
+    </p>
     Here, we chose to be quite verbose with the transition names, to avoid any confusion later on.
     The downside is that this looks a bit cluttered within the bubble chart.
     However, since we already have a good conceptual understanding of the cropping sequence,
@@ -114,9 +117,6 @@ please note that there are many possible ways to represent the desired crop sequ
    </details>
 
 
-For the remainder of the tutorial, we will proceed with the first solution shown above.
-We also recommend that you continue working with the same setup,
-as this will make it easier to follow along.
 
 
 
