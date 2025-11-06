@@ -85,7 +85,7 @@ please note that there are many possible ways to represent the desired crop sequ
    <summary><b>Show/Hide Solution: Crop Sequence Diagram</b></summary>
 
    <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
-   It minimised the number of crop nodes required to represent the system,
+   It minimises the number of crop nodes required to represent the system,
    while requiring a moderately higher number of transitions (i.e., arcs).
    </p>
 
@@ -94,17 +94,20 @@ please note that there are many possible ways to represent the desired crop sequ
    <p>However, there are many different ways in which one can conceptualise and setup the bubble chart.
    Here below, we show another commonly used alternative, where a separate node for the off-season periods in autumn and spring is created.
    While such nodes are not strictly necessary for representing the system in APSIM, 
-   they allow to keep summer and winter season neatly separated within the bubble chart.
+   they allow to keep the summer and winter season neatly separated within the bubble chart.
    This solution also limits the number of transitions (i.e., arcs) needed to represent the system.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withBreakPeriod.png" alt="BubbleChart_flexible_withBreakPeriod" width="80%">
 
    <p>
+    It is important to note that, while an equivalent APSIM simulation can be generated with different bubble chart designs,
+    they may often require different manager scripts.
     For the remainder of the tutorial, we will proceed with the first solution shown above.
     We also recommend that you continue working with the same setup,
     as this will make it easier to follow along.
     </p>
+    At this stage, we can also add descriptive names to the transitions within the bubble chart.
     Here, we chose to be quite verbose with the transition names, to avoid any confusion later on.
     The downside is that this looks a bit cluttered within the bubble chart.
     However, since we already have a good conceptual understanding of the cropping sequence,
