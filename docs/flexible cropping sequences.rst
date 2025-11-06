@@ -73,11 +73,15 @@ is to represent the desired crop sequences within the ``RotationManager``.
 In other words, we have to generate a suitable bubble chart.
 As a starting point for this tutorial section, please utilise the following *APSIMX file*:
 `CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
+Using an existing *APSIMX file* as the starting point, allows to skip over some aspects already covered in previous tutorial sections
+and instead focus on the new aspects relevant for flexible cropping sequences.
 
 Currently, the ``RotationManager`` canvas is empty.
 Please take a moment to try and represent the above defined cropping sequence via a suitable bubble chart.
 If you work on this solution with a colleague, 
 please note that there are many possible ways to represent the desired crop sequence within the ``RotationManager`` canvas.
+At this point, it is useful for you to first try to come up with your own solution,
+as this will assist you in developing a better conceptual understanding of representing cropping sequences within the ``RotationManager``.
 
 .. raw:: html
 
@@ -118,6 +122,15 @@ please note that there are many possible ways to represent the desired crop sequ
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withTransitionNames.png" alt="APSIMscreenshot_BubbleChart_flexible_withTransitionNames" width="80%">
 
    </details>
+
+
+
+Transitioning between Plot States
+----------------------------------------
+
+
+
+
 
 
 

@@ -99,6 +99,8 @@ Rename the manger *nodes* to ``SowHarvest_sorghum`` and ``SowHarvest_mungbean``.
 For fertilisation, we can instead continue to use our previous *manager* script.
 Please copy the ``Fertilise at sowing`` script, so that we again have two versions of it.
 Rename the *managers* to ``Fert_sorghum`` and ``Fert_mungbean``.
+You can keep the *manager* ``Fert_sorghum`` entirely unchanged,
+while you should reduce the amount of fertiliser applied on mungbean to 15 kg/ha of nitrogen.
 The resulting simulation tree should now look similar to the following:
 
 .. figure:: _static/APSIMscreenshot_SimTreeWithManagers.png
@@ -120,6 +122,10 @@ Let us start with ``SowHarvest_sorghum``:
 - Ensure that the *"Must sow?"* tickbox is unticked. If ticked, the script enforces that a crop is sown at the end of the sowing window, even if sowing conditions are not satisfied.
 - Update the sowing properties to mirror the earlier parameters used for simulating sorghum in Dalby (Cultivar: Buster; Sowing depth: 30mm; Row spacing: 750mm; Plant population: 10 plants/m2).
 
+(Please note: The above specified parameters of soil moisture and rainfall thresholds are quite a bit higher 
+than what most agronomists would recommend for sorghum sowing in Dalby. 
+However, for this tutorial, it is more instructive and illustrative to specify thresholds that are not satisfied in at least some of the recorded seasons, 
+so that we can observe the consequences of not being able to sow a crop in certain years.)
 
 Simple Modifications of C# Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
