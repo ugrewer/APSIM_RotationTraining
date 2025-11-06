@@ -85,13 +85,17 @@ please note that there are many possible ways to represent the desired crop sequ
 .. raw:: html
 
    <details>
-   <summary>Show Solution</summary>
+   <summary>Show Solution: Crop Sequence Diagram</summary>
 
-   <p>Here is the solution text that is hidden by default. Users can click "Show Solution" to reveal it.</p>
+   <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
+   It avoids redundant crop nodes and minimises the number of required transitions.
+   </p>
 
-   <img src="_images/crop_sequence_solution.png" alt="Crop Sequence Solution" width="80%">
+   <img src="docs/_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
 
    <p>Additional explanation text can go here.</p>
+
+   <img src="docs/_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
 
    </details>
 
