@@ -82,27 +82,42 @@ please note that there are many possible ways to represent the desired crop sequ
 .. raw:: html
 
    <details>
-   <summary><b>Show Solution: Crop Sequence Diagram</b></summary>
+   <summary><b>Show/Hide Solution: Crop Sequence Diagram</b></summary>
 
    <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
-   It avoids redundant crop nodes and minimises the number of required transitions.
+   It minimised the number of crop nodes required to represent the system,
+   while requiring a moderately higher number of transitions (i.e., arcs).
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible.png" alt="BubbleChart_flexible" width="80%">
 
    <p>However, there are many different ways in which one can conceptualise and setup the bubble chart.
-   Here below, we show another commonly used alternative, where a separate node for the off-season period is created.
-   While such a node is not strictly necessary, it allows to keep summer and winter season neatly separated
-   and further limits the number of transitions (i.e., arcs) needed to represent the system.
+   Here below, we show another commonly used alternative, where a separate node for the off-season periods in autumn and spring is created.
+   While such nodes are not strictly necessary for representing the system in APSIM, 
+   they allow to keep summer and winter season neatly separated within the bubble chart.
+   This solution also limits the number of transitions (i.e., arcs) needed to represent the system.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withBreakPeriod.png" alt="BubbleChart_flexible_withBreakPeriod" width="80%">
 
+   <p>
+    As an additional step, we can already add names to each of the transitions (i.e., arcs) in the bubble chart.
+    Here, we chose to be quite verbose with the transition names, to avoid any confusion later on.
+    The downside is that this looks a bit cluttered within the bubble chart.
+    However, since we already have a good conceptual understanding of the cropping sequence,
+    we are unlikely to spend too much time looking at the bubble chart from now on.
+    Instead, when referencing the name of specific transitions, a clear and unambiguous naming convention will come in handy.
+   </p>
+
+   <img src="_static/APSIMscreenshot_BubbleChart_flexible_withTransitionNames.png" alt="APSIMscreenshot_BubbleChart_flexible_withTransitionNames" width="80%">
+
    </details>
+
 
 For the remainder of the tutorial, we will proceed with the first solution shown above.
 We also recommend that you continue working with the same setup,
 as this will make it easier to follow along.
+
 
 
 

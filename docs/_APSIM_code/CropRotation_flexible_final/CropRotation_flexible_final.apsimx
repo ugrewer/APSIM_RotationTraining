@@ -986,8 +986,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 2,
-                  "Name": "Arc 2",
-                  "Location": "469, 95",
+                  "Name": "Enter WH after SG",
+                  "Location": "474, 89",
                   "Colour": ""
                 },
                 {
@@ -997,8 +997,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 5,
-                  "Name": "Arc 5",
-                  "Location": "462, 132",
+                  "Name": "Enter SG after WH",
+                  "Location": "472, 138",
                   "Colour": ""
                 },
                 {
@@ -1008,8 +1008,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 6,
-                  "Name": "Arc 6",
-                  "Location": "285, 281",
+                  "Name": "Enter SP after SG",
+                  "Location": "312, 274",
                   "Colour": ""
                 },
                 {
@@ -1019,8 +1019,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 9,
-                  "Name": "Arc 9",
-                  "Location": "237, 281",
+                  "Name": "Enter SG after CP",
+                  "Location": "231, 304",
                   "Colour": ""
                 },
                 {
@@ -1030,8 +1030,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 10,
-                  "Name": "Arc 10",
-                  "Location": "477, 422",
+                  "Name": "Enter MB after CP",
+                  "Location": "480, 413",
                   "Colour": ""
                 },
                 {
@@ -1041,8 +1041,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 11,
-                  "Name": "Arc 11",
-                  "Location": "479, 457",
+                  "Name": "Enter CP after MB",
+                  "Location": "487, 467",
                   "Colour": ""
                 },
                 {
@@ -1052,8 +1052,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 12,
-                  "Name": "Arc 12",
-                  "Location": "735, 280",
+                  "Name": "Enter MB after WH",
+                  "Location": "753, 303",
                   "Colour": ""
                 },
                 {
@@ -1063,8 +1063,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 13,
-                  "Name": "Arc 13",
-                  "Location": "679, 280",
+                  "Name": "Enter WH after MB",
+                  "Location": "665, 274",
                   "Colour": ""
                 },
                 {
@@ -1074,8 +1074,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 14,
-                  "Name": "Arc 14",
-                  "Location": "562, 373",
+                  "Name": "Enter Winter FA after MB",
+                  "Location": "563, 377",
                   "Colour": ""
                 },
                 {
@@ -1085,8 +1085,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 15,
-                  "Name": "Arc 15",
-                  "Location": "590, 346",
+                  "Name": "Enter MB after Winter FA",
+                  "Location": "590, 347",
                   "Colour": ""
                 },
                 {
@@ -1096,8 +1096,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 16,
-                  "Name": "Arc 16",
-                  "Location": "352, 345",
+                  "Name": "Enter Summer FA after CP",
+                  "Location": "361, 353",
                   "Colour": ""
                 },
                 {
@@ -1107,8 +1107,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 17,
-                  "Name": "Arc 17",
-                  "Location": "393, 369",
+                  "Name": "Enter CP after Summer FA",
+                  "Location": "392, 379",
                   "Colour": ""
                 },
                 {
@@ -1118,8 +1118,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 18,
-                  "Name": "Arc 18",
-                  "Location": "401, 186",
+                  "Name": "Enter Winter FA after SG",
+                  "Location": "409, 180",
                   "Colour": ""
                 },
                 {
@@ -1129,8 +1129,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 19,
-                  "Name": "Arc 19",
-                  "Location": "367, 218",
+                  "Name": "Enter SG after Winter FA",
+                  "Location": "362, 216",
                   "Colour": ""
                 },
                 {
@@ -1140,8 +1140,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 20,
-                  "Name": "Arc 20",
-                  "Location": "612, 220",
+                  "Name": "Enter Summer FA after WH",
+                  "Location": "606, 224",
                   "Colour": ""
                 },
                 {
@@ -1151,8 +1151,8 @@
                   "Conditions": [],
                   "Actions": [],
                   "ID": 21,
-                  "Name": "Arc 21",
-                  "Location": "550, 218",
+                  "Name": "Enter WH after Summer FA",
+                  "Location": "578, 195",
                   "Colour": ""
                 }
               ],
