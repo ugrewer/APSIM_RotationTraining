@@ -79,25 +79,31 @@ Please take a moment to try and represent the above defined cropping sequence vi
 If you work on this solution with a colleague, 
 please note that there are many possible ways to represent the desired crop sequence within the ``RotationManager`` canvas.
 
-
-
-
 .. raw:: html
 
    <details>
-   <summary>Show Solution: Crop Sequence Diagram</summary>
+   <summary><b>Show Solution: Crop Sequence Diagram</b></summary>
 
    <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
    It avoids redundant crop nodes and minimises the number of required transitions.
    </p>
 
-   <img src="_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
+   <img src="_static/APSIMscreenshot_BubbleChart_flexible.png" alt="BubbleChart_flexible" width="80%">
 
-   <p>Additional explanation text can go here.</p>
+   <p>However, there are many different ways in which one can conceptualise and setup the bubble chart.
+   Here below, we show another commonly used alternative, where a separate node for the off-season period is created.
+   While such a node is not strictly necessary, it allows to keep summer and winter season neatly separated
+   and further limits the number of transitions (i.e., arcs) needed to represent the system.
+   </p>
 
-   <img src="_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
+   <img src="_static/APSIMscreenshot_BubbleChart_flexible_withBreakPeriod.png" alt="BubbleChart_flexible_withBreakPeriod" width="80%">
 
    </details>
+
+For the remainder of the tutorial, we will proceed with the first solution shown above.
+We also recommend that you continue working with the same setup,
+as this will make it easier to follow along.
+
 
 
 

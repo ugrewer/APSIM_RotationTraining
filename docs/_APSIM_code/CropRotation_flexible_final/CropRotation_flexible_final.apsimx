@@ -938,17 +938,8 @@
                   "Transparent": false,
                   "ID": 1,
                   "Name": "Sorghum",
-                  "Location": "434, 77",
+                  "Location": "262, 116",
                   "Colour": "158, 77, 77"
-                },
-                {
-                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
-                  "Description": "",
-                  "Transparent": false,
-                  "ID": 2,
-                  "Name": "Fallow_postSG",
-                  "Location": "584, 241",
-                  "Colour": "192, 191, 188"
                 },
                 {
                   "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
@@ -956,7 +947,7 @@
                   "Transparent": false,
                   "ID": 3,
                   "Name": "Mungbean",
-                  "Location": "430, 394",
+                  "Location": "701, 438",
                   "Colour": "97, 172, 126"
                 },
                 {
@@ -964,78 +955,204 @@
                   "Description": "",
                   "Transparent": false,
                   "ID": 4,
-                  "Name": "Fallow_postMB",
-                  "Location": "245, 235",
+                  "Name": "Fallow",
+                  "Location": "477, 287",
                   "Colour": "192, 191, 188"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 7,
+                  "Name": "Wheat",
+                  "Location": "694, 124",
+                  "Colour": "246, 211, 45"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 8,
+                  "Name": "Chickpea",
+                  "Location": "265, 451",
+                  "Colour": "241, 203, 132"
                 }
               ],
               "Arcs": [
                 {
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 1,
-                  "DestinationID": 2,
-                  "Conditions": [
-                    "[SowHarvest_sorghum].Script.CanHarvest",
-                    ""
-                  ],
-                  "Actions": [
-                    "[SowHarvest_sorghum].Script.HarvestCrop()",
-                    ""
-                  ],
-                  "ID": 5,
-                  "Name": "Exit Sorghum",
-                  "Location": "517, 140",
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 2,
+                  "Name": "Arc 2",
+                  "Location": "469, 95",
                   "Colour": ""
                 },
                 {
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
-                  "SourceID": 2,
-                  "DestinationID": 3,
-                  "Conditions": [
-                    "[SowHarvest_mungbean].Script.CanSow",
-                    ""
-                  ],
-                  "Actions": [
-                    "[SowHarvest_mungbean].Script.SowCrop()",
-                    ""
-                  ],
+                  "SourceID": 7,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 5,
+                  "Name": "Arc 5",
+                  "Location": "462, 132",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
                   "ID": 6,
-                  "Name": "Enter Mungbean",
-                  "Location": "543, 317",
+                  "Name": "Arc 6",
+                  "Location": "285, 281",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 9,
+                  "Name": "Arc 9",
+                  "Location": "237, 281",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 10,
+                  "Name": "Arc 10",
+                  "Location": "477, 422",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 11,
+                  "Name": "Arc 11",
+                  "Location": "479, 457",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 7,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 12,
+                  "Name": "Arc 12",
+                  "Location": "735, 280",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 13,
+                  "Name": "Arc 13",
+                  "Location": "679, 280",
                   "Colour": ""
                 },
                 {
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 3,
                   "DestinationID": 4,
-                  "Conditions": [
-                    "[SowHarvest_mungbean].Script.CanHarvest",
-                    ""
-                  ],
-                  "Actions": [
-                    "[SowHarvest_mungbean].Script.HarvestCrop()",
-                    ""
-                  ],
-                  "ID": 7,
-                  "Name": "Exit Mungbean",
-                  "Location": "339, 325",
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 14,
+                  "Name": "Arc 14",
+                  "Location": "562, 373",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 15,
+                  "Name": "Arc 15",
+                  "Location": "590, 346",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 16,
+                  "Name": "Arc 16",
+                  "Location": "352, 345",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 17,
+                  "Name": "Arc 17",
+                  "Location": "393, 369",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 18,
+                  "Name": "Arc 18",
+                  "Location": "401, 186",
                   "Colour": ""
                 },
                 {
                   "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
                   "SourceID": 4,
                   "DestinationID": 1,
-                  "Conditions": [
-                    "[SowHarvest_sorghum].Script.CanSow",
-                    ""
-                  ],
-                  "Actions": [
-                    "[SowHarvest_sorghum].Script.SowCrop()",
-                    ""
-                  ],
-                  "ID": 8,
-                  "Name": "Enter Sorghum",
-                  "Location": "348, 152",
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 19,
+                  "Name": "Arc 19",
+                  "Location": "367, 218",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 7,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 20,
+                  "Name": "Arc 20",
+                  "Location": "612, 220",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 21,
+                  "Name": "Arc 21",
+                  "Location": "550, 218",
                   "Colour": ""
                 }
               ],
