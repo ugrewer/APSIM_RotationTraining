@@ -78,6 +78,23 @@ Please take a moment to try and represent the above defined cropping sequence vi
 If you work on this solution with a colleague, 
 please note that there are many possible correct ways to represent the desired crop sequence within the ``RotationManager`` canvas.
 
+
+
+
+.. raw:: html
+
+   <details>
+   <summary>Show Solution</summary>
+   <p>Here is the solution text that is hidden by default. Users can click "Show Solution" to reveal it.</p>
+   </details>
+
+
+
+
+
+
+
+
 .. panels::
 
    .. panel:: Solution
