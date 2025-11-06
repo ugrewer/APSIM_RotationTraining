@@ -72,11 +72,12 @@ The first step in implementing the above flexible cropping strategy
 is to represent the desired crop sequences within the ``RotationManager``.
 In other words, we have to generate a suitable bubble chart.
 As a starting point for this tutorial section, please utilise the following *APSIMX file*:
-`CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_
+`CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
+
 Currently, the ``RotationManager`` canvas is empty.
 Please take a moment to try and represent the above defined cropping sequence via a suitable bubble chart.
 If you work on this solution with a colleague, 
-please note that there are many possible correct ways to represent the desired crop sequence within the ``RotationManager`` canvas.
+please note that there are many possible ways to represent the desired crop sequence within the ``RotationManager`` canvas.
 
 
 
@@ -85,24 +86,14 @@ please note that there are many possible correct ways to represent the desired c
 
    <details>
    <summary>Show Solution</summary>
+
    <p>Here is the solution text that is hidden by default. Users can click "Show Solution" to reveal it.</p>
+
+   <img src="_images/crop_sequence_solution.png" alt="Crop Sequence Solution" width="80%">
+
+   <p>Additional explanation text can go here.</p>
+
    </details>
-
-
-
-
-
-
-
-
-.. panels::
-
-   .. panel:: Solution
-      :class: collapsible
-
-      Here is the solution text that is hidden by default. Users can click to expand it.
-
-
 
 
 
