@@ -91,11 +91,11 @@ please note that there are many possible ways to represent the desired crop sequ
    It avoids redundant crop nodes and minimises the number of required transitions.
    </p>
 
-   <img src="docs/_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
+   <img src="_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
 
    <p>Additional explanation text can go here.</p>
 
-   <img src="docs/_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
+   <img src="_static/APSIMscreenshot_AddedMungbeanModel.png" alt="Crop Sequence Solution" width="80%">
 
    </details>
 
