@@ -931,8 +931,114 @@
             },
             {
               "$type": "Models.Management.RotationManager, Models",
-              "Nodes": [],
-              "Arcs": [],
+              "Nodes": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 1,
+                  "Name": "Sorghum",
+                  "Location": "434, 77",
+                  "Colour": "158, 77, 77"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 2,
+                  "Name": "Fallow_postSG",
+                  "Location": "584, 241",
+                  "Colour": "192, 191, 188"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 3,
+                  "Name": "Mungbean",
+                  "Location": "430, 394",
+                  "Colour": "97, 172, 126"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 4,
+                  "Name": "Fallow_postMB",
+                  "Location": "245, 235",
+                  "Colour": "192, 191, 188"
+                }
+              ],
+              "Arcs": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 2,
+                  "Conditions": [
+                    "[SowHarvest_sorghum].Script.CanHarvest",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_sorghum].Script.HarvestCrop()",
+                    ""
+                  ],
+                  "ID": 5,
+                  "Name": "Exit Sorghum",
+                  "Location": "517, 140",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 2,
+                  "DestinationID": 3,
+                  "Conditions": [
+                    "[SowHarvest_mungbean].Script.CanSow",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_mungbean].Script.SowCrop()",
+                    ""
+                  ],
+                  "ID": 6,
+                  "Name": "Enter Mungbean",
+                  "Location": "543, 317",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 4,
+                  "Conditions": [
+                    "[SowHarvest_mungbean].Script.CanHarvest",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_mungbean].Script.HarvestCrop()",
+                    ""
+                  ],
+                  "ID": 7,
+                  "Name": "Exit Mungbean",
+                  "Location": "339, 325",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 1,
+                  "Conditions": [
+                    "[SowHarvest_sorghum].Script.CanSow",
+                    ""
+                  ],
+                  "Actions": [
+                    "[SowHarvest_sorghum].Script.SowCrop()",
+                    ""
+                  ],
+                  "ID": 8,
+                  "Name": "Enter Sorghum",
+                  "Location": "348, 152",
+                  "Colour": ""
+                }
+              ],
               "TopLevel": true,
               "InitialState": "Fallow_postMB",
               "Verbose": true,
