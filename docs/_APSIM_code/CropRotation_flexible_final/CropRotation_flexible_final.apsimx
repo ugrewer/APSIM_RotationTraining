@@ -1404,11 +1404,11 @@
                 },
                 {
                   "Key": "MinESW",
-                  "Value": "120"
+                  "Value": "50"
                 },
                 {
                   "Key": "MinRain",
-                  "Value": "50"
+                  "Value": "20"
                 },
                 {
                   "Key": "RainDays",
@@ -1513,23 +1513,6 @@
                 "        [Description(\"Plant population (/m2)\")]",
                 "        public double Population { get; set; }",
                 "",
-                "        [Description(\"Enter skip row configuration : \")]",
-                "        public RowConfigurationType RowConfiguration { get; set; }",
-                "        [Description(\"Tillering Method\")]",
-                "        public TilleringMethodType TilleringMethod { get; set; } = 0;",
-                "        [Description(\"Enter Fertile Tiller No. : \")]",
-                "        public double Ftn { get; set; }",
-                "        public enum TilleringMethodType ",
-                "        {",
-                "            RuleOfThumb = -1,",
-                "            FixedTillering = 0,",
-                "            DynamicTillering = 1",
-                "        }",
-                "        public enum RowConfigurationType ",
-                "        {",
-                "            Solid, SingleSkip, DoubleSkip",
-                "        }",
-                "",
                 "        public Accumulator accumulatedRain { get; private set; }",
                 "        private bool afterInit = false;",
                 "                ",
@@ -1629,11 +1612,11 @@
                 },
                 {
                   "Key": "MinESW",
-                  "Value": "120"
+                  "Value": "80"
                 },
                 {
                   "Key": "MinRain",
-                  "Value": "50"
+                  "Value": "30"
                 },
                 {
                   "Key": "RainDays",
@@ -1645,31 +1628,19 @@
                 },
                 {
                   "Key": "CultivarName",
-                  "Value": "Buster"
+                  "Value": "Janz"
                 },
                 {
                   "Key": "SowingDepth",
-                  "Value": "30"
+                  "Value": "40"
                 },
                 {
                   "Key": "RowSpacing",
-                  "Value": "750"
+                  "Value": "500"
                 },
                 {
                   "Key": "Population",
-                  "Value": "10"
-                },
-                {
-                  "Key": "RowConfiguration",
-                  "Value": "Solid"
-                },
-                {
-                  "Key": "TilleringMethod",
-                  "Value": "FixedTillering"
-                },
-                {
-                  "Key": "Ftn",
-                  "Value": "0"
+                  "Value": "25"
                 }
               ],
               "Name": "SowHarvest_wheat",
@@ -1837,11 +1808,11 @@
                 },
                 {
                   "Key": "MinESW",
-                  "Value": "120"
+                  "Value": "50"
                 },
                 {
                   "Key": "MinRain",
-                  "Value": "50"
+                  "Value": "20"
                 },
                 {
                   "Key": "RainDays",
@@ -1934,23 +1905,6 @@
                 "        [Description(\"Plant population (/m2)\")]",
                 "        public double Population { get; set; }",
                 "",
-                "        [Description(\"Enter skip row configuration : \")]",
-                "        public RowConfigurationType RowConfiguration { get; set; }",
-                "        [Description(\"Tillering Method\")]",
-                "        public TilleringMethodType TilleringMethod { get; set; } = 0;",
-                "        [Description(\"Enter Fertile Tiller No. : \")]",
-                "        public double Ftn { get; set; }",
-                "        public enum TilleringMethodType ",
-                "        {",
-                "            RuleOfThumb = -1,",
-                "            FixedTillering = 0,",
-                "            DynamicTillering = 1",
-                "        }",
-                "        public enum RowConfigurationType ",
-                "        {",
-                "            Solid, SingleSkip, DoubleSkip",
-                "        }",
-                "",
                 "        public Accumulator accumulatedRain { get; private set; }",
                 "        private bool afterInit = false;",
                 "                ",
@@ -2038,11 +1992,11 @@
               "Parameters": [
                 {
                   "Key": "Crop",
-                  "Value": ""
+                  "Value": "[Chickpea]"
                 },
                 {
                   "Key": "StartDate",
-                  "Value": "25-may"
+                  "Value": "15-may"
                 },
                 {
                   "Key": "EndDate",
@@ -2050,11 +2004,11 @@
                 },
                 {
                   "Key": "MinESW",
-                  "Value": "120"
+                  "Value": "80"
                 },
                 {
                   "Key": "MinRain",
-                  "Value": "50"
+                  "Value": "30"
                 },
                 {
                   "Key": "RainDays",
@@ -2066,31 +2020,19 @@
                 },
                 {
                   "Key": "CultivarName",
-                  "Value": "Buster"
+                  "Value": "Amethyst"
                 },
                 {
                   "Key": "SowingDepth",
-                  "Value": "30"
+                  "Value": "40"
                 },
                 {
                   "Key": "RowSpacing",
-                  "Value": "750"
+                  "Value": "500"
                 },
                 {
                   "Key": "Population",
-                  "Value": "10"
-                },
-                {
-                  "Key": "RowConfiguration",
-                  "Value": "Solid"
-                },
-                {
-                  "Key": "TilleringMethod",
-                  "Value": "FixedTillering"
-                },
-                {
-                  "Key": "Ftn",
-                  "Value": "0"
+                  "Value": "25"
                 }
               ],
               "Name": "SowHarvest_chickpea",
@@ -2411,6 +2353,64 @@
               "CumulativeX": false,
               "Filter": null,
               "Name": "Yield_mungbean",
+              "ResourceName": null,
+              "Children": [],
+              "Enabled": true,
+              "ReadOnly": false
+            },
+            {
+              "$type": "Models.Series, Models",
+              "Type": 1,
+              "XAxis": 3,
+              "YAxis": 0,
+              "ColourArgb": 0,
+              "FactorToVaryColours": "Graph series",
+              "FactorToVaryMarkers": null,
+              "FactorToVaryLines": null,
+              "Marker": 0,
+              "MarkerSize": 0,
+              "Line": 0,
+              "LineThickness": 0,
+              "TableName": "HarvestReport_sorghum",
+              "XFieldName": "Clock.Today",
+              "YFieldName": "Sorghum.Grain.Wt",
+              "X2FieldName": null,
+              "Y2FieldName": null,
+              "ShowInLegend": false,
+              "IncludeSeriesNameInLegend": false,
+              "Cumulative": false,
+              "CumulativeX": false,
+              "Filter": null,
+              "Name": "Yield_wheat",
+              "ResourceName": null,
+              "Children": [],
+              "Enabled": true,
+              "ReadOnly": false
+            },
+            {
+              "$type": "Models.Series, Models",
+              "Type": 1,
+              "XAxis": 3,
+              "YAxis": 0,
+              "ColourArgb": 0,
+              "FactorToVaryColours": "Graph series",
+              "FactorToVaryMarkers": null,
+              "FactorToVaryLines": null,
+              "Marker": 0,
+              "MarkerSize": 0,
+              "Line": 0,
+              "LineThickness": 0,
+              "TableName": "HarvestReport_sorghum",
+              "XFieldName": "Clock.Today",
+              "YFieldName": "Sorghum.Grain.Wt",
+              "X2FieldName": null,
+              "Y2FieldName": null,
+              "ShowInLegend": false,
+              "IncludeSeriesNameInLegend": false,
+              "Cumulative": false,
+              "CumulativeX": false,
+              "Filter": null,
+              "Name": "Yield_chickpea",
               "ResourceName": null,
               "Children": [],
               "Enabled": true,

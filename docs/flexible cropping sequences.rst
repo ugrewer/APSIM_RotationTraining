@@ -46,10 +46,11 @@ we will consider here that the farmer determines the crop choice on three subseq
     During the sowing window, a threshold for water availability determines if a crop is sown at all or if the field is left fallow.
     This is exactly similar to the decision logic presented in the previous tutorial section on basic crop rotations.
 
-- Crop sequence (Disease pressure and nitrogen management)
+- Crop sequence: Disease pressure and nitrogen management
     The continuous cropping of cereals or legumes can lead to increased disease pressure and suboptimal nitrogen management.
     Here we will implement the following simple rule: If the previous two cultivated crops were cereals,
     the next crop must be a legume. Instead, if the previous crop was a legume, the next crop must be a cereal.
+    Thereby, we will simply consider the last cultivated crops, regardless of whether the plot has intermittentlly be left fallow.
 
 - Time of season and relative water availability
     The above two rules will determine in most seasons which crop will be sown.
@@ -127,9 +128,23 @@ as this will assist you in developing a better conceptual understanding of repre
 
 Transitioning between Plot States
 ----------------------------------------
+Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
+the next step is to generate suitable manager scripts that will be called upon by the transition rules (i.e., the arcs).
+For this, we again have to generate such manager scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
+To keep the tutorial focused on the new aspects of flexible cropping sequences,
+we will start off from a pre-configured *APSIMX file* that modified and updated the previous file `CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_
+with skills and changes that we have already covered in previous tutorial sections.
+Please download and open the following *APSIMX file* as your starting point: `CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
 
+There are a number of changes that have been done:
 
-
+- Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
+- Draft manager scripts for sowing and harvesting have been created for each crop (as simple copy and adaptation of the previously used managers and without any thorough adaptation to our new simulation conditions).
+- Fertiliser scripts have been added for each crop.
+- Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new (under the *Soil node* ``HRS`` -> ``Physical``). 
+- 
+- The data reporting notes (both daily reports and at harvest) have been updated to account for the new crops.
+- The graphing nodes have been updated to account for the new crops.
 
 
 
