@@ -137,6 +137,7 @@ the next step is to generate suitable manager scripts that will be called upon b
 For this, we again have to generate such manager scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
 If you compare the simulation tree in your currently open *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
 you will notice that there are a number of modifications and updates already done:
+
 - Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
 - Draft manager scripts for sowing and harvesting have been created for each crop (as simple copy and adaptation of the previously used managers and without any thorough adaptation to our new simulation conditions).
 - Fertiliser scripts have been added for each crop.
