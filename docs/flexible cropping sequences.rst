@@ -125,6 +125,9 @@ Once you have tried to come up with your own solution, please proceed by unhidin
 
    </details>
 
+.. raw:: html
+
+   <br><br>
 
 
 Transitioning between Plot States
