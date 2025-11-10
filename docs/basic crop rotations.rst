@@ -490,8 +490,8 @@ Values of crop-soil interactions are usually experimentally determined and shoul
 However, as we are aiming here at demonstrating the technical handling of APSIM, we only introduce some examplary and arbitrary changes to these parameter values for the sake of illustration.
 Here, we assume that mungbean would be characterised by higher LL values, since mungbean has a shallower root system than sorghum's deep, fibrous roots.
 We also assume that KL values for mungbean are lower than for sorghum, meaning that the extraction rate of mungbean roots is lower and ceases in the deepest segments of the soil profile.
-As a major reference for improving your understanding of crop-soil interactions in APSIM, and for guidance on how to calculate core paremeter values,
-please consult the `Dalgliesh et al. (2016)`_.
+As a major reference for improving your understanding of crop-soil interactions in APSIM, and for guidance on how to calculate the various paremeter values,
+please consult `Dalgliesh et al. (2016)`_.
 Please manually update the *LL* and *KL* values in ``MungbeanSoil`` to the following:
 
 .. figure:: _static/APSIMscreenshot_MungbeanSoil.png
