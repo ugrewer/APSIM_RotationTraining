@@ -5,7 +5,7 @@ However, whenever cropping system research aims to simulate likely farmer behavi
 the simulation of a fixed, predetermined crop rotation is hardly realistic.
 Instead, farm managers often have a couple of typical cropping strategies, between which they will shift quite flexibly based on changing context conditions.
 For example, in south-east Queensland, farmers can flexibly change between summer- and winter-dominant cropping patterns based on seasonally changing water availability and soil moisture storage from preceding months.
-Another driver of rapid shifts in crop choice can be pest outbreaks (such as the shift out of maize following the first appearance and spread of fall armyworm in Australia) 
+Another driver of rapid shifts in crop choice can be pest outbreaks (such as the transition out of maize following the introduction and spread of fall armyworm in Australia) 
 or pronounced and sudden changes in price incentives (for example, as a consequence to the 30% tariff imposed on chickpea and lentil imports into India in 2017).
 
 In this section, we will explore how to define such flexible cropping sequences that dynamically determine crop choice based on external conditions.
@@ -15,11 +15,11 @@ Case Study Context
 ----------------------------------------
 This tutorial focusses on representing a flexible cropping strategy within the exemplary agro-ecological context of the *Darling Downs* growing region.
 This production region in South-East Queensland (Australia) is characterised by two major crop growing periods, summer and winter.
-The region is characterised by a summer-dominant rainfall pattern and most farmers correspondingly adopt predominantly a summer-dominant cropping strategy.
+The region is characterised by a summer-dominant rainfall pattern and most farmers correspondingly practice a primarily summer-dominant cropping strategy.
 However, over the last two decades, the planted area of winter crops has steadily increased.
 Many farmers have adopted highly climate-responsive, opportunistic cropping strategies, 
-implementing high cropping intensity whenever adequate water resources are available, regardless of the season.
-Evidence of this flexible alternation between summer- and winter-dominant cropping is visible even in aggregate government statistics on seasonal planted area across Queensland (`ABARES, 2024`_).
+implementing a high cropping intensity whenever adequate water resources are available, regardless of the season.
+Evidence of this flexible alternation between summer- and winter-dominant cropping is visible even in aggregate government statistics on the seasonal planted area across Queensland (`ABARES, 2024`_).
 
 In the following, we will aim to represent such an opportunistic cropping strategy within the ``RotationManager`` of APSIM.
 It is important to remember, that this scenario serves as an illustrative example only.
@@ -83,6 +83,7 @@ If you work on this solution with a colleague,
 please note that there are many possible ways to represent the desired crop sequence within the ``RotationManager`` canvas.
 At this point, it is useful for you to first try to come up with your own solution,
 as this will assist you in developing a better conceptual understanding of representing cropping sequences within the ``RotationManager``.
+Once you have tried to come up with your own solution, please proceed by unhiding the suggested solutions here below.
 
 .. raw:: html
 
@@ -131,20 +132,22 @@ Transitioning between Plot States
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
 the next step is to generate suitable manager scripts that will be called upon by the transition rules (i.e., the arcs).
 For this, we again have to generate such manager scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
-To keep the tutorial focused on the new aspects of flexible cropping sequences,
-we will start off from a pre-configured *APSIMX file* that modified and updated the previous file `CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_
-with skills and changes that we have already covered in previous tutorial sections.
-Please download and open the following *APSIMX file* as your starting point: `CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
-
-There are a number of changes that have been done:
-
+If you compare the simulation tree in your currently open *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
+you will notice that there are a number of modifications and updates already done:
 - Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
 - Draft manager scripts for sowing and harvesting have been created for each crop (as simple copy and adaptation of the previously used managers and without any thorough adaptation to our new simulation conditions).
 - Fertiliser scripts have been added for each crop.
-- Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new (under the *Soil node* ``HRS`` -> ``Physical``). 
+- Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new crops (under the *Soil node* ``HRS`` -> ``Physical``). 
 - 
 - The data reporting notes (both daily reports and at harvest) have been updated to account for the new crops.
 - The graphing nodes have been updated to account for the new crops.
+
+All these changes require skills and procedures that we have already covered in previous tutorial sections.
+Therefore, to keep the tutorial focused on the new aspects and save you from some repetitive tasks,
+we have included these scripts and updates as starting point within the provided *APSIMX file*.
+
+
+
 
 
 
