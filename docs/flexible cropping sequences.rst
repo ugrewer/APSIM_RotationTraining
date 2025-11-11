@@ -180,7 +180,7 @@ Instead, we now need to verify that the *manager* script correctly represents th
 For this, it is insufficient to inspect the *Parameters* tab only,
 but we will have to consult and modify the **C# code** of the *manager* scripts. 
 
-Absolute water availability
+Absolute Water Availability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 As identified in the section *Cropping Scenario* above, 
 the first decision rule to be implemented is that a crop is only sown if sufficient water is available during the sowing window, 
@@ -197,7 +197,7 @@ the water threshold for summer crops (sorghum and mungbean) is slightly lower th
 Generally, the water thresholds used here are lower than in the previous tutorial section and
 will more frequently result in the sowing of a crop rather than leaving the plot fallow.
 
-Crop sequence: Disease pressure and nitrogen management
+Crop Sequence: Disease Pressure and Nitrogen Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When now shifting to the issue of representing the crop sequence rules,
 you will notice that no corresponding variables and drop-down menus are available in the current *manager* scripts for sowing and harvesting.
@@ -210,6 +210,8 @@ We accessed those APSIM components by copying *using directives* (i.e., *namespa
 by exploring available object methods and properties through IntelliSense in the APSIM code editor.
 In the current case, we will instead also define some simple variables ourselves to keep track of the previously grown crops.
 
+Default *Manager* Script Provided in APSIM
+++++++++++++++++++++++++++++++++++++++++
 As a first step, let us generate a new *manager* scripts by right-clicking on the ``Paddock`` node, selecting ``Add model...``, and then choosing ``Manager``.
 Rename the new node to ``CropSequenceEnforcer``, as it will enforce the desired crop sequence rules.
 The default *manager* script contains some useful placeholder code that is a good starting point in many purposes. 
@@ -271,6 +273,49 @@ Finally, the script defines a method named *DoDailyCalculations* that is decorat
 This attribute indicates that the method should be called whenever the *DoManagement* event is raised.
 The *DoManagement* event is raised once per day in APSIM, allowing us to perform daily calculations and updates.
 *Manager* scripts typically hook into *DoManagement* because it fires once per day and is designed for management actions (e.g., sowing, fertilizing, irrigation).
+
+Helper-Script: Crop Sequence Enforcer
+++++++++++++++++++++++++++++++++++++++++
+For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequence rules.
+For this, please rename the default *Manager* node to ``CropSequenceEnforcer``.
+Usually, it is a good idea to keep all the standard using directives provided in the default *manager* script.
+After all, we usually do not know at the start from which of the most widely used namespaces, we will need to access classes and methods.
+For our current purpose instead, we know that we will generate a very simple and reduced helper script 
+that will only require to access the *System* and *Models.Core*. Please remove the other namespace imports from the top of the script.
+The overall purpose of the helper script is:
+
+- To remember the two most recently grown crops (no matter which *sowHarvest_* script initiated them).
+- To decide which next crop is allowed to be sown based on the previous plot history (cereal vs. legume).
+- To record the crop history after each harvest.
+
+Besides defining variables to keep track of the last two grown crops, 
+the helper script does not schedule sowing or harvest directly.
+Instead, this continues to be carried out by the various *sowHarvest_* scripts that rely on ``CropSequenceEnforcer`` as a utility model.
+
+The placeholder class name *Script* in the default *manager* script is certainly not very useful to be kept.
+Please rename the class to ``CropSequenceEnforcer``, as this name better reflects the purpose of the script.
+
+Next, we will define two private string variables to keep track of the last two grown crops.
+Initially, these variables should be set to *null*, as we consider that no crops have been grown prior to the start of the simulation.
+
+.. code-block:: csharp
+   :caption: Storage variables for previously grown crops
+   :linenos:
+        private string prev1 = null;
+        private string prev2 = null;
+
+Subsequently, we define a public method ``AllowsSowing`` that takes the name of a crop as input and 
+returns a boolean value indicating whether sowing that crop is allowed based on the previous crops grown.
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -608,8 +608,8 @@ In the report tables, you can easily identify all years in which no crop was har
 with the three-year period from 1993 to 1995 representing the longest consecutive duration without harvest.
 
 The equivalent figure of the annual progression in yield is provided by the ``Crop Yield`` graph which we generated and displayed earlier.
-The figure shows that sorghum yields are highly variable, with the lowest yield being less than half of the highest yield.
-The four mungbean yields instead show a small but consistent upward trend.
+The figure shows that sorghum yields are highly variable, with the lowest yield being only about half of the highest yield.
+The four mungbean yields instead show still substantial though slightly less variability.
 Such observed patterns can be typical entry points for further investigations into the likely causes of simulation results, 
 although they may also be driven purely by year-to-year climate variability.
 
