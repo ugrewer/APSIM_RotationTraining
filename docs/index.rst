@@ -23,6 +23,8 @@ Contents
    basic crop rotations
    flexible cropping sequences
    continuous cropping on fixed dates
+   Multiple paddocks
+   Diagnosis
    conclusion
    downloads
    authors
