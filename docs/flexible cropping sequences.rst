@@ -141,11 +141,13 @@ The next step in the ``RotationManager`` is to specify:
 - the conditions that trigger each transition (i.e., arc) between nodes, and
 - the actions to be executed whenever a given transition is taken.
 
+For this, we again have to link to *manager* scripts within the ``Paddock`` node of the simulation tree by calling them in the ``RotationManager``.
 The overall setup of transition conditions and transition actions is quite trivial,
 as it is identical to the procedures presented in the previous tutorial section on basic crop rotations.
 Please complete the conditions and action fields in the ``RotationManager``,
 so that all *"Enter"* *arcs* have the condition *"CanSow"* and the action *"SowCrop()"*.
 Instead, all *"Exit"* *arcs* should have the condition *"CanHarvest"* and the action *"HarvestCrop()"*.
+Please make sure to always reference the *manager* scripts of the intended crop.
 For example, the completed box of “Conditions” and “Actions” for wheat (i.e., the two arcs *"Enter WH"* and *"Exit WH"*) should look like the following:
 
 .. figure:: _static/APSIMscreenshot_TransitionActionConditions_EnterWH.png
@@ -156,10 +158,13 @@ For example, the completed box of “Conditions” and “Actions” for wheat (
    :alt: TransitionActionConditions_ExitWH
    :width: 80%
 
-
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
-the next step is to generate suitable *manager* scripts that will be called upon by the transition rules (i.e., the arcs).
-For this, we again have to generate such *manager* scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
+the next step is to update these *manager* scripts that are called upon by the transition rules.
+This is the actual more tricky part.
+As specified further above, our current *"manager"* scripts for sowing and harvesting were simply copied from the previous tutorial example.
+The only updates that have been implemented so far (as part of the provided starting *APSIMX file*) was to update the parameter values within the *"manager"* scripts to consider reasonable values for each crop (sowing window, planting density, etc.).
+Instead, we now need to modify the **C# code** of the *manager* scripts in a more substantial way
+to represent the further above defined cropping sequencing rules.
 
 
 Absolute water availability
