@@ -85,9 +85,9 @@ Once you have tried to come up with your own solution, please proceed by unhidin
 
    <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
    It minimises the number of crop nodes and transitions (i.e., arcs) required to represent the system.
-   Thereby, it is important to not that the *"Fallow"* node is used to represent both:
-   (i) summer as well as winter fallows that last an entire season, as well as
-   (ii) short break periods in winter and spring that occur between the cultivation of two directly adjacent summer and winter crops.
+   Thereby, it is important to not that the <b>"Fallow"</b> node is used to represent both:
+   (i) summer as well as winter fallows that last an entire season, and
+   (ii) short break periods in autumn and spring that occur between the cultivation of two directly adjacent summer and winter crops.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible.png" alt="BubbleChart_flexible" width="80%">
@@ -123,6 +123,29 @@ Once you have tried to come up with your own solution, please proceed by unhidin
 
 Transitioning between Plot States
 ----------------------------------------
+The next step in the ``RotationManager`` is to specify:
+
+- the conditions that trigger each transition (i.e., arc) between nodes, and
+- the actions to be executed whenever a given transition is taken.
+
+The overall setup of transition conditions and transition actions is quite trivial,
+as it is identical to the procedures presented in the previous tutorial section on basic crop rotations.
+Please complete the conditions and action fields in the ``RotationManager``,
+so that all *"Enter"* *arcs* have the condition *"CanSow"* and the action *"SowCrop()"*.
+Instead, all *"Exit"* *arcs* should have the condition *"CanHarvest"* and the action *"HarvestCrop()"*.
+For example, the completed box of “Conditions” and “Actions” for wheat should look like the following:
+
+.. figure:: _static/APSIMscreenshot_TransitionActionConditions_EnterWH.png
+   :alt: TransitionActionConditions_EnterWH
+   :width: 80%
+
+.. figure:: _static/APSIMscreenshot_TransitionActionConditions_ExitWH.png
+   :alt: TransitionActionConditions_ExitWH
+   :width: 80%
+
+
+
+
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
 the next step is to generate suitable *manager* scripts that will be called upon by the transition rules (i.e., the arcs).
 For this, we again have to generate such *manager* scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
