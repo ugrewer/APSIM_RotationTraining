@@ -138,7 +138,7 @@ Transitioning between Plot States
 ----------------------------------------
 The next step in the ``RotationManager`` is to specify:
 
-- the conditions that trigger each transition (i.e., arc) between nodes, and
+- the conditions that trigger each transition between nodes, and
 - the actions to be executed whenever a given transition is taken.
 
 For this, we again have to link to *manager* scripts within the ``Paddock`` node of the simulation tree by calling them in the ``RotationManager``.
@@ -147,8 +147,8 @@ as it is identical to the procedures presented in the previous tutorial section 
 Please complete the conditions and action fields in the ``RotationManager``,
 so that all *"Enter"* *arcs* have the condition *"CanSow"* and the action *"SowCrop()"*.
 Instead, all *"Exit"* *arcs* should have the condition *"CanHarvest"* and the action *"HarvestCrop()"*.
-Please make sure to always reference the *manager* scripts of the intended crop.
-For example, the completed box of “Conditions” and “Actions” for wheat (i.e., the two arcs *"Enter WH"* and *"Exit WH"*) should look like the following:
+Please make sure to always reference the *manager* script of the intended crop.
+For example, the completed box of “Conditions” and “Actions” for wheat (i.e., *"Enter WH"* and *"Exit WH"*) should look like the following:
 
 .. figure:: _static/APSIMscreenshot_TransitionActionConditions_EnterWH.png
    :alt: TransitionActionConditions_EnterWH
@@ -158,38 +158,57 @@ For example, the completed box of “Conditions” and “Actions” for wheat (
    :alt: TransitionActionConditions_ExitWH
    :width: 80%
 
+    Transition conditions and transition actions for wheat.
+
+
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
 the next step is to update these *manager* scripts that are called upon by the transition rules.
 This is the actual more tricky part.
-As specified further above, our current *"manager"* scripts for sowing and harvesting were simply copied from the previous tutorial example.
+As specified further above, our current *manager* scripts for sowing and harvesting were simply copied from the previous tutorial example.
 The only updates that have been implemented so far (as part of the provided starting *APSIMX file*) was to update the parameter values within the *"manager"* scripts to consider reasonable values for each crop (sowing window, planting density, etc.).
-Instead, we now need to modify the **C# code** of the *manager* scripts in a more substantial way
-to represent the further above defined cropping sequencing rules.
+For example, when you navigate to the *manager* script ``SowHarvest_wheat``,
+you will see that the sowing window dates and sowing properties are using reasonable values for wheat in the Darling Downs region.
 
+.. figure:: _static/APSIMscreenshot_SowHarvest_wheat.png
+   :alt: SowHarvest_wheat
+   :width: 80%
+
+    Parameters-tab of the manager script for sowing and harvesting of wheat.
+
+
+
+
+Instead, we now need to verify that the *manager* script correctly represents the further above defined cropping sequencing rules.
+For this, it is insufficient to inspect the *Parameters* tab only,
+but we will have to consult and modify the **C# code** of the *manager* scripts. 
 
 Absolute water availability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 As identified in the section *Cropping Scenario* above, 
 the first decision rule to be implemented is that a crop is only sown if sufficient water is available during the sowing window, 
 while otherwise the plot is left in fallow.
-When you select an arbitrary of the current *manger* scripts for sowing and harvesting, e.g. ``SowHarvest_sorghum``,
-you can identify that the existing script already contains a water availability check identical to the one presented in the previous tutorial section on basic crop rotations.
+When you select any of the current *manager* scripts for sowing and harvesting, e.g. ``SowHarvest_sorghum``,
+you can identify that they already contain a water availability check identical to the one presented in the previous tutorial section on basic crop rotations.
 Accordingly, a crop is only sown if sufficient water resources are available during the sowing window.
 No further changes are required from our side.
 When you click through the various four sowing and harvest *manager* scripts,
 you will notice that the sowing windows slightly vary by crop, 
-while the water thresholds only differ between summer and winter crops.
+while the water thresholds differ between summer and winter crops.
+Specifically, as we anticipate more in-season rainfall during the summer growing period,
+the water threshold for summer crops (sorghum and mungbean) is slightly lower than for winter crops (wheat and chickpea).
+Generally, the water thresholds used here are lower than in the previous tutorial section and
+will more frequently result in the sowing of a crop rather than leaving the plot fallow.
 
 Crop sequence: Disease pressure and nitrogen management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When now shifting to the issue of representing the crop sequence rules,
 you will notice that no corresponding variables and drop-down menus are available in the current *manager* scripts for sowing and harvesting.
-Accordingly, we will again need to make modifications to the **C# code** of *manager* scripts.
-Arbitrarily, let us start with the ``SowHarvest_sorghum`` *manager* script and select the ``Script`` tab. 
+Accordingly, we will need to make dedicated modifications to the **C# code** of *manager* scripts.
+Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* script and select the ``Script`` tab. 
 
 In the previous cases, when we worked with **C# code** in APSIM *manager* scripts,
 we predominantly accessed the namespaces, classes, and properties that are defined within the APSIM source code.
-We accessed those APSIM components by copying using directives (i.e., namespace imports) from existing *manager* scripts and 
+We accessed those APSIM components by copying *using directives* (i.e., *namespace imports*) from existing *manager* scripts and 
 by exploring available object methods and properties through IntelliSense in the APSIM code editor.
 In the current case, we will instead define our own variables to keep track of the previously grown crops.
 
