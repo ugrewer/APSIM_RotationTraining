@@ -171,11 +171,9 @@ you will see that the sowing window dates and sowing properties are using reason
 
 .. figure:: _static/APSIMscreenshot_SowHarvest_wheat.png
    :alt: SowHarvest_wheat
-   :width: 80%
+   :width: 50%
 
     Parameters-tab of the manager script for sowing and harvesting of wheat.
-
-
 
 
 Instead, we now need to verify that the *manager* script correctly represents the further above defined cropping sequencing rules.
@@ -187,7 +185,7 @@ Absolute water availability
 As identified in the section *Cropping Scenario* above, 
 the first decision rule to be implemented is that a crop is only sown if sufficient water is available during the sowing window, 
 while otherwise the plot is left in fallow.
-When you select any of the current *manager* scripts for sowing and harvesting, e.g. ``SowHarvest_sorghum``,
+When you select any of the current *manager* scripts for sowing and harvesting, e.g. ``SowHarvest_wheat``,
 you can identify that they already contain a water availability check identical to the one presented in the previous tutorial section on basic crop rotations.
 Accordingly, a crop is only sown if sufficient water resources are available during the sowing window.
 No further changes are required from our side.
@@ -210,14 +208,71 @@ In the previous cases, when we worked with **C# code** in APSIM *manager* script
 we predominantly accessed the namespaces, classes, and properties that are defined within the APSIM source code.
 We accessed those APSIM components by copying *using directives* (i.e., *namespace imports*) from existing *manager* scripts and 
 by exploring available object methods and properties through IntelliSense in the APSIM code editor.
-In the current case, we will instead define our own variables to keep track of the previously grown crops.
+In the current case, we will instead also define some simple variables ourselves to keep track of the previously grown crops.
 
+As a first step, let us generate a new *manager* scripts by right-clicking on the ``Paddock`` node, selecting ``Add model...``, and then choosing ``Manager``.
+Rename the new node to ``CropSequenceEnforcer``, as it will enforce the desired crop sequence rules.
+The default *manager* script contains some useful placeholder code that is a good starting point in many purposes. 
 
+.. code-block:: csharp
+   :caption: Default *Manager* script provided in APSIM
+   :linenos:
+   
+    using System;
+    using Models.Core;
+    using Models.Interfaces;
+    using Models.PMF;
+    using APSIM.Shared.Utilities;
 
+    namespace Models
+    {
+        [Serializable]
+        public class Script : Model
+        {
+            [Link] IClock Clock;
+            [Link] ISummary Summary;
 
+            [EventSubscribe("DoManagement")]
+            private void DoDailyCalculations(object sender, EventArgs e)
+            {
+                // Called once per day
+            }
+        }
+    }
 
+The default *manager* script begins with several using directives (i.e., namespace imports).
+These imports make the types defined in those namespaces directly available in the script, 
+so you can refer to them with short names instead of writing their full namespace paths every time.
+Subsequently, the script declares the namespace `Models`, which is the standard namespace for all APSIM *manager* scripts.
+In a nutshell, any *manager* script that we are creating in the form of user-written C# classes
+are dynamically compiled at runtime.
+For this to work, APSIM expects all classes of *manager* scripts to:
 
+- be defined within the `Models` namespace, 
+- inherit from the base class `Model`, and
+- be decorated with the *[Serializable]* attribute.
 
+In C#, *[Serializable]* is an attribute of a class. As you know, the *APSIMX files* are JSON files,
+while APSIM is written in C#.
+When APSIM loads your *APSIMX file*, it deserializes the JSON code into C# objects.
+When you save a modified simulation back to file, it serializes the C# objects back into JSON.
+For this to work, all APSIM model classes must be serializable.
+
+Subsequently, the code declares a C# class named `Script` that inherits from APSIM's base class *Model*.
+By inheriting from `Model`, the class is included in the simulation tree,
+gains the ability to link to other APSIM models, and
+is able to receive events from the APSIM event system.
+
+*[Link]* allows us to link to other APSIM models and access their properties and methods at runtime.
+For example, through the use of *[Link] ISummary Summary;* we gain access to the *Summary* node in APSIM,
+allowing us to write messages to the summary log.
+Similarly, *[Link] IClock Clock;* provides access to the simulation clock, 
+which for example allows us to retrieve the current simulation date via *Clock.Today*.
+
+Finally, the script defines a method named *DoDailyCalculations* that is decorated with the *[EventSubscribe("DoManagement")]* attribute.
+This attribute indicates that the method should be called whenever the *DoManagement* event is raised.
+The *DoManagement* event is raised once per day in APSIM, allowing us to perform daily calculations and updates.
+*Manager* scripts typically hook into *DoManagement* because it fires once per day and is designed for management actions (e.g., sowing, fertilizing, irrigation).
 
 
 
