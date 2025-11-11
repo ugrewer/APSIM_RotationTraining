@@ -244,19 +244,17 @@ The default *manager* script begins with several using directives (i.e., namespa
 These imports make the types defined in those namespaces directly available in the script, 
 so you can refer to them with short names instead of writing their full namespace paths every time.
 Subsequently, the script declares the namespace `Models`, which is the standard namespace for all APSIM *manager* scripts.
-In a nutshell, any *manager* script that we are creating in the form of user-written C# classes
-are dynamically compiled at runtime.
+In a nutshell, any *manager* script that we are creating in the form of user-written C# classes is dynamically compiled at runtime.
 For this to work, APSIM expects all classes of *manager* scripts to:
 
 - be defined within the `Models` namespace, 
 - inherit from the base class `Model`, and
 - be decorated with the *[Serializable]* attribute.
 
-In C#, *[Serializable]* is an attribute of a class. As you know, the *APSIMX files* are JSON files,
-while APSIM is written in C#.
+In C#, *[Serializable]* is an attribute of a class. As you know, *APSIMX files* are written in JSON, while APSIM is written in C#.
 When APSIM loads your *APSIMX file*, it deserializes the JSON code into C# objects.
-When you save a modified simulation back to file, it serializes the C# objects back into JSON.
-For this to work, all APSIM model classes must be serializable.
+When you save a modified simulation to file, it serializes the C# objects back into JSON.
+This only works if all APSIM model classes are serializable.
 
 Subsequently, the code declares a C# class named `Script` that inherits from APSIM's base class *Model*.
 By inheriting from `Model`, the class is included in the simulation tree,
@@ -264,10 +262,10 @@ gains the ability to link to other APSIM models, and
 is able to receive events from the APSIM event system.
 
 *[Link]* allows us to link to other APSIM models and access their properties and methods at runtime.
-For example, through the use of *[Link] ISummary Summary;* we gain access to the *Summary* node in APSIM,
+For example, through the use of *"[Link] ISummary Summary;"* we gain access to the *Summary* node in APSIM,
 allowing us to write messages to the summary log.
-Similarly, *[Link] IClock Clock;* provides access to the simulation clock, 
-which for example allows us to retrieve the current simulation date via *Clock.Today*.
+Similarly, *"[Link] IClock Clock;"* provides access to the simulation clock,
+which allows us to dynamically retrieve the current simulation date via *Clock.Today*.
 
 Finally, the script defines a method named *DoDailyCalculations* that is decorated with the *[EventSubscribe("DoManagement")]* attribute.
 This attribute indicates that the method should be called whenever the *DoManagement* event is raised.
@@ -281,6 +279,9 @@ Subheading
 
 Sub-Subheading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sub-Sub-Subheading
+++++++++++++++++++++++++++++++++++++++++
 
 
 
