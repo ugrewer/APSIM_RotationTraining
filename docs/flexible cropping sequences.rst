@@ -199,10 +199,9 @@ will more frequently result in the sowing of a crop rather than leaving the plot
 
 Crop Sequence: Disease Pressure and Nitrogen Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When now shifting to the issue of representing the crop sequence rules,
+When now shifting to the issue of representing the crop sequencing rules,
 you will notice that no corresponding variables and drop-down menus are available in the current *manager* scripts for sowing and harvesting.
-Accordingly, we will need to make dedicated modifications to the **C# code** of *manager* scripts.
-Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* script and select the ``Script`` tab. 
+Accordingly, we will need to make dedicated modifications to the **C# code**.
 
 In the previous cases, when we worked with **C# code** in APSIM *manager* scripts,
 we predominantly accessed the namespaces, classes, and properties that are defined within the APSIM source code.
@@ -210,14 +209,14 @@ We accessed those APSIM components by copying *using directives* (i.e., *namespa
 by exploring available object methods and properties through IntelliSense in the APSIM code editor.
 In the current case, we will instead also define some simple variables ourselves to keep track of the previously grown crops.
 
-Default *Manager* Script Provided in APSIM
+Default Manager Script
 ++++++++++++++++++++++++++++++++++++++++
-As a first step, let us generate a new *manager* scripts by right-clicking on the ``Paddock`` node, selecting ``Add model...``, and then choosing ``Manager``.
+As a first step, let us generate a new *manager* script by right-clicking on the ``Paddock`` node, selecting ``Add model...``, and then choosing ``Manager``.
 Rename the new node to ``CropSequenceEnforcer``, as it will enforce the desired crop sequence rules.
-The default *manager* script contains some useful placeholder code that is a good starting point in many purposes. 
+The default *manager* script contains some useful placeholder code that is a good starting point for many purposes. 
 
 .. code-block:: csharp
-   :caption: Default *Manager* script provided in APSIM
+   :caption: Default "Manager" script provided in APSIM
    :linenos:
    
     using System;
@@ -243,15 +242,15 @@ The default *manager* script contains some useful placeholder code that is a goo
     }
 
 The default *manager* script begins with several using directives (i.e., namespace imports).
-These imports make the types defined in those namespaces directly available in the script, 
-so you can refer to them with short names instead of writing their full namespace paths every time.
+These imports make the types defined in those namespaces directly available in this script. 
+Now, you can refer to them with short names instead of writing their full namespace paths every time.
 Subsequently, the script declares the namespace `Models`, which is the standard namespace for all APSIM *manager* scripts.
 In a nutshell, any *manager* script that we are creating in the form of user-written C# classes is dynamically compiled at runtime.
 For this to work, APSIM expects all classes of *manager* scripts to:
 
-- be defined within the `Models` namespace, 
-- inherit from the base class `Model`, and
-- be decorated with the *[Serializable]* attribute.
+- Be defined within the `Models` namespace
+- Inherit from the base class `Model`
+- Be decorated with the *[Serializable]* attribute
 
 In C#, *[Serializable]* is an attribute of a class. As you know, *APSIMX files* are written in JSON, while APSIM is written in C#.
 When APSIM loads your *APSIMX file*, it deserializes the JSON code into C# objects.
@@ -273,6 +272,8 @@ Finally, the script defines a method named *DoDailyCalculations* that is decorat
 This attribute indicates that the method should be called whenever the *DoManagement* event is raised.
 The *DoManagement* event is raised once per day in APSIM, allowing us to perform daily calculations and updates.
 *Manager* scripts typically hook into *DoManagement* because it fires once per day and is designed for management actions (e.g., sowing, fertilizing, irrigation).
+
+Understanding the structure and functionality of the default *manager* script gives us a good first foundation to build customised *manager* scripts.
 
 Helper-Script: Crop Sequence Enforcer
 ++++++++++++++++++++++++++++++++++++++++
@@ -315,6 +316,7 @@ returns a boolean value indicating whether sowing that crop is allowed based on 
 
 
 
+Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* script and select the ``Script`` tab. 
 
 
 
