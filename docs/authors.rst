@@ -15,7 +15,7 @@ This tutorial was developed by the following members of the **APSIM reference pa
 - **ORCID:** [Add ORCID link]
  
  
-**Person 2**
+**Peter de Voil**
 
 .. image:: _static/UQ_logo.png
    :width: 220px
@@ -24,4 +24,6 @@ This tutorial was developed by the following members of the **APSIM reference pa
 - **Role:** Principal Farming Systems Modeller  
 - **Department:** Queensland Alliance for Agriculture and Food Innovation  
 - **Institution:** The University of Queensland
-- **ORCID:** [Add ORCID link]
+- **WWW:** https://qaafi.uq.edu.au/profile/864/peter-devoil
+- **Email:** peter.devoil@uq.edu.au
+- **ORCID:** 0000-0001-6584-4376
