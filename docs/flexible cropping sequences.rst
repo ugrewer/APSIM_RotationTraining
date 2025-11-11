@@ -65,10 +65,23 @@ Crop Sequence Diagram
 The first step in implementing the above flexible cropping strategy 
 is to represent the desired crop sequences within the ``RotationManager``.
 In other words, we have to generate a suitable bubble chart.
+
 As a starting point for this tutorial section, please utilise the following *APSIMX file*:
 `CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
 Using an existing *APSIMX file* as the starting point, allows to skip over some aspects already covered in previous tutorial sections
-and instead focus on the new aspects relevant for flexible cropping sequences.
+and instead focus on the new aspects relevant for flexible cropping sequences. If you compare the simulation tree in the provided *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
+you will notice that there are a number of modifications and updates already done:
+
+- Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
+- Draft *manager* scripts for sowing and harvesting have been created for each crop (as simple adaptations of the previously used *manager* scripts in *CropRotation_basic.apsimx* and without any thorough update to our new simulation scenario).
+- Fertiliser *manager* scripts have been added for each crop.
+- Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new crops (under the *Soil node* ``HRS`` -> ``Physical``). 
+- The data reporting notes (both daily reports and at harvest) have been updated to account for the new crops.
+- The graphing nodes have been updated to account for the new crops.
+
+All these changes require skills and procedures that we have already covered in previous tutorial sections.
+Therefore, to keep the tutorial focused on the new aspects and save you from some repetitive tasks,
+we have included these scripts and updates as starting point within the provided *APSIMX file*.
 
 Currently, the ``RotationManager`` canvas is empty.
 Please take a moment to try and represent the above defined cropping sequence via a suitable bubble chart.
@@ -133,7 +146,7 @@ as it is identical to the procedures presented in the previous tutorial section 
 Please complete the conditions and action fields in the ``RotationManager``,
 so that all *"Enter"* *arcs* have the condition *"CanSow"* and the action *"SowCrop()"*.
 Instead, all *"Exit"* *arcs* should have the condition *"CanHarvest"* and the action *"HarvestCrop()"*.
-For example, the completed box of “Conditions” and “Actions” for wheat should look like the following:
+For example, the completed box of “Conditions” and “Actions” for wheat (i.e., the two arcs *"Enter WH"* and *"Exit WH"*) should look like the following:
 
 .. figure:: _static/APSIMscreenshot_TransitionActionConditions_EnterWH.png
    :alt: TransitionActionConditions_EnterWH
@@ -144,24 +157,10 @@ For example, the completed box of “Conditions” and “Actions” for wheat s
    :width: 80%
 
 
-
-
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
 the next step is to generate suitable *manager* scripts that will be called upon by the transition rules (i.e., the arcs).
 For this, we again have to generate such *manager* scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
-If you compare the simulation tree in your currently open *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
-you will notice that there are a number of modifications and updates already done:
 
-- Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
-- Draft *manager* scripts for sowing and harvesting have been created for each crop (as simple adaptations of the previously used *manager* scripts in *CropRotation_basic.apsimx* and without any thorough update to our new simulation scenario).
-- Fertiliser *manager* scripts have been added for each crop.
-- Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new crops (under the *Soil node* ``HRS`` -> ``Physical``). 
-- The data reporting notes (both daily reports and at harvest) have been updated to account for the new crops.
-- The graphing nodes have been updated to account for the new crops.
-
-All these changes require skills and procedures that we have already covered in previous tutorial sections.
-Therefore, to keep the tutorial focused on the new aspects and save you from some repetitive tasks,
-we have included these scripts and updates as starting point within the provided *APSIMX file*.
 
 Absolute water availability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
