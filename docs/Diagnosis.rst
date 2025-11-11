@@ -29,7 +29,7 @@ These rules have an ephemeral nature - they change value depending on other stat
 
    A state transition network with an ephemeral state - Irrigation. 
 
-So, diagnosis of the rotation manager's behavior will likely require examination of the simulation's activity as it happens, not end-of-day reporting. 
+So, diagnosis of the rotation manager's behavior will likely require examination of the simulation's activity as it happens, not end-of-day reporting: some days will be busy with more that one state change, others with nothing happening.
 
 What's in the summary file?
 ---------------------------
