@@ -16,7 +16,7 @@
     {
       "$type": "Models.Core.Simulation, Models",
       "Descriptors": null,
-      "Name": "CropRotation_flexible_start",
+      "Name": "CropRotation_basic",
       "ResourceName": null,
       "Children": [
         {
@@ -1143,10 +1143,233 @@
             },
             {
               "$type": "Models.Management.RotationManager, Models",
-              "Nodes": [],
-              "Arcs": [],
+              "Nodes": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 1,
+                  "Name": "Sorghum",
+                  "Location": "262, 116",
+                  "Colour": "158, 77, 77"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 3,
+                  "Name": "Mungbean",
+                  "Location": "701, 438",
+                  "Colour": "97, 172, 126"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 4,
+                  "Name": "Fallow",
+                  "Location": "477, 287",
+                  "Colour": "192, 191, 188"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 7,
+                  "Name": "Wheat",
+                  "Location": "694, 124",
+                  "Colour": "246, 211, 45"
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Node, APSIM.Shared",
+                  "Description": "",
+                  "Transparent": false,
+                  "ID": 8,
+                  "Name": "Chickpea",
+                  "Location": "265, 451",
+                  "Colour": "241, 203, 132"
+                }
+              ],
+              "Arcs": [
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 2,
+                  "Name": "Enter WH after SG",
+                  "Location": "474, 89",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 7,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 5,
+                  "Name": "Enter SG after WH",
+                  "Location": "472, 138",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 6,
+                  "Name": "Enter SP after SG",
+                  "Location": "312, 274",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 9,
+                  "Name": "Enter SG after CP",
+                  "Location": "231, 304",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 10,
+                  "Name": "Enter MB after CP",
+                  "Location": "480, 413",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 11,
+                  "Name": "Enter CP after MB",
+                  "Location": "487, 467",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 7,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 12,
+                  "Name": "Enter MB after WH",
+                  "Location": "753, 303",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 13,
+                  "Name": "Enter WH after MB",
+                  "Location": "665, 274",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 3,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 14,
+                  "Name": "Enter Winter FA after MB",
+                  "Location": "563, 377",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 3,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 15,
+                  "Name": "Enter MB after Winter FA",
+                  "Location": "590, 347",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 8,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 16,
+                  "Name": "Enter Summer FA after CP",
+                  "Location": "361, 353",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 8,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 17,
+                  "Name": "Enter CP after Summer FA",
+                  "Location": "392, 379",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 1,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 18,
+                  "Name": "Enter Winter FA after SG",
+                  "Location": "409, 180",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 1,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 19,
+                  "Name": "Enter SG after Winter FA",
+                  "Location": "362, 216",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 7,
+                  "DestinationID": 4,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 20,
+                  "Name": "Enter Summer FA after WH",
+                  "Location": "606, 224",
+                  "Colour": ""
+                },
+                {
+                  "$type": "APSIM.Shared.Graphing.Arc, APSIM.Shared",
+                  "SourceID": 4,
+                  "DestinationID": 7,
+                  "Conditions": [],
+                  "Actions": [],
+                  "ID": 21,
+                  "Name": "Enter WH after Summer FA",
+                  "Location": "578, 195",
+                  "Colour": ""
+                }
+              ],
               "TopLevel": true,
-              "InitialState": "Fallow_postMB",
+              "InitialState": "Fallow",
               "Verbose": true,
               "Name": "RotationManager",
               "ResourceName": null,

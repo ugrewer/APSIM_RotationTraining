@@ -219,8 +219,7 @@ The remainder of the code remained unchanged from the template that we used.
             [Link] private Clock Clock;
             [Link] private Summary Summary;
             [Link] private Soil Soil;
-            [Link]
-            private ISoilWater waterBalance;
+            [Link] private ISoilWater waterBalance;
             
             public IStructure Structure { private get; set; }
             //[Link] Simulation Simulation;

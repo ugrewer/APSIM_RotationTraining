@@ -40,7 +40,7 @@ As summer crops, the farmer commonly grows sorghum and mungbean,
 while as winter crops, wheat and chickpea are readily available options.
 
 To keep some realism, but avoid some of the complicated detail that will be involved in simulating a real case study farm,
-we will consider here that the farmer determines the crop choice on three subsequent decisions:
+we will consider here that the farmer determines the crop choice on only two subsequent decisions:
 
 - Absolute water availability
     During the sowing window, a threshold for water availability determines if a crop is sown at all or if the field is left fallow.
@@ -49,15 +49,8 @@ we will consider here that the farmer determines the crop choice on three subseq
 - Crop sequence: Disease pressure and nitrogen management
     The continuous cropping of cereals or legumes can lead to increased disease pressure and suboptimal nitrogen management.
     Here we will implement the following simple rule: If the previous two cultivated crops were cereals,
-    the next crop must be a legume. Instead, if the previous crop was a legume, the next crop must be a cereal.
-    Thereby, we will simply consider the last cultivated crops, regardless of whether the plot has intermittentlly be left fallow.
-
-- Time of season and relative water availability
-    The above two rules will determine in most seasons which crop will be sown.
-    However, the above still leaves flexibility in some seasons, where none of the above rules is binding 
-    (e.g., when the past two crops were a legume followed by a cereal, the above rules do not determine which crop will be sown).
-    In such cases, the farmer will sow a legume if sowing conditions are fulfilled early in the season,
-    and otherwise sow cereals.
+    the next crop must be a legume. In all other cases, the next crop must be a cereal.
+    Thereby, we will simply consider the last cultivated crops, regardless of whether the plot has intermittently been left fallow.
 
 The above rules have been chosen on purpose for this tutorial, 
 as they demonstrate how to implement conditions that depend on both 
@@ -91,8 +84,10 @@ Once you have tried to come up with your own solution, please proceed by unhidin
    <summary><b>Show/Hide Solution: Crop Sequence Diagram</b></summary>
 
    <p>The most concise way of representing the cropping sequence (that we could think of) is shown below.
-   It minimises the number of crop nodes required to represent the system,
-   while requiring a moderately higher number of transitions (i.e., arcs).
+   It minimises the number of crop nodes and transitions (i.e., arcs) required to represent the system.
+   Thereby, it is important to not that the *"Fallow"* node is used to represent both:
+   (i) summer as well as winter fallows that last an entire season, as well as
+   (ii) short break periods in winter and spring that occur between the cultivation of two directly adjacent summer and winter crops.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible.png" alt="BubbleChart_flexible" width="80%">
@@ -100,8 +95,8 @@ Once you have tried to come up with your own solution, please proceed by unhidin
    <p>However, there are many different ways in which one can conceptualise and setup the bubble chart.
    Here below, we show another commonly used alternative, where a separate node for the off-season periods in autumn and spring is created.
    While such nodes are not strictly necessary for representing the system in APSIM, 
-   they allow to keep the summer and winter season neatly separated within the bubble chart.
-   This solution also limits the number of transitions (i.e., arcs) needed to represent the system.
+   they allow to keep the summer and winter seasons more neatly separated within the bubble chart.
+   On the downside, this solution requires slightly more nodes and transitions (i.e., arcs) to represent the system.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withBreakPeriod.png" alt="BubbleChart_flexible_withBreakPeriod" width="80%">
@@ -114,11 +109,7 @@ Once you have tried to come up with your own solution, please proceed by unhidin
     as this will make it easier to follow along.
     </p>
     At this stage, we can also add descriptive names to the transitions within the bubble chart.
-    Here, we chose to be quite verbose with the transition names, to avoid any confusion later on.
-    The downside is that this looks a bit cluttered within the bubble chart.
-    However, since we already have a good conceptual understanding of the cropping sequence,
-    we are unlikely to spend too much time looking at the bubble chart from now on.
-    Instead, when referencing the name of specific transitions, a clear and unambiguous naming convention will come in handy.
+    When referencing the name of specific transitions, a clear and unambiguous naming convention will avoid any confusion later on.
    </p>
 
    <img src="_static/APSIMscreenshot_BubbleChart_flexible_withTransitionNames.png" alt="APSIMscreenshot_BubbleChart_flexible_withTransitionNames" width="80%">
@@ -133,16 +124,15 @@ Once you have tried to come up with your own solution, please proceed by unhidin
 Transitioning between Plot States
 ----------------------------------------
 Now that the overall structure of nodes and transition rules of the cropping sequence has been defined in the ``RotationManager``,
-the next step is to generate suitable manager scripts that will be called upon by the transition rules (i.e., the arcs).
-For this, we again have to generate such manager scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
+the next step is to generate suitable *manager* scripts that will be called upon by the transition rules (i.e., the arcs).
+For this, we again have to generate such *manager* scripts within the ``Paddock`` node of the simulation tree and then call them in the transition rules.
 If you compare the simulation tree in your currently open *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
 you will notice that there are a number of modifications and updates already done:
 
 - Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
-- Draft manager scripts for sowing and harvesting have been created for each crop (as simple copy and adaptation of the previously used managers and without any thorough adaptation to our new simulation conditions).
-- Fertiliser scripts have been added for each crop.
+- Draft *manager* scripts for sowing and harvesting have been created for each crop (as simple adaptations of the previously used *manager* scripts in *CropRotation_basic.apsimx* and without any thorough update to our new simulation scenario).
+- Fertiliser *manager* scripts have been added for each crop.
 - Parameters for the soil-crop interactions, specifically the Plant Available Water Capacity (PAWC), have been added for the new crops (under the *Soil node* ``HRS`` -> ``Physical``). 
-- 
 - The data reporting notes (both daily reports and at harvest) have been updated to account for the new crops.
 - The graphing nodes have been updated to account for the new crops.
 
@@ -150,6 +140,31 @@ All these changes require skills and procedures that we have already covered in 
 Therefore, to keep the tutorial focused on the new aspects and save you from some repetitive tasks,
 we have included these scripts and updates as starting point within the provided *APSIMX file*.
 
+Absolute water availability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As identified in the section *Cropping Scenario* above, 
+the first decision rule to be implemented is that a crop is only sown if sufficient water is available during the sowing window, 
+while otherwise the plot is left in fallow.
+When you select an arbitrary of the current *manger* scripts for sowing and harvesting, e.g. ``SowHarvest_sorghum``,
+you can identify that the existing script already contains a water availability check identical to the one presented in the previous tutorial section on basic crop rotations.
+Accordingly, a crop is only sown if sufficient water resources are available during the sowing window.
+No further changes are required from our side.
+When you click through the various four sowing and harvest *manager* scripts,
+you will notice that the sowing windows slightly vary by crop, 
+while the water thresholds only differ between summer and winter crops.
+
+Crop sequence: Disease pressure and nitrogen management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When now shifting to the issue of representing the crop sequence rules,
+you will notice that no corresponding variables and drop-down menus are available in the current *manager* scripts for sowing and harvesting.
+Accordingly, we will again need to make modifications to the **C# code** of *manager* scripts.
+Arbitrarily, let us start with the ``SowHarvest_sorghum`` *manager* script and select the ``Script`` tab. 
+
+In the previous cases, when we worked with **C# code** in APSIM *manager* scripts,
+we predominantly accessed the namespaces, classes, and properties that are defined within the APSIM source code.
+We accessed those APSIM components by copying using directives (i.e., namespace imports) from existing *manager* scripts and 
+by exploring available object methods and properties through IntelliSense in the APSIM code editor.
+In the current case, we will instead define our own variables to keep track of the previously grown crops.
 
 
 
