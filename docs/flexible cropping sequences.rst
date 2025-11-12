@@ -457,7 +457,6 @@ In practice, this means that we have to:
 
         cropSequenceEnforcer.AllowsSowing(cropName)
 
-
 However, since the simulation workflow may not necessarily function without errors,
 it is a good practice to also log core information within the ``Summary`` model.
 Here, our core conditions that we need to track, is which crops were recognised as being previously grown on the plot (*"PreviousCrop1"* and *"PreviousCrop2"*).
@@ -469,9 +468,6 @@ We are adding a print statement that records the field history recognised by our
         Summary.WriteMessage(this,
             $"Field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
             MessageType.Diagnostic);
-
-
-        Summary.WriteMessage(this, $"Field history (end window) → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);
 
 
 The updated code of the ``CanSow`` property should look as follows:
@@ -534,14 +530,28 @@ The updated code of the ``CanSow`` property should look as follows:
 
 The method ``SowCrop()`` and property ``CanHarvest`` remain unchanged.
 Within the method ``HarvestCrop()`` we need to once more invoke our helper script ``CropSequenceEnforcer``
-to ensure that all harvested crops are stored in a central point - beyond the level of the *manager* scripts for sowing and harvesting of individual crops.
-Otherwise, for example the script ``SowHarvest_wheat`` could only track previous wheat crops but no other crops planted on the field.
-For this we want to conduct the following steps:
+to ensure that all harvested crops are stored in a central point.
+Instead, if we would try to store and access which crops are sown from within each individual *manager* scripts for sowing and harvesting of given crop,
+the script ``SowHarvest_wheat`` could only track previous wheat crops but no other crops planted on the field (and so forth).
+We conduct the following steps:
 
-- Access the name of the just harvested crop: "string harvested = GetCropName();"
-- Send the name of the harvested crop for storage to the ``CropSequenceEnforcer``: "cropSequenceEnforcer.RecordHarvest(harvested);"
-- Logging core information within the ``Summary`` file: "Summary.WriteMessage(this, $"Updated field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);
-        }"
+- Access the name of the just harvested crop: 
+.. code-block:: csharp
+
+        string harvested = GetCropName();
+
+- Send the name of the harvested crop for storage to the ``CropSequenceEnforcer``: 
+.. code-block:: csharp
+
+        cropSequenceEnforcer.RecordHarvest(harvested);
+
+- Logging core information within the ``Summary`` file: 
+.. code-block:: csharp
+
+        Summary.WriteMessage(this,
+            $"Updated field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
+            MessageType.Diagnostic);
+
 
 The updated code of the ``HarvestCrop()`` method should look as follows:
 
