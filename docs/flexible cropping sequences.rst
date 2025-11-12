@@ -672,7 +672,8 @@ What is the reason for our simulation to not continue as intended?
     On 1993-01-27 we record the start of grain filling, but saidly on 1993-03-01 the sorghum crop fails due to a loss of leaf area.
    </p>
 
-   <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="80%">
+   <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="100%">
+   <br><br>
 
    <p>
    While this is bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
