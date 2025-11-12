@@ -663,6 +663,7 @@ What is the reason for our simulation to not continue as intended?
 
    <details>
    <summary><b>Show/Hide Solution: Inspecting Simulation Log</b></summary>
+   <br><br>
 
    <p>
     On 1992-11-19 a sorghum crop is sown and the simulation state changes from "Fallow" to "Sorghum".
@@ -673,6 +674,7 @@ What is the reason for our simulation to not continue as intended?
    </p>
 
    <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="100%">
+   <p><em>Figure: APSIM simulation log of the day recording crop failure of sorghum.</em></p>
    <br><br>
 
    <p>
@@ -688,6 +690,10 @@ What is the reason for our simulation to not continue as intended?
    Instead, we did not cater for other possibilities, such as that a crop dies or does never germinate.
    In those cases, our scripts should be flexible enough to intervene and transition the simulation state back to "Fallow".
    </p>
+
+.. raw:: html
+
+   <br><br>
 
 
 Finetuning the Simulation Behaviour
