@@ -602,7 +602,7 @@ let us first inspect the ``RugPlot``.
 
 .. figure:: _static/APSIMscreenshot_Rugplot_flexibleRotation_StuckInSorghum.png
    :alt: Rugplot_flexibleRotation_StuckInSorghum
-   :width: 100%
+   :width: 80%
 
    Rugplot of simulation results.
 
@@ -629,10 +629,66 @@ From the Rugplot, we can identify that there is the following progression of fie
 There are a couple of major takeaway messages that we can derive from the Rugplot:
 
 - The crop sequencing rule seems to be correctly implemented ("If the previous two cultivated crops were cereals, the next crop must be a legume. In all other cases, the next crop must be a cereal.")
-- The low sowing threshold for the summer season is met in all but the first year (which is a special case, as we started the simulation on 1 January).
+- The low sowing threshold for the summer season is met in all but the first year (which is a special case, as we started the simulation only on 1 January, meaning that we have missed all early-season rainfall.).
 - The higher sowing threshold for the winter season is only met in two seasons, and not met in six seasons.
 - And finally, the glaring issue: from summer 1993 onward, our field has remained continuously occupied by sorghum.
 
+This last aspect is obviously unintended.
+Whatever the cause of APSIM stalling in that crop state, 
+it conflicts with our intended simulation scenario and has to be modified.
+After all, our objective was to simulate an approximatively realistic progression of crops on a field in the Darling Downs (with some simplifications for the sake of the tutorial).
+A field that remains occupied by the same crop over multiple years is certainly not meeting this condition.
+
+As another piece of evidence, we can have a look at the ``Data`` tab of the node ``HarvestReport_sorghum``.
+This allows to identify, that the sorghum crop planted in the summer season of 1993 never actually produces any crop yield (i.e., does not reach harvest).
+
+.. figure:: _static/APSIMscreenshot_HarvestReport_sorghum_StuckInSorghum.png
+   :alt: HarvestReport_sorghum_StuckInSorghum
+   :width: 80%
+
+   Rugplot of simulation results.
+
+These give us a set of first good insights.
+However, to get a more mechanistic understanding of what is happening to our simulation
+we have to look at the more detailed logging results that are accessible in the ``Summary`` node.
+When not knowing what to look for, scrolling through the simulation log can be quite a lenghty process,
+particularly when dealing with long-term simulations.
+However, in our case, we already know that things turn sour starting from the summer season 1993,
+which allows us to use the vertical scroll bar to fastly move over the first years of the simulation until we reach the end of 1992.
+From then, we want to closely inspect the simulation log and find the reason of why our simulation gets stuck in sorghum.
+Please independently take a moment to inspect the simulation log yourself.
+What is the reason for our simulation to not continue as intended?
+
+.. raw:: html
+
+   <details>
+   <summary><b>Show/Hide Solution: Inspecting Simulation Log</b></summary>
+
+   <p>
+    On 1992-11-19 a sorghum crop is sown and the simulation state changes from "Fallow" to "Sorghum".
+    On 1992-11-22 a sorghum crop is emerging. 
+    So far, the simulation seems to progress in a standard manner.
+    On 1992-12-16 sorghum reaches floral initiation, on 1993-01-10 the flag-leaf stage is reached, and on 1993-01-22 the sorghum field is flowering.
+    On 1993-01-27 we record the start of grain filling, but saidly on 1993-03-01 the sorghum crop fails due to a loss of leaf area.
+   </p>
+
+   <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="80%">
+
+   <p>
+   While this is bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
+   should neither be the end of our flexible cropping sequence.
+   As you can see from the above screenshot, from the 1993-01-28 onwards, the log records the following info:
+   "Paddock.RotationManager: Transition from "Sorghum" to "Fallow" by Exit SG is not possible. Weight = 0"
+   
+   In other words: The RotationManager that we created, evaluates that the condition for leaving the "Sorghum" state are never fulfilled.
+   In fact, if we remember the <b>"Conditions"</b> that we specified as part of the <b>"Exit SG"</b> transition (i.e., arc) as well as all the other exit transitions,
+   we indicated that we can only transition back to "Fallow" from a crop, when the conditions for <b>"CanHarvest"</b> are fulfilled.
+   Instead, we did not cater for other possibilities, such as that a crop dies or does never germinate.
+   </p>
+
+
+
+<b>"Fallow"</b>
 
 
 
