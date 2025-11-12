@@ -277,7 +277,7 @@ Understanding the structure and functionality of the default *manager* script gi
 
 Helper-Script: Crop Sequence Enforcer
 ++++++++++++++++++++++++++++++++++++++++
-For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequence rules.
+For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequencing rules.
 The overall purpose of the helper script is:
 
 - To remember the two most recently grown crops (no matter which *sowHarvest_* script initiated them).
@@ -295,11 +295,11 @@ After all, we usually do not know at the start from which of the most widely use
 For our current purpose instead, we know that we will generate a very simple and reduced helper script 
 that will only require to access *System* and *Models.Core*. Please remove the other namespace imports from the top of the script.
 
-Subsequently, please rename the placeholder class *Script* to ``CropSequenceEnforcer``, 
+Subsequently, please rename the placeholder class *Script* to *CropSequenceEnforcer*,
 as this clearly documents the purpose of our class.
 
 Next, we will define two private string variables to keep track of the last two grown crops.
-Initially, these variables should be set to *null*, as we consider that no crops have been grown prior to the start of the simulation.
+Initially, these variables should be set to *null*, as we consider that no crops have been grown prior to the simulation start date.
 
 .. code-block:: csharp
    :caption: Storage variables for previously grown crops
@@ -309,8 +309,8 @@ Initially, these variables should be set to *null*, as we consider that no crops
         private string previousCrop1 = null;   // Most recent harvested crop
         private string previousCrop2 = null;   // Second most recent harvested crop
 
-Subsequently, we define a public method ``AllowsSowing`` that takes the name of a crop as input and 
-returns a boolean value indicating whether sowing that crop is allowed based on the previous crops grown.
+Subsequently, we define a public method ``AllowsSowing`` that takes the name of a crop as input and returns a boolean value.
+Based on the history of previous crops grown, it indicates if the crop in question can be sown, given our cropping sequence rules.
 
 .. code-block:: csharp
    :caption: Method "AllowsSowing": Enforcing alternation between cereals and legumes
@@ -345,7 +345,7 @@ returns a boolean value indicating whether sowing that crop is allowed based on 
             return isCereal;
         }
 
-The method first converts the input crop name to lowercase to ensure case-insensitive comparisons.
+In more detail, the method ``AllowsSowing`` first converts the input crop name to lowercase to ensure case-insensitive comparisons.
 It then checks if the proposed crop is a cereal (sorghum or wheat) or a legume (mungbean or chickpea).
 If the crop is neither, an exception is thrown indicating an unknown crop.
 The method then evaluates the previous two grown crops:
@@ -378,7 +378,8 @@ Then, we define a public method ``RecordHarvest`` that takes the name of a harve
             }
         }
 
-Finally, we add two public read-only accessors to retrieve the names of the previously grown crops by other scripts.
+Finally, we add two public read-only accessors that allow our other scripts to retrieve the names of the previously grown crops.
+This may come in handy for logging purposes, although the heavy lifting will be done by the `AllowsSowing` and `RecordHarvest` methods.
 
 .. code-block:: csharp
    :caption: Creating public accessors for previous crops
@@ -388,99 +389,170 @@ Finally, we add two public read-only accessors to retrieve the names of the prev
         public string PreviousCrop1 => previousCrop1;
         public string PreviousCrop2 => previousCrop2;
 
-The final version of the helper script ``CropSequenceEnforcer`` should now look as follows:
-
-.. code-block:: csharp
-   :caption: Final version of the helper script "CropSequenceEnforcer"
-   :linenos:
-
-        using System;
-        using Models.Core;
-
-        namespace Models
-        {
-            [Serializable]
-            public class CropSequenceEnforcer : Model
-            {
-                // Crop history
-                private string previousCrop1 = null;   // Most recent harvested crop
-                private string previousCrop2 = null;   // Second most recent harvested crop
-
-                // Check if the proposed crop is allowed under given cropping sequence rules
-                public bool AllowsSowing(string crop)
-                {
-                    crop = crop.ToLower();
-
-                    bool isCereal  = crop == "sorghum" || crop == "wheat";
-                    bool isLegume  = crop == "mungbean" || crop == "chickpea";
-
-                    if (!isCereal && !isLegume)
-                        throw new Exception($"CropSequenceEnforcer: Unknown crop '{crop}'.");
-
-                    // No history yet → allow only cereals
-                    if (previousCrop1 == null || previousCrop2 == null)
-                        return isCereal;
-
-                    bool previous_1_wasCereal =
-                        previousCrop1 == "sorghum" || previousCrop1 == "wheat";
-
-                    bool previous_2_wasCereal =
-                        previousCrop2 == "sorghum" || previousCrop2 == "wheat";
-
-                    // Two cereals in a row → enforce a legume
-                    if (previous_1_wasCereal && previous_2_wasCereal)
-                        return isLegume;
-
-                    // Otherwise → enforce a cereal
-                    return isCereal;
-                }
-
-                // Called at harvest time to update crop sequence history
-                public void RecordHarvest(string crop)
-                {
-                    crop = crop.ToLower();
-
-                    bool isRotationCrop =
-                        crop == "sorghum" ||
-                        crop == "wheat"   ||
-                        crop == "mungbean"||
-                        crop == "chickpea";
-
-                    if (isRotationCrop)
-                    {
-                        previousCrop2 = previousCrop1;
-                        previousCrop1 = crop;
-                    }
-                }
-
-                // Public read-only accessors
-                public string PreviousCrop1 => previousCrop1;
-                public string PreviousCrop2 => previousCrop2;
-            }
-        }
-
-Please note, when you copy and paste all of the above code into the ``CropSequenceEnforcer`` node in the APSIM GUI,
+With these modifications, the ``CropSequenceEnforcer`` script is completed. 
+If you are uncertain if you implemented all changes correctly, you can compare your solution to the final version here:
+`CropSequenceEnforcer.cs <_APSIM_code/CropRotation_flexible_final/CropSequenceEnforcer.cs>`_.
+Please note, in case that you copy and paste all of the above code into the ``CropSequenceEnforcer`` node in the APSIM GUI,
 you may need to close and reopen the APSIM code editor to ensure that all changes are correctly reflected.
 
-When sharing code between APSIM users (who often may not have extensive experience with C#), 
-one should not blindly trust that standard naming conventions are always followed. 
-Still, often it will be handy to have an understanding of some major naming conventions when trying to understand existing C# scripts and 
-modify them for own purposes. 
-In this example, it is particularly helpful to know that:
+This is a good opportunity to review standard C# naming conventions. 
+When sharing code with other APSIM users (who may have limited C# experience), 
+conventions are not always strictly followed. 
+Still, understanding the main aspects of typical naming conventions can be very helpful, 
+especially when trying to understand existing C# scripts as a starting point before making own modifications. 
+In this example, it is particularly useful to know that:
 
 - **camelCase** is used for local variables, private fields, and parameters. E.g., the private fields ``previousCrop1`` and ``previousCrop2``, the method parameter ``crop``, and local variables such as ``isCereal`` and ``isLegume``.
 - **PascalCase** is used for public types, properties, and methods. E.g., the class name ``CropSequenceEnforcer``, the method names ``AllowsSowing`` and ``RecordHarvest``, and the public properties ``PreviousCrop1`` and ``PreviousCrop2``.
 
+Said simply, ``previousCrop1`` is used only  ``CropSequenceEnforcer``,
+while ``PreviousCrop1`` is also accessible within our other scripts.
 
 
+Updating Sowing and Harvesting Manager Scripts
+++++++++++++++++++++++++++++++++++++++++
+Now that we have the helper script in place, we can start modifying the sowing and harvesting manager scripts.
+This will ensure that our ``CanSow`` conditions make use of the ``CropSequenceEnforcer`` to enforce the specified crop sequencing rules,
+and ``HarvestCrop()`` triggers ``CropSequenceEnforcer`` to record all harvested crops.
+Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* .
+Let us select the ``Script`` tab to access the C# code.
 
+As a first change, we define the private variable cropSequenceEnforcer in the script and 
+link it to the existing CropSequenceEnforcer node in the simulation tree, allowing access to its properties and methods.
+Please add the following line to the existing [Link] statements in ``SowHarvest_wheat``.
 
+.. code-block:: csharp
+   :caption: Linking the CropSequenceEnforcer model
+   :linenos:
 
+        [Link] private CropSequenceEnforcer cropSequenceEnforcer;
 
+We do not introduce any changes to the subsequent secion in the manager script that
+define the variables exposed in the ``Parameters`` tab.
+Instead, below that code section, let us define for pure convenience a private variable that 
+identifies the current crop name in lowercase format.
 
+.. code-block:: csharp
+   :caption: Private variable of current crop name (lowercase format)
+   :linenos:
 
+        private string GetCropName()
+        {
+            return (Crop as Model).Name.ToLower();            
+        }
 
-Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* script and select the ``Script`` tab. 
+We keep the methods ``OnSimulationCommencing`` and ``DoManagement`` unchanged.
+Instead, we need to updated the ``CanSow`` property to enforce the specified crop sequencing rules.
+The main change that we have to implement is that whenever ``CanSow`` returns 1,
+the ``AllowsSowing`` condition from the ``cropSequenceEnforcer`` has to be met in addition to the previously existing conditions.
+In practice, this means that we have to:
+
+- Access the name of the current crop: "string cropName = GetCropName();"
+- Add the additional condition to all statements returning 1: "cropSequenceEnforcer.AllowsSowing(cropName)"
+
+However, since the simulation workflow may not necessarily function without errors,
+it is a good practice to also log core information within the ``Summary`` model.
+Here, our core conditions that we need to track, is which crops were recognised as being previously grown on the plot (*"PreviousCrop1"* and *"PreviousCrop2"*).
+We are adding a print statement that records the field history recognised by our active script:
+
+- Logging core information within the ``Summary`` file: "Summary.WriteMessage(this, $"Field history (end window) → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);"
+
+The updated code of the ``CanSow`` property should look as follows:
+
+.. code-block:: csharp
+   :caption: CanSow property with enforcement of cropping sequencing
+   :linenos:
+
+        // Test whether we can sow a crop today
+        // +ve number - yes
+        // 0          - no
+        // -ve number - no, out of scope (planting window)
+        [Units("0-1")]
+        public int CanSow
+        {
+            get
+            {
+                if (!afterInit)
+                    return 0;
+
+                bool isPossibleToday = false;
+                bool inWindow = DateUtilities.WithinDates(StartDate, Clock.Today, EndDate);
+                bool endOfWindow = DateUtilities.DatesEqual(EndDate, Clock.Today);
+
+                if (!Crop.IsAlive && inWindow &&
+                    accumulatedRain.Sum > MinRain &&
+                    MathUtilities.Sum(waterBalance.ESW) > MinESW)
+                    isPossibleToday = true;
+
+                string cropName = GetCropName();
+
+                // Case 1: normal sowing
+                if (isPossibleToday && cropSequenceEnforcer.AllowsSowing(cropName))
+                {
+                    Summary.WriteMessage(this,
+                        $"Field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
+                        MessageType.Diagnostic);
+
+                    return 1;
+                }
+
+                // Case 2: Must sow on last day of window
+                if (!Crop.IsAlive && endOfWindow && MustSow &&
+                    cropSequenceEnforcer.AllowsSowing(cropName))
+                {
+                    Summary.WriteMessage(this,
+                        $"Field history (end window) → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
+                        MessageType.Diagnostic);
+
+                    return 1;
+                }
+
+                // Out of window
+                if (!Crop.IsAlive && !inWindow)
+                    return -1;
+
+                return 0;
+            }
+        }
+
+The method ``SowCrop()`` and property ``CanHarvest`` remain unchanged.
+Within the method ``HarvestCrop()`` we need to once more invoke our helper script ``CropSequenceEnforcer``
+to ensure that all harvested crops are stored in a central point - beyond the level of the *manager* scripts for sowing and harvesting of individual crops.
+Otherwise, for example the script ``SowHarvest_wheat`` could only track previous wheat crops but no other crops planted on the field.
+For this we want to conduct the following steps:
+
+- Access the name of the just harvested crop: "string harvested = GetCropName();"
+- Send the name of the harvested crop for storage to the ``CropSequenceEnforcer``: "cropSequenceEnforcer.RecordHarvest(harvested);"
+- Logging core information within the ``Summary`` file: "Summary.WriteMessage(this, $"Updated field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);
+        }"
+
+The updated code of the ``HarvestCrop()`` method should look as follows:
+
+.. code-block:: csharp
+   :caption: HarvestCrop() method with tracking of harvested crops
+   :linenos:
+
+        public void HarvestCrop()
+        {
+            Summary.WriteMessage(this,
+                this.FullPath + " - harvesting " + (Crop as Model).Name,
+                MessageType.Diagnostic);
+
+            MonthlyHarvestedWt = 
+                (Structure.FindChild<IModel>("Grain", relativeTo: (INodeModel)Crop) 
+                as ReproductiveOrgan).Wt;
+
+            Crop.Harvest();
+            Crop.EndCrop();
+
+            string harvested = GetCropName();
+
+            cropSequenceEnforcer.RecordHarvest(harvested);
+
+            Summary.WriteMessage(this,
+                $"Updated field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
+                MessageType.Diagnostic);
+        }
 
 
 
