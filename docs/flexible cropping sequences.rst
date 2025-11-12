@@ -165,9 +165,10 @@ Now that the overall structure of nodes and transition rules of the cropping seq
 the next step is to update these *manager* scripts that are called upon by the transition rules.
 This is the actual more tricky part.
 As specified further above, our current *manager* scripts for sowing and harvesting were simply copied from the previous tutorial example.
-The only updates that have been implemented so far (as part of the provided starting *APSIMX file*) was to update the parameter values within the *"manager"* scripts to consider reasonable values for each crop (sowing window, planting density, etc.).
+
+The only modifications made so far in the provided starting APSIMX file were adjustments to the manager script parameters to use reasonable values for each crop (sowing window, planting density, etc.).
 For example, when you navigate to the *manager* script ``SowHarvest_wheat``,
-you will see that the sowing window dates and sowing properties are using reasonable values for wheat in the Darling Downs region.
+you will see that the sowing window dates and sowing properties are set to reasonable values for wheat in the Darling Downs region.
 
 .. figure:: _static/APSIMscreenshot_SowHarvest_wheat.png
    :alt: SowHarvest_wheat
@@ -206,7 +207,7 @@ Accordingly, we will need to make dedicated modifications to the **C# code**.
 In the previous cases, when we worked with **C# code** in APSIM *manager* scripts,
 we predominantly accessed the namespaces, classes, and properties that are defined within the APSIM source code.
 We accessed those APSIM components by copying *using directives* (i.e., *namespace imports*) from existing *manager* scripts and 
-by exploring available object methods and properties through IntelliSense in the APSIM code editor.
+by exploring available methods and properties through IntelliSense in the APSIM code editor.
 In the current case, we will instead also define some simple variables ourselves to keep track of the previously grown crops.
 
 Default Manager Script
@@ -248,9 +249,9 @@ Subsequently, the script declares the namespace `Models`, which is the standard 
 In a nutshell, any *manager* script that we are creating in the form of user-written C# classes is dynamically compiled at runtime.
 For this to work, APSIM expects all classes of *manager* scripts to:
 
-- Be defined within the `Models` namespace
-- Inherit from the base class `Model`
-- Be decorated with the *[Serializable]* attribute
+- Be defined within the `Models` namespace.
+- Inherit from the base class `Model`.
+- Be decorated with the *[Serializable]* attribute.
 
 In C#, *[Serializable]* is an attribute of a class. As you know, *APSIMX files* are written in JSON, while APSIM is written in C#.
 When APSIM loads your *APSIMX file*, it deserializes the JSON code into C# objects.
@@ -280,16 +281,15 @@ Helper-Script: Crop Sequence Enforcer
 For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequencing rules.
 The overall purpose of the helper script is:
 
-- To remember the two most recently grown crops (no matter which *sowHarvest_* script initiated them).
+- To remember the two most recently harvestedd crops (no matter which *sowHarvest_[Crop]* script initiated them).
 - To decide which next crop is allowed to be sown based on the previous plot history (cereal vs. legume).
 - To record the crop history after each harvest.
 
-Besides defining variables to keep track of the last two grown crops, 
+Besides defining variables to keep track of the last two harvested crops, 
 the helper script does not schedule sowing or harvesting directly.
-Instead, this continues to be carried out by the various *sowHarvest_* scripts that rely on ``CropSequenceEnforcer`` as a utility model.
+Instead, this continues to be carried out by the various *sowHarvest_[Crop]* scripts that rely on ``CropSequenceEnforcer`` as a utility model.
 
-As first step, please rename the default *Manager* node to ``CropSequenceEnforcer``.
-Next, let us review the "using directives": 
+As first step, let us review the *using directives*: 
 Usually, it is a good idea to keep all the standard *using directives* provided in the default *manager* script.
 After all, we usually do not know at the start from which of the most widely used namespaces we will need to access classes and methods.
 For our current purpose instead, we know that we will generate a very simple and reduced helper script 
@@ -298,25 +298,25 @@ that will only require to access *System* and *Models.Core*. Please remove the o
 Subsequently, please rename the placeholder class *Script* to *CropSequenceEnforcer*,
 as this clearly documents the purpose of our class.
 
-Next, we will define two private string variables to keep track of the last two grown crops.
+Next, we will define two private string variables to keep track of the last two harvested crops.
 Initially, these variables should be set to *null*, as we consider that no crops have been grown prior to the simulation start date.
 
 .. code-block:: csharp
-   :caption: Storage variables for previously grown crops
+   :caption: Storage variables for previously harvested crops
    :linenos:
 
         // Crop history
         private string previousCrop1 = null;   // Most recent harvested crop
         private string previousCrop2 = null;   // Second most recent harvested crop
 
-Subsequently, we define a public method ``AllowsSowing`` that takes the name of a crop as input and returns a boolean value.
-Based on the history of previous crops grown, it indicates if the crop in question can be sown, given our cropping sequence rules.
+Subsequently, we define a public method ``AllowsSowing()`` that takes the name of a crop as input and returns a boolean value.
+Based on the history of the previous crops harvested, it indicates if the crop in question can be sown, given our crop sequencing rules.
 
 .. code-block:: csharp
    :caption: Method "AllowsSowing": Enforcing alternation between cereals and legumes
    :linenos:
 
-        // Check if the proposed crop is allowed under given cropping sequence rules
+        // Check if the proposed crop is allowed under given crop sequencing rules
         public bool AllowsSowing(string crop)
         {
             crop = crop.ToLower();
@@ -345,16 +345,16 @@ Based on the history of previous crops grown, it indicates if the crop in questi
             return isCereal;
         }
 
-In more detail, the method ``AllowsSowing`` first converts the input crop name to lowercase to ensure case-insensitive comparisons.
+In more detail, the method ``AllowsSowing()`` first converts the input crop name to lowercase to ensure case-insensitive comparisons.
 It then checks if the proposed crop is a cereal (sorghum or wheat) or a legume (mungbean or chickpea).
 If the crop is neither, an exception is thrown indicating an unknown crop.
-The method then evaluates the previous two grown crops:
+The method then evaluates the previous two harvested crops:
 
 - If there is no history yet (i.e., both previous crops are null), only cereals are allowed to be sown.
-- If the last two grown crops were cereals, only legumes are allowed to be sown.
+- If the last two harvested crops were cereals, only legumes are allowed to be sown.
 - In all other cases, only cereals are allowed to be sown.
 
-Then, we define a public method ``RecordHarvest`` that takes the name of a harvested crop as input and updates the history of previously grown crops.
+Then, we define a public method ``RecordHarvest()`` that takes the name of a harvested crop as input and updates the history of previous crops.
 
 .. code-block:: csharp
    :caption: Method "RecordHarvest": Updating crop sequence history
@@ -378,8 +378,8 @@ Then, we define a public method ``RecordHarvest`` that takes the name of a harve
             }
         }
 
-Finally, we add two public read-only accessors that allow our other scripts to retrieve the names of the previously grown crops.
-This may come in handy for logging purposes, although the heavy lifting will be done by the `AllowsSowing` and `RecordHarvest` methods.
+Finally, we add two public read-only accessors that allow our other scripts to retrieve the names of the previously harvested crops.
+This may come in handy for logging purposes, although the heavy lifting will be done by the ``AllowsSowing()`` and ``RecordHarvest()`` methods.
 
 .. code-block:: csharp
    :caption: Creating public accessors for previous crops
@@ -389,34 +389,34 @@ This may come in handy for logging purposes, although the heavy lifting will be 
         public string PreviousCrop1 => previousCrop1;
         public string PreviousCrop2 => previousCrop2;
 
-With these modifications, the ``CropSequenceEnforcer`` script is completed. 
-If you are uncertain if you implemented all changes correctly, you can compare your solution to the final version here:
+With these changes in place, the ``CropSequenceEnforcer`` script is now complete.
+In case that you are uncertain if you implemented all changes correctly, you can compare your solution to the final version here:
 `CropSequenceEnforcer.cs <CropRotation_flexible_final/CropSequenceEnforcer.cs>`_.
 Please note, in case that you copy and paste all of the above code into the ``CropSequenceEnforcer`` node in the APSIM GUI,
 you may need to close and reopen the APSIM code editor to ensure that all changes are correctly reflected.
 
 This is a good opportunity to review standard C# naming conventions. 
 When sharing code with other APSIM users (who may have limited C# experience), 
-conventions are not always strictly followed. 
-Still, understanding the main aspects of typical naming conventions can be very helpful, 
-especially when trying to understand existing C# scripts as a starting point before making own modifications. 
+conventions may not have always been strictly followed. 
+Still, understanding the main aspects of typical naming conventions can be very helpful 
+when trying to understand existing C# scripts as a starting point before making own modifications. 
 In this example, it is particularly useful to know that:
 
 - **camelCase** is used for local variables, private fields, and parameters. E.g., the private fields ``previousCrop1`` and ``previousCrop2``, the method parameter ``crop``, and local variables such as ``isCereal`` and ``isLegume``.
 - **PascalCase** is used for public types, properties, and methods. E.g., the class name ``CropSequenceEnforcer``, the method names ``AllowsSowing`` and ``RecordHarvest``, and the public properties ``PreviousCrop1`` and ``PreviousCrop2``.
 
 Said simply, ``previousCrop1`` is used only within ``CropSequenceEnforcer``,
-while ``PreviousCrop1`` is also accessible within our other scripts.
+while ``PreviousCrop1`` is accessible within our other scripts.
 
 
 Updating Sowing and Harvesting Manager Scripts
 ++++++++++++++++++++++++++++++++++++++++
-Now that we have the helper script in place, we can start modifying the sowing and harvesting manager scripts.
+Now that we have the helper script in place, we can start modifying the sowing and harvesting *manager* scripts.
 Specifially, we want to rely on the ``CropSequenceEnforcer`` to ensure that 
 the various ``CanSow`` properties enforce the crop sequencing rules, and
 that the ``HarvestCrop()`` method records all crops that have been harvested.
 Arbitrarily, let us here jointly modify the ``SowHarvest_wheat`` *manager* (while modifications to the three other *manager* scripts are identical).
-Let us select the ``Script`` tab to access the C# code.
+Please select the ``Script`` tab to access the C# code.
 
 As a first change, we define the private variable *cropSequenceEnforcer* in the script and 
 link it to the existing ``CropSequenceEnforcer`` node in the simulation tree, allowing access to its properties and methods.
@@ -429,8 +429,8 @@ Please add the following line to the existing *[Link]* statements in ``SowHarves
         [Link] private CropSequenceEnforcer cropSequenceEnforcer;
 
 We do not introduce any changes to the subsequent secion in the manager script that
-define the variables exposed in the ``Parameters`` tab.
-Instead, below that code section, let us define for pure convenience a private variable that 
+defines the variables exposed in the ``Parameters`` tab.
+Instead, directly below that code section, let us define for pure convenience a private variable that 
 identifies the current crop name in lowercase  (which will save us from repeatedly typing the same code).
 
 .. code-block:: csharp
@@ -443,9 +443,10 @@ identifies the current crop name in lowercase  (which will save us from repeated
         }
 
 We keep the methods ``OnSimulationCommencing()`` and ``DoManagement()`` unchanged.
-Instead, we need to updated the ``CanSow`` property to enforce the specified crop sequencing rules.
-The main change that we have to implement is that whenever ``CanSow`` returns 1,
-the conditions imposed in the ``AllowsSowing()`` method from the ``cropSequenceEnforcer`` have now to be met too (in addition to the previously existing conditions).
+Instead, we need to update the ``CanSow`` property to enforce the crop sequencing rules.
+The main change we need to implement is that ``CanSow`` should return 1 only if, 
+in addition to the previous conditions, 
+the rules defined in the ``AllowsSowing()`` method of the ``cropSequenceEnforcer`` are also satisfied.
 In practice, this means that we have to:
 
 - Access the name of the current crop:
@@ -458,11 +459,11 @@ In practice, this means that we have to:
         cropSequenceEnforcer.AllowsSowing(cropName)
 
 However, since the simulation workflow may not necessarily function without errors,
-it is a good practice to also log core information within the ``Summary`` model.
-Here, the key information we need to keep track of is which crops were previously grown on the plot (*"PreviousCrop1"* and *"PreviousCrop2"*).
+it is a good practice to also log core information within ``Summary``, APSIM’s built-in logging interface.
+Here, the key information we need to keep track of is which crops were previously harvested on the plot (*"PreviousCrop1"* and *"PreviousCrop2"*).
 We are adding a print statement that records the field history recognised by our active script:
 
-- Logging core information within the ``Summary`` file:
+- Logging core information within the ``Summary`` logging interface:
 .. code-block:: csharp
 
         Summary.WriteMessage(this,
@@ -473,7 +474,7 @@ We are adding a print statement that records the field history recognised by our
 The updated code of the ``CanSow`` property should look as follows:
 
 .. code-block:: csharp
-   :caption: CanSow property with enforcement of cropping sequencing
+   :caption: CanSow property with enforcement of crop sequencing
    :linenos:
 
         // Test whether we can sow a crop today
@@ -545,7 +546,7 @@ We conduct the following steps:
 
         cropSequenceEnforcer.RecordHarvest(harvested);
 
-- Logging core information within the ``Summary`` file: 
+- Logging core information within the ``Summary`` logging interface: 
 .. code-block:: csharp
 
         Summary.WriteMessage(this,
@@ -588,17 +589,17 @@ The C# code for ``SowHarvest_chickpea`` and ``SowHarvest_mungbean`` is identical
 Due to the different variables considered under the ``Parameters`` tab, 
 the C# code for ``SowHarvest_sorghum`` is slightly different (though there are no differences in the here modified code sections).
 
-An *APSIMX file* that reflects the current state of the tutorial after this part of the exercise can be accessed here:
+An *APSIMX file* showing the tutorial’s state at this point in the exercise is available here:
 `CropRotation_flexible_mid.apsimx <CropRotation_flexible_mid/CropRotation_flexible_mid.apsimx>`_.
 
 Inspecting Simulation Results
 ----------------------------------------
 With this, we have fully represented our cropping scenario in APSIM and 
 can now select the ``Run`` button in the top menu to conduct the simulation.
-Since we have added quite some new rules about which crop sequences are allowed, 
-our first step should be to check whether these rules were actually correctly being implemented in the simulation as intended.
+We have added quite some new rules about which crop sequences are allowed.
+Our first step should be to check whether these rules were correctly being implemented in the simulation as intended.
 To get an idea of the overall progression of the simulated crops,
-let us first inspect the ``RugPlot``.
+let us first inspect the ``RotationRugplot``.
 
 .. figure:: _static/APSIMscreenshot_Rugplot_flexibleRotation_StuckInSorghum.png
    :alt: Rugplot_flexibleRotation_StuckInSorghum
@@ -606,7 +607,7 @@ let us first inspect the ``RugPlot``.
 
    Rugplot of simulation results.
 
-From the Rugplot, we can identify that there is the following progression of field occupations:
+From the rugplot, we can identify that there is the following progression of field occupations:
 
 - Summer 1985: Fallow
 - Winter 1985: Wheat
@@ -626,11 +627,11 @@ From the Rugplot, we can identify that there is the following progression of fie
 - Winter 1992: Fallow
 - From Summer 1993: Sorghum
 
-There are a couple of major takeaway messages that we can derive from the Rugplot:
+There are a couple of major takeaway messages that we can derive from the rugplot:
 
-- The crop sequencing rule seems to be correctly implemented ("If the previous two cultivated crops were cereals, the next crop must be a legume. In all other cases, the next crop must be a cereal.")
-- The low sowing threshold for the summer season is met in all but the first year (which is a special case, as we started the simulation only on 1 January, meaning that we have missed all early-season rainfall.).
-- The higher sowing threshold for the winter season is only met in two seasons, and not met in six seasons.
+- The crop sequencing rule seems to be correctly implemented. ("If the previous two cultivated crops were cereals, the next crop must be a legume. In all other cases, the next crop must be a cereal.")
+- The low sowing threshold for the summer season is met in all but the first year (which is a special case, as we started the simulation only on 1 January, meaning that we have missed all early-season rainfall).
+- The higher sowing threshold for the winter season is only satisfied in two seasons, while six winter seasons remain in fallow.
 - And finally, the glaring issue: from summer 1993 onward, our field has remained continuously occupied by sorghum.
 
 This last aspect is obviously unintended.
@@ -639,25 +640,25 @@ it conflicts with our intended simulation scenario and has to be modified.
 After all, our objective was to simulate an approximatively realistic progression of crops on a field in the Darling Downs (with some simplifications for the sake of the tutorial).
 A field that remains occupied by the same crop over multiple years is certainly not meeting this condition.
 
-As another piece of evidence, we can have a look at the ``Data`` tab of the node ``HarvestReport_sorghum``.
-This allows to identify, that the sorghum crop planted in the summer season of 1993 never actually produces any crop yield (i.e., does not reach harvest).
+As another piece of evidence, we can have a look at the ``Data`` tab of the report node ``HarvestReport_sorghum``.
+This allows to identify, that the sorghum crop planted in the summer season of 1993 never actually produced any crop yield (i.e., did not reach harvest).
 
 .. figure:: _static/APSIMscreenshot_HarvestReport_sorghum_StuckInSorghum.png
    :alt: HarvestReport_sorghum_StuckInSorghum
-   :width: 80%
+   :width: 100%
 
-   Rugplot of simulation results.
+   Harvest report for sorghum.
 
-These give us a set of first good insights.
+The rugplot and harvest report give us a first good insight.
 However, to get a more mechanistic understanding of what is happening to our simulation
 we have to look at the more detailed logging results that are accessible in the ``Summary`` node.
 When not knowing what to look for, scrolling through the simulation log can be quite a lenghty process,
 particularly when dealing with long-term simulations.
 However, in our case, we already know that things turn sour starting from the summer season 1993,
 which allows us to use the vertical scroll bar to fastly move over the first years of the simulation until we reach the end of 1992.
-From then, we want to closely inspect the simulation log and find the reason of why our simulation gets stuck in sorghum.
+From then, we want to closely inspect the simulation log and find the reason why our simulation stalls in sorghum.
 Please independently take a moment to inspect the simulation log yourself.
-What is the reason for our simulation to not continue as intended?
+What is the reason our simulation is not continuing as intended?
 
 .. raw:: html
 
@@ -670,7 +671,7 @@ What is the reason for our simulation to not continue as intended?
     On 1992-11-22 a sorghum crop is emerging. 
     So far, the simulation seems to progress in a standard manner.
     On 1992-12-16 sorghum reaches floral initiation, on 1993-01-10 the flag-leaf stage is reached, and on 1993-01-22 the sorghum field is flowering.
-    On 1993-01-27 we record the start of grain filling, but saidly on 1993-03-01 the sorghum crop fails due to a loss of leaf area.
+    On 1993-01-27 we record the start of grain filling, but sadly on 1993-03-01 the sorghum crop fails due to a loss of leaf area.
    </p>
 
    <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="100%">
@@ -694,8 +695,8 @@ What is the reason for our simulation to not continue as intended?
     Which kind of stress or other factor led to the total loss of leaf area?
     Did this stess build up gradually or over a short amount of time?
     Did our management choices contribute to the crop failure? 
-    While these questions are beyond the focus of our tutorial interested in the technical handling of crop rotations,
-    you may want to investigate them at your own time.
+    While these analytical questions fall outside the scope of our tutorial, which focuses on the technical handling of crop rotations, 
+    you may wish to explore them on your own time.
    </p>
    </details>
 
@@ -706,8 +707,8 @@ What is the reason for our simulation to not continue as intended?
 
 Finetuning the Simulation
 ----------------------------------------
-The above inspection of simulation results highlighted the need to add additional logic to the ``RotationManager`` 
-for ensuring that the simulation does not remain stuck in a single state when a crop is not harvested.
+The inspection of simulation results highlighted the need to add logic to the ``RotationManager`` 
+to prevent the simulation from becoming stalled in a single state when a crop is not harvested.
 Two likely causes of such situations are that the crop is sown but fails to germinate, 
 or that it dies before reaching harvest.
 
@@ -792,8 +793,8 @@ In all three cases, we decide to abandon the crop in favour of continuing on wit
 The method ``AbandonCrop()`` checks for the unlikely case that the crop should still be alive, in which case it ends the crop.
 Otherwise, it does not do any action as part of conducting the transion back to fallow.
 
-Add the above C# code to all four *manager* scripts for sowing and harvesting.
-Then once more run the simulation and inspect the Rugplot.
+After having added the above C# code to all four *manager* scripts for sowing and harvesting,
+rerun the simulation and inspect the Rugplot.
 
 .. figure:: _static/APSIMscreenshot_Rugplot_flexibleRotation_updated.png
    :alt: Rugplot_flexibleRotation_updated
@@ -801,34 +802,45 @@ Then once more run the simulation and inspect the Rugplot.
 
    Rugplot of updated simulation results.
 
-As can be seen in the above rugplot: We no longer get stuck in sorghum from the summer season 1993 onwards.
+As can be seen in the above rugplot: The simulation no longer stalls in sorghum from the summer season 1993 onwards.
 In fact, we see that on 2 March 1993, the state of our simulation transitions from sorghum to fallow 
 because the property ``MustAbandon`` returns 1.
 
 From the rugplot we can also see another particularity:
 Since our crop sequencing logic accounts only for harvested crops, 
 the sorghum crop that failed in the summer of 1993
-is not counted when checking that no more than two cereals occur consecutively.
-While we will stick to this logic for this tutorial,
-you could also easily shift the counting to depend on all crops sown (instead of harvested).
+is not considered when checking that no more than two cereals occur consecutively.
+As a consequence, three sorghum crops were sown consecutively on the field.
+While we will stick to this logic for our tutorial,
+you could easily shift the crop counting to consider all *sown* instead of *harvested* crops.
 
 
 Conclusion
 ----------------------------------------
+This tutorial section has shown how to use the ``RotationManager`` to represent flexible cropping scenarios.
+We have shown that the ``RotationManager`` can accommodate a large diversity of cropping sequences.
+The empty canvas provides a starting point that allows representing crop rotations of different lengths, and
+the shift between alternative field occupations based on clearly identified conditions.
+The ``Conditions`` and ``Actions`` fields within the ``RotationManager`` 
+are the central vehicles to link any *manager* script of your choice to control and steer how a cropping sequence shall progress.
+The flexibility of the empty canvas also means that there is not only one way to implement any given scenario.
 
+This tutorial has introduced the default *manager* script that is distributed within APSIM.
+We have shown, how understanding its components is a good starting point for building own, customised *manager* scripts.
 
+Subsequently, we have given a specific example, of how *manager* scripts can interact with one another.
+In our specific case, they operated at two different levels:
+The ``CropSequenceEnforcer`` controlled the overall progression of crops for the entire simulation,
+while the various *manager* scripts for sowing and harvesting were focused on managing individual crops.
 
+The analysis of our results have provided a practical example of how the inspection of 
+the rugplot, report nodes, and the summary log complement one another in comprehensively diagnosing the simulation outcomes.
+We have further seen, how a careful inspection of simulation results can often lead to uncover unintended simulation results that require targeted corrections.
 
-
-Subheading
-----------------------------------------
-
-Sub-Subheading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sub-Sub-Subheading
-++++++++++++++++++++++++++++++++++++++++
-
+While this tutorial focuses on these issues of how to correctly represent cropping sequences within APSIM,
+this is often only the starting point of actual analytical work.
+Such a classical focus on interpreting results of APSIM simulations, understanding drivers of certain simulation outcomes and 
+investigating the relationship between targeted variables is outside of the scope of this tutorial. 
 
 
 
