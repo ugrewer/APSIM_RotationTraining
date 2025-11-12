@@ -679,8 +679,9 @@ What is the reason for our simulation to not continue as intended?
    While this is bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
    should neither be the end of our flexible cropping sequence.
    As you can see from the above screenshot, from the 1993-01-28 onwards, the log records the following info:
-   "Paddock.RotationManager: Transition from "Sorghum" to "Fallow" by Exit SG is not possible. Weight = 0"
-   
+   <br><br>
+   <b>""Paddock.RotationManager: Transition from "Sorghum" to "Fallow" by Exit SG is not possible. Weight = 0"</b>
+   <br><br>
    In other words: The RotationManager that we created, evaluates that the condition for leaving the "Sorghum" state are never fulfilled.
    In fact, if we remember the <b>"Conditions"</b> that we specified as part of the <b>"Exit SG"</b> transition (i.e., arc) as well as all the other exit transitions,
    we indicated that we can only transition back to "Fallow" from a crop, when the conditions for <b>"CanHarvest"</b> are fulfilled.
