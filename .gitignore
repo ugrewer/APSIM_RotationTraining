@@ -57,6 +57,7 @@
 *.db-shm
 *.bak
 *.wal
+*.db-wal
 
 ### ignore directories containing specific substring
 *old*/
