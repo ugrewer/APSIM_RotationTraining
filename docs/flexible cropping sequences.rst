@@ -413,14 +413,14 @@ Updating Sowing and Harvesting Manager Scripts
 ++++++++++++++++++++++++++++++++++++++++
 Now that we have the helper script in place, we can start modifying the sowing and harvesting manager scripts.
 Specifially, we want to rely on the ``CropSequenceEnforcer`` to ensure that 
-the various ``CanSow`` properties enforce the specified crop sequencing rules, and
-that the ``HarvestCrop()`` records all crops that have been harvested.
-Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* .
+the various ``CanSow`` properties enforce the required crop sequencing rules, and
+that the ``HarvestCrop()`` method records all crops that have been harvested.
+Arbitrarily, let us here jointly modify the ``SowHarvest_wheat`` *manager* (while modifications to the three other *manager* scripts are identical).
 Let us select the ``Script`` tab to access the C# code.
 
-As a first change, we define the private variable cropSequenceEnforcer in the script and 
-link it to the existing CropSequenceEnforcer node in the simulation tree, allowing access to its properties and methods.
-Please add the following line to the existing [Link] statements in ``SowHarvest_wheat``.
+As a first change, we define the private variable *cropSequenceEnforcer* in the script and 
+link it to the existing ``CropSequenceEnforcer`` node in the simulation tree, allowing access to its properties and methods.
+Please add the following line to the existing *[Link]* statements in ``SowHarvest_wheat``.
 
 .. code-block:: csharp
    :caption: Linking the CropSequenceEnforcer model
@@ -431,10 +431,10 @@ Please add the following line to the existing [Link] statements in ``SowHarvest_
 We do not introduce any changes to the subsequent secion in the manager script that
 define the variables exposed in the ``Parameters`` tab.
 Instead, below that code section, let us define for pure convenience a private variable that 
-identifies the current crop name in lowercase format.
+identifies the current crop name in lowercase  (which will save us from repeatedly typing the same code).
 
 .. code-block:: csharp
-   :caption: Private variable of current crop name (lowercase format)
+   :caption: Private variable of the current crop name (lowercase format)
    :linenos:
 
         private string GetCropName()
@@ -442,11 +442,21 @@ identifies the current crop name in lowercase format.
             return (Crop as Model).Name.ToLower();            
         }
 
-We keep the methods ``OnSimulationCommencing`` and ``DoManagement`` unchanged.
+We keep the methods ``OnSimulationCommencing()`` and ``DoManagement()`` unchanged.
 Instead, we need to updated the ``CanSow`` property to enforce the specified crop sequencing rules.
 The main change that we have to implement is that whenever ``CanSow`` returns 1,
-the ``AllowsSowing`` condition from the ``cropSequenceEnforcer`` has to be met in addition to the previously existing conditions.
+the conditions imposed in the ``AllowsSowing()`` method from the ``cropSequenceEnforcer`` have to be met (in addition to the previously existing conditions).
 In practice, this means that we have to:
+
+- Access the name of the current crop
+.. code-block:: csharp
+
+        string cropName = GetCropName();
+- Add the additional condition to all statements returning 1:
+.. code-block:: csharp
+
+        cropSequenceEnforcer.AllowsSowing(cropName)
+
 
 - Access the name of the current crop: "string cropName = GetCropName();"
 - Add the additional condition to all statements returning 1: "cropSequenceEnforcer.AllowsSowing(cropName)"
