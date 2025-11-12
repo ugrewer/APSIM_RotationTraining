@@ -302,11 +302,168 @@ Initially, these variables should be set to *null*, as we consider that no crops
 .. code-block:: csharp
    :caption: Storage variables for previously grown crops
    :linenos:
-        private string prev1 = null;
-        private string prev2 = null;
+        // Crop history
+        private string previousCrop1 = null;   // Most recent harvested crop
+        private string previousCrop2 = null;   // Second most recent harvested crop
 
 Subsequently, we define a public method ``AllowsSowing`` that takes the name of a crop as input and 
 returns a boolean value indicating whether sowing that crop is allowed based on the previous crops grown.
+
+.. code-block:: csharp
+   :caption: Method "AllowsSowing": Enforcing alternation between cereals and legumes
+   :linenos:
+        // Check if the proposed crop is allowed under given cropping sequence rules
+        public bool AllowsSowing(string crop)
+        {
+            crop = crop.ToLower();
+
+            bool isCereal  = crop == "sorghum" || crop == "wheat";
+            bool isLegume  = crop == "mungbean" || crop == "chickpea";
+
+            if (!isCereal && !isLegume)
+                throw new Exception($"CropSequenceEnforcer: Unknown crop '{crop}'.");
+
+            // No history yet → allow only cereals
+            if (previousCrop1 == null || previousCrop2 == null)
+                return isCereal;
+
+            bool previous_1_wasCereal =
+                previousCrop1 == "sorghum" || previousCrop1 == "wheat";
+
+            bool previous_2_wasCereal =
+                previousCrop2 == "sorghum" || previousCrop2 == "wheat";
+
+            // Two cereals in a row → enforce a legume
+            if (previous_1_wasCereal && previous_2_wasCereal)
+                return isLegume;
+
+            // Otherwise → enforce a cereal
+            return isCereal;
+        }
+
+The method first converts the input crop name to lowercase to ensure case-insensitive comparisons.
+It then checks if the proposed crop is a cereal (sorghum or wheat) or a legume (mungbean or chickpea).
+If the crop is neither, an exception is thrown indicating an unknown crop.
+The method then evaluates the previous two grown crops:
+
+- If there is no history yet (i.e., both previous crops are null), only cereals are allowed to be sown.
+- If the last two grown crops were cereals, only legumes are allowed to be sown.
+- In all other cases, only cereals are allowed to be sown.
+
+Then, we define a public method ``RecordHarvest`` that takes the name of a harvested crop as input and updates the history of previously grown crops.
+
+.. code-block:: csharp
+   :caption: Method "RecordHarvest": Updating crop sequence history
+   :linenos:
+        // Called at harvest time to update crop sequence history
+        public void RecordHarvest(string crop)
+        {
+            crop = crop.ToLower();
+
+            bool isRotationCrop =
+                crop == "sorghum" ||
+                crop == "wheat"   ||
+                crop == "mungbean"||
+                crop == "chickpea";
+
+            if (isRotationCrop)
+            {
+                previousCrop2 = previousCrop1;
+                previousCrop1 = crop;
+            }
+        }
+
+Finally, we add two public read-only accessors to retrieve the names of the previously grown crops by other scripts.
+
+.. code-block:: csharp
+   :caption: Creating public accessors for previous crops
+   :linenos:
+        // Public read-only accessors
+        public string PreviousCrop1 => previousCrop1;
+        public string PreviousCrop2 => previousCrop2;
+
+The final version of the helper script ``CropSequenceEnforcer`` should now look as follows:
+
+.. code-block:: csharp
+   :caption: Final version of the helper script "CropSequenceEnforcer"
+   :linenos:
+        using System;
+        using Models.Core;
+
+        namespace Models
+        {
+            [Serializable]
+            public class CropSequenceEnforcer : Model
+            {
+                // Crop history
+                private string previousCrop1 = null;   // Most recent harvested crop
+                private string previousCrop2 = null;   // Second most recent harvested crop
+
+                // Check if the proposed crop is allowed under given cropping sequence rules
+                public bool AllowsSowing(string crop)
+                {
+                    crop = crop.ToLower();
+
+                    bool isCereal  = crop == "sorghum" || crop == "wheat";
+                    bool isLegume  = crop == "mungbean" || crop == "chickpea";
+
+                    if (!isCereal && !isLegume)
+                        throw new Exception($"CropSequenceEnforcer: Unknown crop '{crop}'.");
+
+                    // No history yet → allow only cereals
+                    if (previousCrop1 == null || previousCrop2 == null)
+                        return isCereal;
+
+                    bool previous_1_wasCereal =
+                        previousCrop1 == "sorghum" || previousCrop1 == "wheat";
+
+                    bool previous_2_wasCereal =
+                        previousCrop2 == "sorghum" || previousCrop2 == "wheat";
+
+                    // Two cereals in a row → enforce a legume
+                    if (previous_1_wasCereal && previous_2_wasCereal)
+                        return isLegume;
+
+                    // Otherwise → enforce a cereal
+                    return isCereal;
+                }
+
+                // Called at harvest time to update crop sequence history
+                public void RecordHarvest(string crop)
+                {
+                    crop = crop.ToLower();
+
+                    bool isRotationCrop =
+                        crop == "sorghum" ||
+                        crop == "wheat"   ||
+                        crop == "mungbean"||
+                        crop == "chickpea";
+
+                    if (isRotationCrop)
+                    {
+                        previousCrop2 = previousCrop1;
+                        previousCrop1 = crop;
+                    }
+                }
+
+                // Public read-only accessors
+                public string PreviousCrop1 => previousCrop1;
+                public string PreviousCrop2 => previousCrop2;
+            }
+        }
+
+Please note, when you copy and paste all of the above code into the ``CropSequenceEnforcer`` node in the APSIM GUI,
+you may need to close and reopen the APSIM code editor to ensure that all changes are correctly reflected.
+
+When sharing code between APSIM users (who often may not have extensive experience with C#), 
+one should not blindly trust that standard naming conventions are always followed. 
+Still, often it will be handy to have an understanding of some major naming conventions when trying to understand existing C# scripts and 
+modify them for own purposes. 
+In this example, it is particularly helpful to know that:
+
+- **camelCase** is used for local variables, private fields, and parameters. E.g., the private fields ``previousCrop1`` and ``previousCrop2``, the method parameter ``crop``, and local variables such as ``isCereal`` and ``isLegume``.
+- **PascalCase** is used for public types, properties, and methods. E.g., the class name ``CropSequenceEnforcer``, the method names ``AllowsSowing`` and ``RecordHarvest``, and the public properties ``PreviousCrop1`` and ``PreviousCrop2``.
+
 
 
 
