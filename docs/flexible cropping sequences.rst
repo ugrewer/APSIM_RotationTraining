@@ -448,7 +448,7 @@ The main change that we have to implement is that whenever ``CanSow`` returns 1,
 the conditions imposed in the ``AllowsSowing()`` method from the ``cropSequenceEnforcer`` have to be met (in addition to the previously existing conditions).
 In practice, this means that we have to:
 
-- Access the name of the current crop
+- Access the name of the current crop:
 .. code-block:: csharp
 
         string cropName = GetCropName();
@@ -458,15 +458,21 @@ In practice, this means that we have to:
         cropSequenceEnforcer.AllowsSowing(cropName)
 
 
-- Access the name of the current crop: "string cropName = GetCropName();"
-- Add the additional condition to all statements returning 1: "cropSequenceEnforcer.AllowsSowing(cropName)"
-
 However, since the simulation workflow may not necessarily function without errors,
 it is a good practice to also log core information within the ``Summary`` model.
 Here, our core conditions that we need to track, is which crops were recognised as being previously grown on the plot (*"PreviousCrop1"* and *"PreviousCrop2"*).
 We are adding a print statement that records the field history recognised by our active script:
 
-- Logging core information within the ``Summary`` file: "Summary.WriteMessage(this, $"Field history (end window) → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);"
+- Logging core information within the ``Summary`` file:
+.. code-block:: csharp
+
+        Summary.WriteMessage(this,
+            $"Field history → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}",
+            MessageType.Diagnostic);
+
+
+        Summary.WriteMessage(this, $"Field history (end window) → PreviousCrop1={cropSequenceEnforcer.PreviousCrop1 ?? "null"}, PreviousCrop2={cropSequenceEnforcer.PreviousCrop2 ?? "null"}", MessageType.Diagnostic);
+
 
 The updated code of the ``CanSow`` property should look as follows:
 
