@@ -678,7 +678,7 @@ What is the reason for our simulation to not continue as intended?
    <br><br>
 
    <p>
-   While this is bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
+   While a crop failure is truly bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
    should neither be the end of our flexible cropping sequence.
    As you can see from the above screenshot, from the 1993-01-28 onwards, the log records the following info:
    <br><br>
@@ -689,15 +689,116 @@ What is the reason for our simulation to not continue as intended?
    we indicated that we can only transition back to "Fallow" from a crop, when the conditions for <b>"CanHarvest"</b> are fulfilled.
    Instead, we did not cater for other possibilities, such as that a crop dies or does never germinate.
    In those cases, our scripts should be flexible enough to intervene and transition the simulation state back to "Fallow".
+   <br><br>
+    A usual step when a crop failure occurs in a simulation is to further investigate the mechanistic cause:
+    Which kind of stress or other factor led to the total loss of leaf area?
+    Did this stess build up gradually or over a short amount of time?
+    Did our management choices contribute to the crop failure? 
+    While these questions are beyond the focus of our tutorial interested in the technical handling of crop rotations,
+    you may want to investigate them at your own time.
    </p>
+   </details>
 
 .. raw:: html
 
    <br><br>
 
 
-Finetuning the Simulation Behaviour
+Finetuning the Simulation
 ----------------------------------------
+The above inspection of the simulation results highlighted the need to add additional logic to the ``RotationManager`` 
+for ensuring that the simulation does not remain stuck in a single state when a crop is not harvested.
+Two likely causes of such scenarios are that a crop is sown but never germinates, or the crop dies prior to harvest.
+
+To take care of this issue in a comprehensive manner, let us return to the ``RotationManager``.
+For each crop, add another transition arc that returns from the crop to fallow and call it *Abandon [Crop]*.
+The updated bubble chart should look as follows:
+
+.. figure:: _static/APSIMscreenshot_RotationManager_CropFailureArcs.png
+   :alt: RotationManager_CropFailureArcs
+   :width: 80%
+
+   Updated RotationManager accounting for crop failure.
+
+For each transition, please add the following ``Conditions`` and ``Actions`` (here illustrated for sorghum):
+
+.. figure:: _static/APSIMscreenshot_RotationManager_AbandonCrop_ConditionsActions.png
+   :alt: RotationManager_AbandonCrop_ConditionsActions
+   :width: 50%
+
+   Abandoning crops: "Conditions" and "Actions".
+
+Of course, we have to define the corresponding conditions and actions within the various *manager* scripts for sowing and harvesting.
+For this, the following C# code needs to be added to all four *manager* scripts of sowing and harvesting.
+
+.. code-block:: csharp
+   :caption: C# code additions for crop abandoning
+   :linenos:
+
+        [Units("0-1")] 
+        public int MustAbandon
+        {
+            get
+            {
+                // check if crop is dead
+                if (afterInit && !Crop.IsAlive)
+                {
+                    Summary.WriteMessage(this,
+                        $"Abandoning crop: Crop is dead after initialization.",
+                        MessageType.Diagnostic);
+                    return 1;
+                }
+
+                // check if crop did not emerge
+                else if (((Crop as Plant).DaysAfterSowing > 50) && (!(Crop as Plant).IsEmerged))
+                {
+                    Summary.WriteMessage(this,
+                        $"Abandoning crop: Crop did not emerge within 50 days after sowing.",
+                        MessageType.Diagnostic);
+                    return 1;
+                }
+
+                // check if crop is late for harvest
+                else if (Crop.IsAlive && (Crop as Plant).DaysAfterSowing > 180)
+                {
+                    Summary.WriteMessage(this,
+                        $"Abandoning crop: Crop is late for harvest (180 days after sowing).",
+                        MessageType.Diagnostic);
+                    return 1;
+                }
+
+                // crop is neither dead nor late for harvest
+                return 0;
+            }
+        }
+
+        // Abandon crop
+        public void AbandonCrop()
+        {
+            if (Crop.IsAlive)
+            {
+                Crop.EndCrop();
+            }
+        }
+
+The above defined property ``MustAbandon`` checks for three eventualities:
+
+- If the crop died
+- If the crop did not emerge (until day 50 after sowing)
+- If the crop is late for harvest (i.e., the simulation reached day 180 after sowing, but no harvest has occured)
+
+In all three cases, we decide to abandon the crop in favour of continuing on with our regular rotation logic.
+The method ``AbandonCrop()`` checks for the unlikely case that the crop should still be alive, in which case it ends the crop.
+Otherwise, it does not do any action as part of conducting the transion back to fallow.
+
+Add the above C# code to all four *manager* scripts for sowing and harvesting.
+Then once more run the simulation and inspect the Rugplot.
+
+.. figure:: _static/APSIMscreenshot_Rugplot_flexibleRotation_updated.png
+   :alt: Rugplot_flexibleRotation_updated
+   :width: 80%
+
+   Rugplot of updated simulation results.
 
 
 
