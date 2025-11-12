@@ -152,11 +152,11 @@ For example, the completed box of “Conditions” and “Actions” for wheat (
 
 .. figure:: _static/APSIMscreenshot_TransitionActionConditions_EnterWH.png
    :alt: TransitionActionConditions_EnterWH
-   :width: 80%
+   :width: 100%
 
 .. figure:: _static/APSIMscreenshot_TransitionActionConditions_ExitWH.png
    :alt: TransitionActionConditions_ExitWH
-   :width: 80%
+   :width: 100%
 
     Transition conditions and transition actions for wheat.
 
@@ -811,6 +811,11 @@ the sorghum crop that failed in the summer of 1993
 is not counted when checking that no more than two cereals occur consecutively.
 While we will stick to this logic for this tutorial,
 you could also easily shift the counting to depend on all crops sown (instead of harvested).
+
+
+Conclusion
+----------------------------------------
+
 
 
 
