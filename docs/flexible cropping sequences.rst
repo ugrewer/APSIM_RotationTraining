@@ -814,6 +814,8 @@ As a consequence, three sorghum crops were sown consecutively on the field.
 While we will stick to this logic for our tutorial,
 you could easily shift the crop counting to consider all *sown* instead of *harvested* crops.
 
+The final *APSIMX file* that represent the end of this tutorial section is available here:
+`CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_.
 
 Conclusion
 ----------------------------------------
@@ -825,13 +827,13 @@ The ``Conditions`` and ``Actions`` fields within the ``RotationManager``
 are the central vehicles to link any *manager* script of your choice to control and steer how a cropping sequence shall progress.
 The flexibility of the empty canvas also means that there is not only one way to implement any given scenario.
 
-This tutorial has introduced the default *manager* script that is distributed within APSIM.
+This tutorial has introduced the default *manager* script that is distributed with APSIM.
 We have shown, how understanding its components is a good starting point for building own, customised *manager* scripts.
 
 Subsequently, we have given a specific example, of how *manager* scripts can interact with one another.
 In our specific case, they operated at two different levels:
 The ``CropSequenceEnforcer`` controlled the overall progression of crops for the entire simulation,
-while the various *manager* scripts for sowing and harvesting were focused on managing individual crops.
+while the various ``SowHarvest_[Crop]`` scripts for sowing and harvesting were focused on managing individual crops.
 
 The analysis of our results have provided a practical example of how the inspection of 
 the rugplot, report nodes, and the summary log complement one another in comprehensively diagnosing the simulation outcomes.
