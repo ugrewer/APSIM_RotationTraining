@@ -683,14 +683,16 @@ What is the reason for our simulation to not continue as intended?
    <b>""Paddock.RotationManager: Transition from "Sorghum" to "Fallow" by Exit SG is not possible. Weight = 0"</b>
    <br><br>
    In other words: The RotationManager that we created, evaluates that the condition for leaving the "Sorghum" state are never fulfilled.
-   In fact, if we remember the <b>"Conditions"</b> that we specified as part of the <b>"Exit SG"</b> transition (i.e., arc) as well as all the other exit transitions,
+   In fact, if we remember the <b>"Conditions"</b> that we specified as part of the <b>"Exit SG"</b> transition (i.e., arc),
    we indicated that we can only transition back to "Fallow" from a crop, when the conditions for <b>"CanHarvest"</b> are fulfilled.
    Instead, we did not cater for other possibilities, such as that a crop dies or does never germinate.
+   In those cases, our scripts should be flexible enough to intervene and transition the simulation state back to "Fallow".
    </p>
 
 
+Finetuning the Simulation Behaviour
+----------------------------------------
 
-<b>"Fallow"</b>
 
 
 
