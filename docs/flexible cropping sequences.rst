@@ -591,8 +591,47 @@ the C# code for ``SowHarvest_sorghum`` is slightly different (though there are n
 An *APSIMX file* that reflects the current state of the tutorial after this part of the exercise can be accessed here:
 `CropRotation_flexible_mid.apsimx <CropRotation_flexible_mid/CropRotation_flexible_mid.apsimx>`_.
 
+Inspecting Simulation Results
+----------------------------------------
+With this, we have fully represented our cropping scenario in APSIM and 
+can now select the ``Run`` button in the top menu to conduct the simulation.
+Since we have added quite some new rules about which crop sequences are allowed, 
+our first step should be to check whether these rules were actually correctly being implemented in the simulation as intended.
+To get an idea of the overall progression of the simulated crops,
+let us first inspect the ``RugPlot``.
 
+.. figure:: _static/APSIMscreenshot_Rugplot_flexibleRotation_StuckInSorghum.png
+   :alt: Rugplot_flexibleRotation_StuckInSorghum
+   :width: 100%
 
+   Rugplot of simulation results.
+
+From the Rugplot, we can identify that there is the following progression of field occupations:
+
+- Summer 1985: Fallow
+- Winter 1985: Wheat
+- Summer 1986: Sorghum
+- Winter 1986: Fallow
+- Summer 1987: Mungbean
+- Winter 1987: Fallow
+- Summer 1988: Sorghum
+- Winter 1988: Fallow
+- Summer 1989: Sorghum
+- Winter 1989: Fallow
+- Summer 1990: Mungbean
+- Winter 1990: Wheat
+- Summer 1991: Sorghum
+- Winter 1991: Fallow
+- Summer 1992: Mungbean
+- Winter 1992: Fallow
+- From Summer 1993: Sorghum
+
+There are a couple of major takeaway messages that we can derive from the Rugplot:
+
+- The crop sequencing rule seems to be correctly implemented ("If the previous two cultivated crops were cereals, the next crop must be a legume. In all other cases, the next crop must be a cereal.")
+- The low sowing threshold for the summer season is met in all but the first year (which is a special case, as we started the simulation on 1 January).
+- The higher sowing threshold for the winter season is only met in two seasons, and not met in six seasons.
+- And finally, the glaring issue: from summer 1993 onward, our field has remained continuously occupied by sorghum.
 
 
 
