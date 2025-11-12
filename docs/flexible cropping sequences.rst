@@ -242,7 +242,7 @@ The default *manager* script contains some useful placeholder code that is a goo
     }
 
 The default *manager* script begins with several using directives (i.e., namespace imports).
-These imports make the types defined in those namespaces directly available in this script. 
+These imports make the types defined in those namespaces directly available within the script. 
 Now, you can refer to them with short names instead of writing their full namespace paths every time.
 Subsequently, the script declares the namespace `Models`, which is the standard namespace for all APSIM *manager* scripts.
 In a nutshell, any *manager* script that we are creating in the form of user-written C# classes is dynamically compiled at runtime.
@@ -266,9 +266,9 @@ is able to receive events from the APSIM event system.
 For example, through the use of *"[Link] ISummary Summary;"* we gain access to the *Summary* node in APSIM,
 allowing us to write messages to the summary log.
 Similarly, *"[Link] IClock Clock;"* provides access to the simulation clock,
-which allows us to dynamically retrieve the current simulation date via *Clock.Today*.
+which allows us to dynamically retrieve the current simulation date via *"Clock.Today"*.
 
-Finally, the script defines a method named *DoDailyCalculations* that is decorated with the *[EventSubscribe("DoManagement")]* attribute.
+Finally, the script defines an empty placeholder method named *DoDailyCalculations* that is decorated with the *[EventSubscribe("DoManagement")]* attribute.
 This attribute indicates that the method should be called whenever the *DoManagement* event is raised.
 The *DoManagement* event is raised once per day in APSIM, allowing us to perform daily calculations and updates.
 *Manager* scripts typically hook into *DoManagement* because it fires once per day and is designed for management actions (e.g., sowing, fertilizing, irrigation).
@@ -278,11 +278,6 @@ Understanding the structure and functionality of the default *manager* script gi
 Helper-Script: Crop Sequence Enforcer
 ++++++++++++++++++++++++++++++++++++++++
 For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequence rules.
-For this, please rename the default *Manager* node to ``CropSequenceEnforcer``.
-Usually, it is a good idea to keep all the standard using directives provided in the default *manager* script.
-After all, we usually do not know at the start from which of the most widely used namespaces, we will need to access classes and methods.
-For our current purpose instead, we know that we will generate a very simple and reduced helper script 
-that will only require to access the *System* and *Models.Core*. Please remove the other namespace imports from the top of the script.
 The overall purpose of the helper script is:
 
 - To remember the two most recently grown crops (no matter which *sowHarvest_* script initiated them).
@@ -290,11 +285,18 @@ The overall purpose of the helper script is:
 - To record the crop history after each harvest.
 
 Besides defining variables to keep track of the last two grown crops, 
-the helper script does not schedule sowing or harvest directly.
+the helper script does not schedule sowing or harvesting directly.
 Instead, this continues to be carried out by the various *sowHarvest_* scripts that rely on ``CropSequenceEnforcer`` as a utility model.
 
-The placeholder class name *Script* in the default *manager* script is certainly not very useful to be kept.
-Please rename the class to ``CropSequenceEnforcer``, as this name better reflects the purpose of the script.
+As first step, please rename the default *Manager* node to ``CropSequenceEnforcer``.
+Next, let us review the "using directives": 
+Usually, it is a good idea to keep all the standard *using directives* provided in the default *manager* script.
+After all, we usually do not know at the start from which of the most widely used namespaces we will need to access classes and methods.
+For our current purpose instead, we know that we will generate a very simple and reduced helper script 
+that will only require to access *System* and *Models.Core*. Please remove the other namespace imports from the top of the script.
+
+Subsequently, please rename the placeholder class *Script* to ``CropSequenceEnforcer``, 
+as this clearly documents the purpose of our class.
 
 Next, we will define two private string variables to keep track of the last two grown crops.
 Initially, these variables should be set to *null*, as we consider that no crops have been grown prior to the start of the simulation.
@@ -391,7 +393,7 @@ The final version of the helper script ``CropSequenceEnforcer`` should now look 
 .. code-block:: csharp
    :caption: Final version of the helper script "CropSequenceEnforcer"
    :linenos:
-   
+
         using System;
         using Models.Core;
 
