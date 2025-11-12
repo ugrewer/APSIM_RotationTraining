@@ -412,8 +412,9 @@ while ``PreviousCrop1`` is also accessible within our other scripts.
 Updating Sowing and Harvesting Manager Scripts
 ++++++++++++++++++++++++++++++++++++++++
 Now that we have the helper script in place, we can start modifying the sowing and harvesting manager scripts.
-This will ensure that our ``CanSow`` conditions make use of the ``CropSequenceEnforcer`` to enforce the specified crop sequencing rules,
-and ``HarvestCrop()`` triggers ``CropSequenceEnforcer`` to record all harvested crops.
+Specifially, we want to rely on the ``CropSequenceEnforcer`` to ensure that 
+the various ``CanSow`` properties enforce the specified crop sequencing rules, and
+that the ``HarvestCrop()`` records all crops that have been harvested.
 Arbitrarily, let us start with the ``SowHarvest_wheat`` *manager* .
 Let us select the ``Script`` tab to access the C# code.
 
