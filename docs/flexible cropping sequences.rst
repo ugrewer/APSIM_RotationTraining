@@ -706,9 +706,10 @@ What is the reason for our simulation to not continue as intended?
 
 Finetuning the Simulation
 ----------------------------------------
-The above inspection of the simulation results highlighted the need to add additional logic to the ``RotationManager`` 
+The above inspection of simulation results highlighted the need to add additional logic to the ``RotationManager`` 
 for ensuring that the simulation does not remain stuck in a single state when a crop is not harvested.
-Two likely causes of such scenarios are that a crop is sown but never germinates, or the crop dies prior to harvest.
+Two likely causes of such situations are that the crop is sown but fails to germinate, 
+or that it dies before reaching harvest.
 
 To take care of this issue in a comprehensive manner, let us return to the ``RotationManager``.
 For each crop, add another transition arc that returns from the crop to fallow and call it *Abandon [Crop]*.
@@ -724,12 +725,12 @@ For each transition, please add the following ``Conditions`` and ``Actions`` (he
 
 .. figure:: _static/APSIMscreenshot_RotationManager_AbandonCrop_ConditionsActions.png
    :alt: RotationManager_AbandonCrop_ConditionsActions
-   :width: 50%
+   :width: 80%
 
    Abandoning crops: "Conditions" and "Actions".
 
 Of course, we have to define the corresponding conditions and actions within the various *manager* scripts for sowing and harvesting.
-For this, the following C# code needs to be added to all four *manager* scripts of sowing and harvesting.
+For this, the following C# code needs to be added to all four *manager* scripts of sowing and harvesting (``SowHarvest_sorghum``, ``SowHarvest_wheat``, ...).
 
 .. code-block:: csharp
    :caption: C# code additions for crop abandoning
@@ -783,11 +784,11 @@ For this, the following C# code needs to be added to all four *manager* scripts 
 
 The above defined property ``MustAbandon`` checks for three eventualities:
 
-- If the crop died
-- If the crop did not emerge (until day 50 after sowing)
-- If the crop is late for harvest (i.e., the simulation reached day 180 after sowing, but no harvest has occured)
+- If the crop died.
+- If the crop did not emerge (until day 50 after sowing).
+- If the crop is late for harvest (i.e., the simulation reached day 180 after sowing, but no harvest has occured).
 
-In all three cases, we decide to abandon the crop in favour of continuing on with our regular rotation logic.
+In all three cases, we decide to abandon the crop in favour of continuing on with our regular rotation sequence.
 The method ``AbandonCrop()`` checks for the unlikely case that the crop should still be alive, in which case it ends the crop.
 Otherwise, it does not do any action as part of conducting the transion back to fallow.
 
@@ -799,6 +800,17 @@ Then once more run the simulation and inspect the Rugplot.
    :width: 80%
 
    Rugplot of updated simulation results.
+
+As can be seen in the above rugplot: We no longer get stuck in sorghum from the summer season 1993 onwards.
+In fact, we see that on 2 March 1993, the state of our simulation transitions from sorghum to fallow 
+because the property ``MustAbandon`` returns 1.
+
+From the rugplot we can also see another particularity:
+Since our crop sequencing logic accounts only for harvested crops, 
+the sorghum crop that failed in the summer of 1993
+is not counted when checking that no more than two cereals occur consecutively.
+While we will stick to this logic for this tutorial,
+you could also easily shift the counting to depend on all crops sown (instead of harvested).
 
 
 
