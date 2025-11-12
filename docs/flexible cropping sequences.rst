@@ -302,6 +302,7 @@ Initially, these variables should be set to *null*, as we consider that no crops
 .. code-block:: csharp
    :caption: Storage variables for previously grown crops
    :linenos:
+
         // Crop history
         private string previousCrop1 = null;   // Most recent harvested crop
         private string previousCrop2 = null;   // Second most recent harvested crop
@@ -312,6 +313,7 @@ returns a boolean value indicating whether sowing that crop is allowed based on 
 .. code-block:: csharp
    :caption: Method "AllowsSowing": Enforcing alternation between cereals and legumes
    :linenos:
+
         // Check if the proposed crop is allowed under given cropping sequence rules
         public bool AllowsSowing(string crop)
         {
@@ -355,6 +357,7 @@ Then, we define a public method ``RecordHarvest`` that takes the name of a harve
 .. code-block:: csharp
    :caption: Method "RecordHarvest": Updating crop sequence history
    :linenos:
+
         // Called at harvest time to update crop sequence history
         public void RecordHarvest(string crop)
         {
@@ -378,6 +381,7 @@ Finally, we add two public read-only accessors to retrieve the names of the prev
 .. code-block:: csharp
    :caption: Creating public accessors for previous crops
    :linenos:
+
         // Public read-only accessors
         public string PreviousCrop1 => previousCrop1;
         public string PreviousCrop2 => previousCrop2;
@@ -387,6 +391,7 @@ The final version of the helper script ``CropSequenceEnforcer`` should now look 
 .. code-block:: csharp
    :caption: Final version of the helper script "CropSequenceEnforcer"
    :linenos:
+   
         using System;
         using Models.Core;
 
