@@ -67,6 +67,7 @@ is to represent the desired crop sequences within the ``RotationManager``.
 In other words, we have to generate a suitable bubble chart.
 
 As a starting point for this tutorial section, please utilise the following *APSIMX file*:
+`CropRotation_flexible_start.apsimx <CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_
 `CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
 Using an existing *APSIMX file* as the starting point, allows to skip over some aspects already covered in previous tutorial sections
 and instead focus on the new aspects relevant for flexible cropping sequences. If you compare the simulation tree in the provided *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
