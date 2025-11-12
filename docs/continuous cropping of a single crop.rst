@@ -38,7 +38,7 @@ Instead of simulating the respective crop over a single season, both files simul
 You can explore both files and the simulation results by opening and running them in your own time.
 
 To better understand the steps and details of continuous simulations of single crops, we will utilise a modified version of the file ``Sorghum.apsimx`` as a starting point.
-It can be accessed here: `Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
+It can be accessed here: `Sorghum_continuous_carryOver.apsimx <Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
 For obtaining the best value from this guide, we suggest you to open the file in your local copy of the APSIM software and follow along for the remainder of the tutorial.
 
 This example file simulates sorghum in Dalby (South-East Queensland, Australia). However, instead of simulating exclusively a single crop cycle, from sowing to harvest,
@@ -172,7 +172,7 @@ Select the ``Reset on date`` manager, set the date to **1-May** and ensure that 
    Manager script for annual resetting of *state variables*: water, soil nutrients, and surface organic matter.
 
 
-By now, your *APSIMX file* should look like the following: `Sorghum_continuous_carryOver_reset.apsimx <_APSIM_code/Sorghum_continuous_carryOver_reset/Sorghum_continuous_carryOver_reset.apsimx>`_.
+By now, your *APSIMX file* should look like the following: `Sorghum_continuous_carryOver_reset.apsimx <Sorghum_continuous_carryOver_reset/Sorghum_continuous_carryOver_reset.apsimx>`_.
 Save the file, click on the top-level ``Simulations`` node and then click ``Run`` which will execute all child node simulations.
 Then navigate to the *graph node* "Sorghum Yield" located under the root node ``Simulations``.
 You should see two timeseries of results:

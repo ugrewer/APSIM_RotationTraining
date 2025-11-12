@@ -67,10 +67,9 @@ is to represent the desired crop sequences within the ``RotationManager``.
 In other words, we have to generate a suitable bubble chart.
 
 As a starting point for this tutorial section, please utilise the following *APSIMX file*:
-`CropRotation_flexible_start.apsimx <CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_
-`CropRotation_flexible_start.apsimx <_APSIM_code/CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
+`CropRotation_flexible_start.apsimx <CropRotation_flexible_start/CropRotation_flexible_start.apsimx>`_.
 Using an existing *APSIMX file* as the starting point, allows to skip over some aspects already covered in previous tutorial sections
-and instead focus on the new aspects relevant for flexible cropping sequences. If you compare the simulation tree in the provided *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_),
+and instead focus on the new aspects relevant for flexible cropping sequences. If you compare the simulation tree in the provided *APSIMX file* with the one shown in the previous tutorial section on basic crop rotations (`CropRotation_basic.apsimx <CropRotation_basic/CropRotation_basic.apsimx>`_),
 you will notice that there are a number of modifications and updates already done:
 
 - Crop models for a total of four crops are included in the simulation tree (sorghum, mungbean, wheat, chickpea).
@@ -392,7 +391,7 @@ This may come in handy for logging purposes, although the heavy lifting will be 
 
 With these modifications, the ``CropSequenceEnforcer`` script is completed. 
 If you are uncertain if you implemented all changes correctly, you can compare your solution to the final version here:
-`CropSequenceEnforcer.cs <_APSIM_code/CropRotation_flexible_final/CropSequenceEnforcer.cs>`_.
+`CropSequenceEnforcer.cs <CropRotation_flexible_final/CropSequenceEnforcer.cs>`_.
 Please note, in case that you copy and paste all of the above code into the ``CropSequenceEnforcer`` node in the APSIM GUI,
 you may need to close and reopen the APSIM code editor to ensure that all changes are correctly reflected.
 
@@ -584,13 +583,13 @@ The updated code of the ``HarvestCrop()`` method should look as follows:
 
 With these modifications, the ``SowHarvest_wheat`` script is completed. 
 If you are uncertain if you implemented all changes correctly, you can compare your solution to the final version here:
-`SowHarvest_wheat.cs <_APSIM_code/CropRotation_flexible_final/SowHarvest_wheat.cs>`_.
+`SowHarvest_wheat.cs <CropRotation_flexible_final/SowHarvest_wheat.cs>`_.
 The C# code for ``SowHarvest_chickpea`` and ``SowHarvest_mungbean`` is identical.
 Due to the different variables considered under the ``Parameters`` tab, 
 the C# code for ``SowHarvest_sorghum`` is slightly different (though there are no differences in the here modified code sections).
 
 An *APSIMX file* that reflects the current state of the tutorial after this part of the exercise can be accessed here:
-`CropRotation_flexible_mid.apsimx <_APSIM_code/CropRotation_flexible_mid/CropRotation_flexible_mid.apsimx>`_.
+`CropRotation_flexible_mid.apsimx <CropRotation_flexible_mid/CropRotation_flexible_mid.apsimx>`_.
 
 
 

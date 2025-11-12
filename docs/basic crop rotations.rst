@@ -10,7 +10,7 @@ Basic Overview of the Rotation Manager
 ----------------------------------------
 In the following section, we will develop a simple crop rotation scenario in APSIM from the ground up.
 As starting point, we will again utilise the earlier simulation of continuous Sorghum in Dalby: 
-`Sorghum_continuous_carryOver.apsimx <_APSIM_code/Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
+`Sorghum_continuous_carryOver.apsimx <Sorghum_continuous_carryOver/Sorghum_continuous_carryOver.apsimx>`_.
 Please save the file under the new name *"CropRotation_basic.apsimx"* and also rename the simulation *node* from *"Continuous_Sorghum"* to *"CropRotation_basic"*.
 
 To add the ``RotationManager`` *model* to the simulation tree, right-click on the ``Paddock`` *node*, click on ``Add model...``, 
@@ -619,7 +619,7 @@ Further, there is a strong interannual fluctuation of volumetric soil water with
 
 This concludes the tutorial on defining and utilising the Rotation Manager for the simulation of a basic crop rotation.
 The final *APSIMX file* produced in this tutorial can be accessed for comparison at: 
-`CropRotation_basic.apsimx <_APSIM_code/CropRotation_basic/CropRotation_basic.apsimx>`_
+`CropRotation_basic.apsimx <CropRotation_basic/CropRotation_basic.apsimx>`_
 
 
 References
