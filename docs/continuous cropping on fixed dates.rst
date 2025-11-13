@@ -111,7 +111,7 @@ To know all possible arguments, you need to find the method definition of "Sow()
 Inspecting the APSIM Source Code
 ++++++++++++++++++++++++++++++++++++++++
 The good news is that you can also simply lookup method definitions in the APSIM source code.
-The APSIM source code is openly available at the GitHub repository: `ApsimX <https://github.com/APSIMInitiative/ApsimX`_.
+The APSIM source code is openly available at the GitHub repository: `ApsimX<https://github.com/APSIMInitiative/ApsimX>`_.
 If you start of without any knowledge of the structure of APSIM,
 and thus do not look where to look for answers,
 the easiest approach is to type "Sow(" in the APSIM repository.
