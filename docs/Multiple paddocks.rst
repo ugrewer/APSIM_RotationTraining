@@ -1,4 +1,4 @@
-Multiple paddocks
+Multiple Paddocks
 =================
 
 By default, the rotation manager component is configured as a "top level" management component that directs other management components by itself. In a multipaddock simulation, we want the component to track several paddocks, each with its own water balance, crops and residues - applying the same rotation to all. In addition, we'll introduce global (whole farm) rules that include measures such as the total area planted to each crop type, economic measures (eg. bank balance or expected crop prices) and farmer preferences - usually scenario related. Thus,  management is a combination of paddock scale rules (eg soil water above a threshold) and farm scale rules to apply when testing the desirability of actions in each paddock.
