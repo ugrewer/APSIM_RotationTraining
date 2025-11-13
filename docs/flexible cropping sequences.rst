@@ -814,7 +814,7 @@ As a consequence, three sorghum crops were sown consecutively on the field.
 While we will stick to this logic for our tutorial,
 you could easily shift the crop counting to consider all *sown* instead of *harvested* crops.
 
-The final *APSIMX file* that represent the end of this tutorial section is available here:
+The final *APSIMX file* that corresponds to the end of this tutorial section is available here:
 `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_.
 
 Conclusion

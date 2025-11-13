@@ -619,7 +619,10 @@ Further, there is a strong interannual fluctuation of volumetric soil water with
 
 This concludes the tutorial on defining and utilising the Rotation Manager for the simulation of a basic crop rotation.
 The final *APSIMX file* produced in this tutorial can be accessed for comparison at: 
-`CropRotation_basic.apsimx <CropRotation_basic/CropRotation_basic.apsimx>`_
+`CropRotation_basic.apsimx <CropRotation_basic/CropRotation_basic.apsimx>`_.
+To reinforce your understanding of the main functions of the Rotation Manager
+we suggest you to now read through the presentation of the Rotation Manager on the APSIM website:
+`APSIM Rotation Manager <https://apsimnextgeneration.netlify.app/usage/rotationmanager/>`_.
 
 
 References
