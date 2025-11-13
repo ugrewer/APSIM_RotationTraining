@@ -524,7 +524,7 @@ It is important to note that APSIM is very flexible in defining very different *
 The here shown option just provides one example.
 When you utilise APSIM for a very specific research objective, it is advisable to specify *Report nodes* that are most suitable to answering your research question.
 For further detailed information on how to utilise Report Notes, and particularly how to use the Transition Report, 
-please consult the section :doc:`What to Do When It Doesn't Work </What to Do When It Doesn't Work>`.
+please consult the section :doc:`What to Do When It Doesn't Work </Diagnosis>`.
 
 
 Adding a Rugplot
