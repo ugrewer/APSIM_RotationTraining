@@ -54,7 +54,7 @@ Two common ways are to structure it as row sequence or circle.
    Bubble chart of a simple crop rotation - organised as circle.
 
 While the *nodes* represent the different possible options of field occupancy, the next step is to connect the *nodes* with arcs.
-Arcs define the transitions the we request APSIM to simulate.
+Arcs define the transitions that we request APSIM to simulate.
 Please add a single arc each for the desired transitions of our rotation plan "Sorghum-Fallow-Mungbean-Fallow".
 For this, right-click on a *node* and select ``Add arc``, drag the arc to the *node* it shall transition to,
 and click on the *node* to lock-in the arc.
@@ -154,7 +154,8 @@ Even if you never plan to conduct such code modifications yourself, this section
 
 For those interested, let us have a brief conceptual overview of the ``SowHarvest_sorghum`` *manager* script (otherwise, feel free to skip this paragraph).
 This *C#* script is a custom APSIM management script inside the *Models* namespace - a logical grouping of related classes. 
-The *using* statements at the top import external APSIM and .NET libraries, allowing access to components such as soils, weather, plants, and utility functions. 
+The *using* statements at the top reference APSIM and .NET namespaces, 
+allowing the script to access components such as soils, weather, plants, and utility functions without needing to specify their full namespace paths.
 The *Script* class itself inherits from APSIM’s base *Model* class and implements the *IStructureDependency* interface. 
 Inside the class, linked components (e.g., *Clock*, *Soil*, *Crop*) are automatically connected to other simulation modules. 
 The script subscribes to simulation events like *StartOfSimulation* or *DoManagement*, 
@@ -177,7 +178,7 @@ In the user interface, when clicking on the *manager* script ``SowingRule``  we 
    :width: 50%
 
 When we then navigate to the ``Script`` tab, we can search for the same keywords and find the corresponding **C# code**.
-Specifically, what we are after are the highlighted segments below:
+Specifically, we are after the highlighted segments below:
 
 .. figure:: _static/APSIMscreenshot_SorghumParamCSharpCode.png
    :alt: SorghumParamCSharpCode
@@ -385,7 +386,7 @@ The resulting simulation tree should now look similar to the following:
 
    Simulation tree with added *Mungbean* crop model.
 
-When we now navigate again to the *manager* script ``SowHarvest_mungbean``, you are able to select *Mungbean* from the drop-down list as the target crop.
+When you now navigate again to the *manager* script ``SowHarvest_mungbean``, you are able to select *Mungbean* from the drop-down list as the target crop.
 Further modifications that we need to conduct to ``SowHarvest_mungbean`` are:
 
 - Update the sowing window start and end dates to desired values for mungbean around Dalby (start: 1-oct; end: 30-dec).
@@ -461,7 +462,7 @@ Once you have completed this task, you can compare your choices to the correct *
     // Actions
     [SowHarvest_mungbean].Script.HarvestCrop()
 
-With this, we have completed the setup of a basic Rotation Manager model in APSIM.
+With this, we have completed the setup of a basic ``RotationManager`` *model* in APSIM.
 
 
 Crop-Soil Interactions
@@ -522,6 +523,9 @@ The updated *Report nodes* should look similar to the following:
 It is important to note that APSIM is very flexible in defining very different *Report nodes*.
 The here shown option just provides one example.
 When you utilise APSIM for a very specific research objective, it is advisable to specify *Report nodes* that are most suitable to answering your research question.
+For further detailed information on how to utilise Report Notes, and particularly how to use the Transition Report, 
+please consult the section :doc:`What To Do When It Doesn't Work </troubleshooting>`.
+
 
 Adding a Rugplot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
