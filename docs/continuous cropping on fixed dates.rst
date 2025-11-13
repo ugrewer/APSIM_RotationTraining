@@ -51,7 +51,7 @@ selecting ``Add model...`` and then double clicking on ``Operations``
 As you will see, the ``Operations`` *model* provides you with an empty text file.
 It is a fixed schedule manager.
 Management operations are specified in a row-by-row manner.
-Given that we want to reproduce the scenario from previously generated tutorial section 
+Given that we want to reproduce the scenario from the previous tutorial section 
 :doc:`Flexible Cropping Sequences</flexible cropping sequences>`,
 we are interested in specifying the following activities:
 
