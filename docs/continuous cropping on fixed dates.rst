@@ -29,6 +29,7 @@ As the starting point, let us use the final final *APSIMX file* from the previou
 Please save the file under the new name “CropRotation_fixedDates.apsimx” and 
 also rename the simulation node from “Continuous_Sorghum” to “CropRotation_fixedDates”.
 Let us clean up the simulation by removing all *manager* scripts as they are no longer needed:
+
 - CropSequenceEnforcer
 - SowHarvest_sorghum
 - SowHarvest_wheat
@@ -95,7 +96,7 @@ When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
             Crop.Sow(population: Population, cultivar: CultivarName, depth: SowingDepth, rowSpacing: RowSpacing);
         }
 
-From the above, we can see that the method "Sow()" of the ``Wheat`` model takes the arguments:
+From the above, we can see that the method "Sow()" used by the ``Wheat`` model accepts arguments such as:
 - population
 - cultivar
 - depth
@@ -104,12 +105,13 @@ From the above, we can see that the method "Sow()" of the ``Wheat`` model takes 
 The above procedure gives us a rather practical approach to looking up how methods are used.
 However, in this way, we only find out which arguments are being passed in this particular call of the method.
 There could be more parameters defined in the method’s signature (e.g. optional ones), but they’re simply not used here.
+From the above, we also cannot tell in which order the method expects its arguments (in case that we should not specify keywords).
 To know all possible arguments, you need to find the method definition of "Sow()" in the source code (not just a call to it).
 
 Inspecting the APSIM Source Code
 ++++++++++++++++++++++++++++++++++++++++
 The good news is that you can also simply lookup method definitions in the APSIM source code.
-The APSIM source code is openly available at the GitHub repository: `ApsimX<https://github.com/APSIMInitiative/ApsimX`_.
+The APSIM source code is openly available at the GitHub repository: `ApsimX <https://github.com/APSIMInitiative/ApsimX`_.
 If you start of without any knowledge of the structure of APSIM,
 and thus do not look where to look for answers,
 the easiest approach is to type "Sow(" in the APSIM repository.
