@@ -1,7 +1,7 @@
 Authors
 =======
 
-This tutorial was developed by the following members of the **APSIM reference panel** for the APSIM Advanced Training Workshop held in conjunction with the 26th **International Congress on Modelling and Simulation** (MODSIM 2025):
+This tutorial was developed by the following members of the **APSIM Reference Panel** for the APSIM Advanced Training Workshop held in conjunction with the 26th **International Congress on Modelling and Simulation** (MODSIM 2025):
 
 **Uwe Grewer**
 
@@ -30,4 +30,4 @@ This tutorial was developed by the following members of the **APSIM reference pa
 - **Institution:** The University of Queensland
 - **Website:** https://qaafi.uq.edu.au/profile/864/peter-devoil
 - **Email:** peter.devoil@uq.edu.au
-- **ORCID:** 0000-0001-6584-4376
+- **ORCID:** `0000-0001-6584-4376 <https://orcid.org/0000-0001-6584-4376>`_
