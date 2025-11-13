@@ -1,4 +1,4 @@
-What to do when it doesn't work
+What to Do When It Doesn’t Work
 ===============================
 
 While the rotation manager component is simple in concept, the details of its operation are voluminous and complex. Particularly when it doesn't work. This section steps through the operation of the component, showing how to examine the state of the system at check points and highlighting common mistakes. 
