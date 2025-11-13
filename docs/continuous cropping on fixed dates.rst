@@ -22,7 +22,7 @@ and specific crop sequencing rules as defined in the previous tutorial section:
 Only now, we will pretend that all management activities would have been communicated to us based on records of on-farm observation.
 Our task is to represent that information in APSIM.
 
-Operations Model
+Setup
 ----------------------------------------
 As the starting point, let us use the final final *APSIMX file* from the previous tutorial section:  
 `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_.
@@ -71,15 +71,14 @@ For sowing of wheat, this is the crop model "[Wheat]".
 When adding a dot (.) after the reference to the crop model, we can explore the available methods and properties via IntelliSense.
 Evidently, in this case, we are interested in the method "Sow()".
 
-
 Looking Up Method Signatures
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 So far so good. However, IntelliSense does not tell us the method signature 
 that identifies which arguments are required by "Sow()".
 To find this out, we have a couple of options:
 
 Inspecting Existing Manager Scripts
-++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Common operations such as "Sow()" are implemented in many existing manager scripts. 
 If we want to know which arguments are commonly used within the method, we can simply open an existing *manager* script and see how it is used there. 
 For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file* 
@@ -109,7 +108,7 @@ From the above, we also cannot tell in which order the method expects its argume
 To know all possible arguments, you need to find the method definition of "Sow()" in the source code (not just a call to it).
 
 Inspecting the APSIM Source Code
-++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The good news is that you can also simply lookup method definitions in the APSIM source code.
 The APSIM source code is openly available at the GitHub repository: `ApsimX<https://github.com/APSIMInitiative/ApsimX>`_.
 If you start of without any knowledge of the structure of APSIM,
@@ -145,7 +144,7 @@ This gives us all information we need to work out the next steps and specify our
 
 
 Specifying Operations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 So far we had identified the date, references the "[Wheat]" *model*, and specified the "Sow()" method.
 Now we can specify the parameter values as follows:
 
