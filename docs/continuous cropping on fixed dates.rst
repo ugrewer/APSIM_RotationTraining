@@ -77,7 +77,13 @@ So far so good. However, IntelliSense does not tell us the method signature
 that identifies which arguments are required by "sow()".
 To find this out, we have a couple of options:
 
-- **Inspect existing manager scripts**: Common operations such as "sow()" are implemented in many existing manager scripts. If we want to know which arguments are commonly used within the method, we can simply open an existing *manager* script and see how it is used there. For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file* `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_. When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
+Inspect existing manager scripts
+++++++++++++++++++++++++++++++++++++++++
+Common operations such as "sow()" are implemented in many existing manager scripts. 
+If we want to know which arguments are commonly used within the method, we can simply open an existing *manager* script and see how it is used there. 
+For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file* 
+`CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_. 
+When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
 
 .. code-block:: csharp
    :caption: "SowCrop()" Method in the manager script "SowHarvest_wheat"
@@ -90,6 +96,8 @@ To find this out, we have a couple of options:
         }
 
 
+
+
 Paddock.Fertiliser: 100.0 kg/ha of UreaN added at depth 100 layer 1
 
 
@@ -99,7 +107,8 @@ Subheading
 Sub-Subheading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+Sub-Sub-Subheading
+++++++++++++++++++++++++++++++++++++++++
 
 
 References
