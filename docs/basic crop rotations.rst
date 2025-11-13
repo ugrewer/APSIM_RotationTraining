@@ -15,7 +15,7 @@ Please save the file under the new name *"CropRotation_basic.apsimx"* and also r
 
 To add the ``RotationManager`` *model* to the simulation tree, right-click on the ``Paddock`` *node*, click on ``Add model...``, 
 expand the  ``Management`` folder, and double click on ``RotationManager`` 
-(alternatively, you can drag-and-drop the ``RotationManager`` onto the ``Paddock`` *node*).
+(alternatively, you can drag-and-drop the ``RotationManager`` *model* onto the ``Paddock`` *node*).
 
 .. figure:: _static/APSIMscreenshot_addingRotationManager.png
    :alt: Adding Rotation Manager
@@ -523,8 +523,8 @@ The updated *Report nodes* should look similar to the following:
 It is important to note that APSIM is very flexible in defining very different *Report nodes*.
 The here shown option just provides one example.
 When you utilise APSIM for a very specific research objective, it is advisable to specify *Report nodes* that are most suitable to answering your research question.
-For further detailed information on how to utilise Report Notes, and particularly how to use the Transition Report, 
-please consult the section :doc:`What to Do When It Doesn't Work </Diagnosis>`.
+For further detailed information on how to utilise *Report nodes*, and particularly how to use the ``Transition Report``, 
+please consult the section: :doc:`What to Do When It Doesn't Work </Diagnosis>`.
 
 
 Adding a Rugplot
@@ -567,7 +567,7 @@ Results Interpretation
 As first step of interpreting results, we will inspect the Rugplot.
 The Rugplot visualises the progression of crops and fallows that occupy the simulated field.
 Specifically, the bar on the left-hand side shows the field occupancy from the start of the simulation (top) towards the end (bottom).
-We can see that the simulation starts out with the state *"Fallow_postMB"*, as we had specified.
+We can see that the simulation starts out with a fallow, as we had specified.
 We then see that the field occupancy changes sequentially as Sorghum-Fallow-Mungbean-Fallow.
 This allows us to confirm that the simulation is progressing according to the intended crop sequence and that no errors require correction.
 Another key insight from the Rugplot is that fallow periods vary in length.
@@ -579,7 +579,7 @@ This means, that the specified sowing condition is not met in various summer sea
 
    Rugplot showing the progression of field occupancy over time.
 
-Besides this first overview of field occupancy, the Rugplot displays on the right-hand side for each state:
+Besides this first overview of field occupancy, the Rugplot displays on the right-hand side for each date:
 
 - The transition rule that is checked for (e.g., can sorghum be sown)
 - The results value of the transition rule (e.g., -1)
@@ -595,6 +595,7 @@ This kind of numeric output is useful for being synthesised by the graphing tool
 For direct inspection, variables reported in aggregate form, such as annual totals or averages, or those recorded upon specific events like sowing, flowering, or harvest, are more useful.
 For example, the *Report nodes* ``HarvestReport_sorghum`` and ``HarvestReport_mungbean`` provide results of selected variables on the day of harvesting only.
 To inspect these values in a tabular format, click on the ``Data`` tab, after navigating to each respective *Report node*.
+(For generating a *Report node* that displays each state transition, see: :doc:`What to Do When It Doesn't Work </Diagnosis>`)
 
 .. figure:: _static/APSIMscreenshot_HarvestReportTableSorghum.png
    :alt: HarvestReportTableSorghum
@@ -625,7 +626,7 @@ This concludes the tutorial on defining and utilising the Rotation Manager for t
 The final *APSIMX file* produced in this tutorial can be accessed for comparison at: 
 `CropRotation_basic.apsimx <CropRotation_basic/CropRotation_basic.apsimx>`_.
 To reinforce your understanding of the main functions of the Rotation Manager
-we suggest you to now read through the presentation of the Rotation Manager on the APSIM website:
+we suggest you to also read through the presentation of the Rotation Manager on the APSIM website:
 `APSIM Rotation Manager <https://apsimnextgeneration.netlify.app/usage/rotationmanager/>`_.
 
 
