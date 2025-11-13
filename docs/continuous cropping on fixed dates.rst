@@ -68,18 +68,18 @@ The first information that the ``Operations`` *model* expects is the date in the
 Subsequently, we need to reference the model that we want to conduct an action.
 For sowing of wheat, this is the crop model "[Wheat]".
 When adding a dot (.) after the reference to the crop model, we can explore the available methods and properties via IntelliSense.
-Evidently, in this case, we are interested in the method "sow()".
+Evidently, in this case, we are interested in the method "Sow()".
 
 
-Looking up Method Signatures
+Looking Up Method Signatures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 So far so good. However, IntelliSense does not tell us the method signature 
-that identifies which arguments are required by "sow()".
+that identifies which arguments are required by "Sow()".
 To find this out, we have a couple of options:
 
-Inspect existing manager scripts
+Inspecting Existing Manager Scripts
 ++++++++++++++++++++++++++++++++++++++++
-Common operations such as "sow()" are implemented in many existing manager scripts. 
+Common operations such as "Sow()" are implemented in many existing manager scripts. 
 If we want to know which arguments are commonly used within the method, we can simply open an existing *manager* script and see how it is used there. 
 For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file* 
 `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_. 
@@ -94,6 +94,83 @@ When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
             Summary.WriteMessage(this, this.FullPath + " - sowing " + GetCropName(), MessageType.Diagnostic);
             Crop.Sow(population: Population, cultivar: CultivarName, depth: SowingDepth, rowSpacing: RowSpacing);
         }
+
+From the above, we can see that the method "Sow()" of the ``Wheat`` model takes the arguments:
+- population
+- cultivar
+- depth
+- rowSpacing
+
+The above procedure gives us a rather practical approach to looking up how methods are used.
+However, in this way, we only find out which arguments are being passed in this particular call of the method.
+There could be more parameters defined in the method’s signature (e.g. optional ones), but they’re simply not used here.
+To know all possible arguments, you need to find the method definition of "Sow()" in the source code (not just a call to it).
+
+Inspecting the APSIM Source Code
+++++++++++++++++++++++++++++++++++++++++
+The good news is that you can also simply lookup method definitions in the APSIM source code.
+The APSIM source code is openly available at the GitHub repository: `ApsimX<https://github.com/APSIMInitiative/ApsimX`_.
+If you start of without any knowledge of the structure of APSIM,
+and thus do not look where to look for answers,
+the easiest approach is to type "Sow(" in the APSIM repository.
+
+You will then be provided with a list of all files in which "Sow(" occurs.
+Our interest is to identify the file that defines the method.
+When looking through the search results for wheat-specific hits,
+we see the file "Examples/Wheat.apsimx".
+However, that is just an example *APSIMX file* that is distributed with APSIM.
+(Certainly, it also shows which arguments the "Sow()" method utilises, but it is not where the method is defined).
+
+For the method definition we need to look instead at the C# code in the file "Models/PMF/Plant.cs".
+There the method definition is given as the below:
+
+.. code-block:: csharp
+   :caption: Extract of the definition of the "Sow()" method in the APSIM source code
+   :linenos:
+   
+        public void Sow(string cultivar, double population, double depth, double rowSpacing, double maxCover = 1, double budNumber = 1, double rowConfig = 0, double seeds = 0, int tillering = 0, double ftn = 0.0)
+        {
+        ...
+        }
+
+While the actual method definition is much longer, we are only interested in the specification of the input parameters that the method accepts.
+These are stated in the reproduced line as:
+
+- Required arguments: cultivar, population, depth, rowSpacing
+- Optional arguments: maxCover, budNumber, rowConfig, seeds, tillering, ftn
+
+This gives us all information we need to work out the next steps and specify our first action within the ``Operations`` *model*.
+
+
+Specifying Operations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+So far we had identified the date, references the "[Wheat]" *model*, and specified the "Sow()" method.
+Now we can specify the parameter values as follows:
+
+- cultivar: Janz
+- population: 25
+- depth: 40
+- rowSpacing: 500
+
+In C#, you can call a method such as "Sow()" in two ways.
+If you provide only the values (i.e., *positional arguments*), the order of the arguments must exactly match the method definition.
+Alternatively, you can specify *named arguments* using keyword–value pairs, in which case the order of arguments no longer matters.
+For example, you can specify the above information in either of these two ways:
+
+.. code-block:: csharp
+   :caption: C# code for sowing wheat
+   :linenos:
+
+    1985-06-05 [Wheat].Sow("Janz", 25, 40, 500)
+    1985-06-05 [Wheat].Sow(cultivar: "Janz", population: 25, depth: 40, rowSpacing: 500)
+   
+
+
+
+
+
+
+
 
 
 
