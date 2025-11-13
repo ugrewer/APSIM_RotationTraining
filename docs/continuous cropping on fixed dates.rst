@@ -60,8 +60,8 @@ we are interested in specifying the following activities:
 
 The first actions of interest happens on 1985-06-05 and consist of:
 
- - Sowing of Wheat
- - Application of Urea fertiliser at a rate of 100.0 kg/ha (at a depth of 100 mm)
+- Sowing of Wheat
+- Application of Urea fertiliser at a rate of 100.0 kg/ha (at a depth of 100 mm)
 
 Let us try to implement these two actions in the ``Operations`` *model* with the help of IntelliSense.
 The first information that the ``Operations`` *model* expects is the date in the standard format "1985-06-05".
@@ -77,10 +77,7 @@ So far so good. However, IntelliSense does not tell us the method signature
 that identifies which arguments are required by "sow()".
 To find this out, we have a couple of options:
 
-- **Inspect existing manager scripts**: A common operation as "sow()" is implemented in many existing manager scripts.
-For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file*
-`CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_.
-When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
+- **Inspect existing manager scripts**: Common operations such as "sow()" are implemented in many existing manager scripts. If we want to know which arguments are commonly used within the method, we can simply open an existing *manager* script and see how it is used there. For example, we could navigate back to the ``SowHarvest_wheat`` manager in our previous *APSIMX file* `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_. When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
 
 .. code-block:: csharp
    :caption: "SowCrop()" Method in the manager script "SowHarvest_wheat"
