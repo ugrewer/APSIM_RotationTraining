@@ -62,7 +62,7 @@ we are interested in specifying the following activities:
 The first actions of interest happens on 1985-06-05 and consist of:
 
 - Sowing of Wheat
-- Application of Urea fertiliser at a rate of 100.0 kg/ha (at a depth of 100 mm)
+- Application of Urea fertiliser at a rate of 100.0 kg/ha (and a depth of 100 mm)
 
 Let us try to implement these two actions in the ``Operations`` *model* with the help of IntelliSense.
 The first information that the ``Operations`` *model* expects is the date in the standard format "1985-06-05".
@@ -237,20 +237,17 @@ Although we have utilised two very different approaches to specify the APSIM sim
 the actual operations simulated (and subsequent results) were identical.
 You may also want to investigate this in more detail by reading through the simulation log stored in ``Summary``.
 
+In a similar way, you could continue to generate entries in the ``Operations`` *model* for all field operation that occured in our previous tutorial section 
+:doc:`Flexible Cropping Sequences</flexible cropping sequences>`. 
+The resulting outputs should be fully identical.
 
-
-
-Subheading
-----------------------------------------
-
-Sub-Subheading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sub-Sub-Subheading
-++++++++++++++++++++++++++++++++++++++++
 
 Conclusion
 ----------------------------------------
+This tutorial section showed how to use the ``Operations`` *model* to represent management actions that occured on fixed dates.
+Using the ``Operations`` *model* is a suitable option for representing observed cropping data, for example from research farms or farmer-managed on-farm trials.
+The ``Operations`` *model* is instead not suitable for forward looking simulations that aim at dynamically triggering field operations
+based on rules and conditions, for example based on thresholds of soil moisture or the reaching of specific plant physiological stages.
 
 
 References
