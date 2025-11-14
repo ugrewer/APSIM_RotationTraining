@@ -71,7 +71,7 @@ For sowing of wheat, this is the crop model "[Wheat]".
 When adding a dot (.) after the reference to the crop model, we can explore the available methods and properties via IntelliSense.
 Evidently, in this case, we are interested in the method "Sow()".
 
-Looking Up Method Signatures
+Retrieving Method Signatures
 ----------------------------------------
 So far so good. However, IntelliSense does not tell us the method signature 
 that identifies which arguments are required by "Sow()".
@@ -105,7 +105,7 @@ From the above, we can see that the method "Sow()" used by the ``Wheat`` model a
 The above procedure gives us a rather practical approach to looking up how methods are used.
 However, in this way, we only find out which arguments are being passed in this particular call of the method.
 There could be more parameters defined in the method’s signature (e.g. optional ones), but they’re simply not used here.
-From the above, we also cannot tell in which order the method expects its arguments (in case that we should not specify keywords).
+From the above, we also cannot tell in which order the method expects its arguments (in case that we do not want to specify keywords).
 To know all possible arguments, you need to find the method definition of "Sow()" in the source code (not just a call to it).
 
 Inspecting the APSIM Source Code
@@ -113,21 +113,22 @@ Inspecting the APSIM Source Code
 The good news is that you can also simply lookup method definitions in the APSIM source code.
 The APSIM source code is openly available at the GitHub repository: `ApsimX<https://github.com/APSIMInitiative/ApsimX>`_.
 If you start of without any knowledge of the structure of APSIM,
-and thus do not look where to look for answers,
-the easiest approach is to type "Sow(" in the APSIM repository.
+and thus do not know where to look for answers,
+the easiest approach is to search for "Sow(" in the APSIM repository.
 
 You will then be provided with a list of all files in which "Sow(" occurs.
-Our interest is to identify the file that defines the method.
+We are interested in identifying the file that defines the method.
 When looking through the search results for wheat-specific hits,
 we see the file "Examples/Wheat.apsimx".
 However, that is just an example *APSIMX file* that is distributed with APSIM.
 (Certainly, it also shows which arguments the "Sow()" method utilises, but it is not where the method is defined).
 
 For the method definition we need to look instead at the C# code in the file "Models/PMF/Plant.cs".
+This already indicates to us that the "Sow()" method is not specifically defined for wheat only, but works across all crops that inherit from the ``Plant`` *model*.
 There the method definition is given as the below:
 
 .. code-block:: csharp
-   :caption: Extract of the definition of the "Sow()" method in the APSIM source code
+   :caption: Excerpt from the "Sow()" method definition in the APSIM Plant model
    :linenos:
    
         public void Sow(string cultivar, double population, double depth, double rowSpacing, double maxCover = 1, double budNumber = 1, double rowConfig = 0, double seeds = 0, int tillering = 0, double ftn = 0.0)
@@ -187,7 +188,7 @@ we see that the file "Models/Management/Fertiliser.cs" specifies that the method
 - doOutput (optional)
 
 .. code-block:: csharp
-   :caption: Extract of the definition of the "Apply()" method in the APSIM source code
+   :caption: Excerpt from the "Apply()" method definition in the APSIM Fertiliser model
    :linenos:
    
         public void Apply(double amount, string type, double depth = 0, double depthBottom = -1, bool doOutput = true)
