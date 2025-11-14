@@ -24,7 +24,7 @@ Our task is to represent that information in APSIM.
 
 Setup
 ----------------------------------------
-As the starting point, let us use the final final *APSIMX file* from the previous tutorial section:  
+As the starting point, let us use the final *APSIMX file* from the previous tutorial section:  
 `CropRotation_flexible_final.apsimx <CropRotation_flexible_final/CropRotation_flexible_final.apsimx>`_.
 Please save the file under the new name “CropRotation_fixedDates.apsimx” and 
 also rename the simulation node from “Continuous_Sorghum” to “CropRotation_fixedDates”.
@@ -236,6 +236,9 @@ As you can see, the harvested wheat yield on 1985-11-16 is identical in both cas
 Although we have utilised two very different approaches to specify the APSIM simulations,
 the actual operations simulated (and subsequent results) were identical.
 You may also want to investigate this in more detail by reading through the simulation log stored in ``Summary``.
+
+For comparison, the final version of the *APSIMX file* generated in this tutorial is accessible here:
+`CropRotation_fixedDates.apsimx <CropRotation_fixedDates/CropRotation_fixedDates.apsimx>`_
 
 In a similar way, you could continue to generate entries in the ``Operations`` *model* for all field operation that occured in our previous tutorial section 
 :doc:`Flexible Cropping Sequences</flexible cropping sequences>`. 
