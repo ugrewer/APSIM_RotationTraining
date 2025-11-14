@@ -1150,6 +1150,20 @@
                   "Date": "1985-06-05",
                   "Action": "[Wheat].Sow(\"Janz\", 25, 40, 500)",
                   "Line": "1985-06-05 [Wheat].Sow(\"Janz\", 25, 40, 500)"
+                },
+                {
+                  "$type": "Models.Operation, Models",
+                  "Enabled": true,
+                  "Date": "1985-06-05",
+                  "Action": "[Fertiliser].Apply(100, \"UreaN\", 100)",
+                  "Line": "1985-06-05 [Fertiliser].Apply(100, \"UreaN\", 100)"
+                },
+                {
+                  "$type": "Models.Operation, Models",
+                  "Enabled": true,
+                  "Date": "1985-11-16",
+                  "Action": "[Wheat].Harvest()",
+                  "Line": "1985-11-16 [Wheat].Harvest()"
                 }
               ],
               "Name": "Operations",

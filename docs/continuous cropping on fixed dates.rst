@@ -203,12 +203,39 @@ Accordingly, we define the fertiliser application operation as follows:
 
     1985-06-05 [Fertiliser].Apply(100, "UreaN", 100)
 
+The next field operation that we are interested in is crop harvesting,
+which occured on 1985-11-16.
+From our previous *manager* scripts for sowing and harvesting, we know that this method is very simple.
+Accordingly, we can just rely on that knowledge to specify the operation as follows:
+
+.. code-block:: csharp
+   :caption: C# code for wheat harvesting
+   :linenos:
+
+    1985-11-16 [Wheat].Harvest()
 
 
+When we run the simulation and then navigate to the ``Data`` tab under ``HarvestReport_wheat`` we see the following result:
 
+.. figure:: _static/APSIMscreenshot_HarvestReport_wheat_incompleteSim.png
+   :alt: HarvestReport_wheat_incompleteSim
+   :width: 100%
 
+   Harvest report for wheat: current simulation scenario.
 
+We can compare this to the ``HarvestReport_wheat`` from our previous tutorial section 
+:doc:`Flexible Cropping Sequences</flexible cropping sequences>`:
 
+.. figure:: _static/APSIMscreenshot_HarvestReport_wheat_CropRotation_flexible_final.png
+   :alt: HarvestReport_wheat_CropRotation_flexible_final
+   :width: 100%
+
+   Harvest report for wheat: previous simulation scenario ("Flexible Cropping Sequences").
+
+As you can see, the harvested wheat yield on 1985-11-16 is identical in both cases.
+Although we have utilised two very different approaches to specify the APSIM simulations,
+the actual operations simulated (and subsequent results) were identical.
+You may also want to investigate this in more detail by reading through the simulation log stored in ``Summary``.
 
 
 
@@ -221,6 +248,9 @@ Sub-Subheading
 
 Sub-Sub-Subheading
 ++++++++++++++++++++++++++++++++++++++++
+
+Conclusion
+----------------------------------------
 
 
 References
