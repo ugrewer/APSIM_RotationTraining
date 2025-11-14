@@ -96,6 +96,7 @@ When we navigate to the ``Script`` tab, the method ``SowCrop()`` is defined as:
         }
 
 From the above, we can see that the method "Sow()" used by the ``Wheat`` model accepts arguments such as:
+
 - population
 - cultivar
 - depth
@@ -172,6 +173,35 @@ Accordingly, both of the below procedures are valid and identical:
     1985-06-05 [Wheat].Sow("Janz", 25, 40, 500)
     1985-06-05 [Wheat].Sow(cultivar: "Janz", population: 25, depth: 40, rowSpacing: 500)
    
+The second operation that we wanted to specify is the application of Urea on the same day as sowing.
+For this, we again start of by specifying the date, 
+while then referencing the APSIM *model* that is conducting the action - in this case ``[Fertiliser]``.
+Using IntelliSense, we see that the method we would like to use is ``Apply()``.
+When searching for "Apply(" within the APSIM source code on GitHub,
+we see that the file "Models/Management/Fertiliser.cs" specifies that the method accepts the below arguments:
+
+- amount (required)
+- type (required)
+- depth (optional)
+- depthBottom (optional)
+- doOutput (optional)
+
+.. code-block:: csharp
+   :caption: Extract of the definition of the "Apply()" method in the APSIM source code
+   :linenos:
+   
+        public void Apply(double amount, string type, double depth = 0, double depthBottom = -1, bool doOutput = true)
+        {
+        ...
+        }
+
+Accordingly, we define the fertiliser application operation as follows:
+
+.. code-block:: csharp
+   :caption: C# code for fertilising wheat at sowing
+   :linenos:
+
+    1985-06-05 [Fertiliser].Apply(100, "UreaN", 100)
 
 
 
@@ -181,9 +211,6 @@ Accordingly, both of the below procedures are valid and identical:
 
 
 
-
-
-Paddock.Fertiliser: 100.0 kg/ha of UreaN added at depth 100 layer 1
 
 
 Subheading
