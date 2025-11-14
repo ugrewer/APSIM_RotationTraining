@@ -134,11 +134,20 @@ There the method definition is given as the below:
         ...
         }
 
-While the actual method definition is much longer, we are only interested in the specification of the input parameters that the method accepts.
+While the actual method definition is much longer, we are here only interested in the specification of the input parameters that the method accepts.
 These are stated in the reproduced line as:
 
 - Required arguments: cultivar, population, depth, rowSpacing
 - Optional arguments: maxCover, budNumber, rowConfig, seeds, tillering, ftn
+
+As you can see, in this case, looking up how the method is called in an existing *manager* script would have been sufficient.
+However, by consulting the source code, we have full certainty about knowing all arguments that the "Sow()" method accepts.
+It also allowed us to understand what required, and what optional arguments are.
+In that way, should we want to call the method using positional arguments only, we also can be certain about the order in which we have to supply inputs.
+
+Background is, that C# let's you call a method such as "Sow()" in two ways.
+If you provide only the values (i.e., *positional arguments*), the order of the arguments must exactly match the method definition.
+Alternatively, you can specify *named arguments* using keyword–value pairs, in which case the order of arguments no longer matters.
 
 This gives us all information we need to work out the next steps and specify our first action within the ``Operations`` *model*.
 
@@ -153,10 +162,8 @@ Now we can specify the parameter values as follows:
 - depth: 40
 - rowSpacing: 500
 
-In C#, you can call a method such as "Sow()" in two ways.
-If you provide only the values (i.e., *positional arguments*), the order of the arguments must exactly match the method definition.
-Alternatively, you can specify *named arguments* using keyword–value pairs, in which case the order of arguments no longer matters.
-For example, you can specify the above information in either of these two ways:
+As mentioned above, you can call "Sow()" either using positional or named arguments.
+Accordingly, both of the below procedures are valid and identical:
 
 .. code-block:: csharp
    :caption: C# code for sowing wheat
