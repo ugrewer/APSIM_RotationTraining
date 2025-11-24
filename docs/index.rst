@@ -1,8 +1,3 @@
-.. note::
-
-   This page is still under development. Please do not use for actual training purposes prior to its final release.
-
-
 .. include:: ../README.rst
 
 
