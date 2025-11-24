@@ -34,7 +34,7 @@ When referencing or utilising material from this tutorial, we suggest using the 
 .. admonition:: Suggested Citation
    
    **Grewer, U., & de Voil, P. (2025).** *Continuous Cropping Using the APSIM Cropping Systems Model. A Comprehensive Tutorial for APSIM Users.*  
-   APSIM Initiative. Retrieved from: https://apsim-rotationtraining.readthedocs.io
+   APSIM Initiative. Retrieved from: https://apsim-rotationtraining.readthedocs.io. DOI: https://doi.org/10.5281/zenodo.17698838
 
 APSIM Acknowledgement
 -----------------------------------------------------
