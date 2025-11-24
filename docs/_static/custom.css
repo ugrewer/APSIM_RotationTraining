@@ -4,9 +4,9 @@ a[href="_sources/index.rst.txt"] {
 }
 
 
-/* Make sidebar scroll area fill full height */
+/* Make sidebar scroll area fill full height
 .wy-side-scroll {
     display: flex;
     flex-direction: column;
     min-height: 100vh;  /* full viewport height */
-}
+} */
