@@ -571,7 +571,7 @@ We can see that the simulation starts out with a fallow, as we had specified.
 We then see that the field occupancy changes sequentially as Sorghum-Fallow-Mungbean-Fallow.
 This allows us to confirm that the simulation is progressing according to the intended crop sequence and that no errors require correction.
 Another key insight from the Rugplot is that fallow periods vary in length.
-This means, that the specified sowing condition is not met in various summer seasons and no crop is sown.
+This means, that the specified sowing condition is not met in various seasons and no crop is sown.
 
 .. figure:: _static/APSIMscreenshot_CropRotationRugplot.png
    :alt: CropRotationRugplot
