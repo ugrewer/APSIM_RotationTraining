@@ -18,7 +18,7 @@ For foundational and reference material as well as for installation instructions
 This tutorial was developed for the APSIM Advanced Training Workshop held in conjunction with the 26th International Congress on Modelling and Simulation (MODSIM 2025) in Adelaide. The material was developed and tested with APSIM version *2025.10.7895*. Using substantially older versions of APSIM may prevent the included APSIM files from running or produce differing results.
 
 The simulation of crop rotations with cropping system models aims to explore long-term impacts of management practices and the structure of cropping systems on crop productivity, soil characteristics, and resource use efficiency. 
-Typical research questions include evaluating the sustainability of crop rotations, assessing the effects of climate variability or change on production systems, optimising fertilizer and irrigation strategies, and estimating trade-offs between yield, environmental outcomes, and economic returns. 
+Typical research questions include evaluating the sustainability of crop rotations, assessing the effects of climate variability or change on production systems, optimising fertiliser and irrigation strategies, and estimating trade-offs between yield, environmental outcomes, and economic returns. 
 In this context, the APSIM model is particularly valuable for simulating complex, multi-year scenarios that are difficult or impractical to study through field trials or the analysis of survey data.
 
 While APSIM offers robust capabilities for simulating complex cropping systems, the practical specification of continuous simulations—such as multi-year monocultures, crop rotations, and fallow periods—requires precise configuration of simulation components. 
