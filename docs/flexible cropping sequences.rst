@@ -281,7 +281,7 @@ Helper-Script: Crop Sequence Enforcer
 For our example, we will first generate a helper script that will allow our individual crop sowing and harvesting *manager* scripts to enforce the desired crop sequencing rules.
 The overall purpose of the helper script is:
 
-- To remember the two most recently harvestedd crops (no matter which *sowHarvest_[Crop]* script initiated them).
+- To remember the two most recently harvested crops (no matter which *sowHarvest_[Crop]* script initiated them).
 - To decide which next crop is allowed to be sown based on the previous plot history (cereal vs. legume).
 - To record the crop history after each harvest.
 
