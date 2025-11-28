@@ -803,7 +803,7 @@ rerun the simulation and inspect the Rugplot.
    Rugplot of updated simulation results.
 
 As can be seen in the above rugplot: The simulation no longer stalls in sorghum from the summer season 1993 onwards.
-In fact, we see that on 2 March 1993, the state of our simulation transitions from sorghum to fallow 
+In fact, we see that on 28 February 1993, the state of our simulation transitions from sorghum to fallow 
 because the property ``MustAbandon`` returns 1.
 
 From the rugplot we can also see another particularity:
