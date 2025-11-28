@@ -59,7 +59,7 @@ we are interested in specifying the following activities:
 - Applying Urea fertiliser
 - Harvesting crops
 
-The first actions of interest happens on 1985-06-05 and consist of:
+The first actions of interest happen on 1985-06-05 and consist of:
 
 - Sowing of Wheat
 - Application of Urea fertiliser at a rate of 100.0 kg/ha (and a depth of 100 mm)
