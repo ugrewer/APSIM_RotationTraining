@@ -104,7 +104,7 @@ From the above, we can see that the method "Sow()" used by the ``Wheat`` model a
 
 The above procedure gives us a rather practical approach to looking up how methods are used.
 However, in this way, we only find out which arguments are being passed in this particular call of the method.
-There could be more parameters defined in the method’s signature (e.g. optional ones), but they’re simply not used here.
+There could be more parameters defined in the method’s signature (e.g. optional ones), but they are simply not used here.
 From the above, we also cannot tell in which order the method expects its arguments (in case that we do not want to specify keywords).
 To know all possible arguments, you need to find the method definition of "Sow()" in the source code (not just a call to it).
 
