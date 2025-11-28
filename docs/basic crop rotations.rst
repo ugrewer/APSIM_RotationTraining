@@ -191,31 +191,30 @@ Let us copy the highlighted code and paste it into the *manager* script ``SowHar
 
     public double Population { get; set; }
 
-With the above modifications, we defined the sorghum-specific variables in the ``Script`` tab 
-and visualise them in the ``Parameters`` tab, making their values simple to adjust.
-However, so far, we do not yet do anything with the newly defined variables and 
-they thus have no effect on the simulation.
-To ensure their utilisation, we have to include them as arguments in the ``SowCrop()`` method.
+With the above modifications, we defined the sorghum-specific variables in the ``Script`` tab and visualise them in the ``Parameters`` tab.
+The latter makes the values of these variables simple to adjust through the user-interface and without any coding. 
+However, the newly defined variables are not yet used and thus do not affect the APSIM simulation.
+To ensure that these variables are considered by the model, they must be included as arguments to the SowCrop() method.
 Specifically, we have to add the arguments ``rowConfig``, ``tillering``, and ``ftn`` within the call of ``Crop.Sow()``:
 
 .. code-block:: csharp
     :caption: Addition of three sorghum-specific arguments in the call of **Crop.Sow()**
 
-    public double Population { get; set; }
-   Crop.Sow(
-       population: Population, 
-       cultivar: CultivarName, 
-       depth: SowingDepth, 
-       rowSpacing: RowSpacing, 
-       rowConfig: (double)RowConfiguration, 
-       tillering: (int)TilleringMethod, 
-       ftn:Ftn
-       );
+      Crop.Sow(
+          population: Population, 
+          cultivar: CultivarName, 
+          depth: SowingDepth, 
+          rowSpacing: RowSpacing, 
+          rowConfig: (double)RowConfiguration, 
+          tillering: (int)TilleringMethod, 
+          ftn:Ftn
+          );
 
 Now, when APSIM conducts the sowing of a sorghum crop,
 it takes into consideration the specific parameters for row configuration and tillering.
 The updated **C# code** should look like the following.
 The code additions can be found in lines 58-73.
+The updated call of ``Crop.Sow()`` can be found in line 126.
 The remainder of the code remained unchanged from the template that we used.
 
 .. code-block:: csharp
