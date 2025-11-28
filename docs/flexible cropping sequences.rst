@@ -671,7 +671,7 @@ What is the reason our simulation is not continuing as intended?
     On 1992-11-22 a sorghum crop is emerging. 
     So far, the simulation seems to progress in a standard manner.
     On 1992-12-16 sorghum reaches floral initiation, on 1993-01-10 the flag-leaf stage is reached, and on 1993-01-22 the sorghum field is flowering.
-    On 1993-01-27 we record the start of grain filling, but sadly on 1993-03-01 the sorghum crop fails due to a loss of leaf area.
+    On 1993-01-27 we record the start of grain filling, but sadly on 1993-02-27 the sorghum crop fails due to a loss of leaf area.
    </p>
 
    <img src="_static/APSIMscreenshot_StuckInSorghum_Log.png" alt="StuckInSorghum_Log" width="100%">
@@ -681,7 +681,7 @@ What is the reason our simulation is not continuing as intended?
    <p>
    While a crop failure is truly bad whenever it happens in reality, a single failed crop in an APSIM simulation is not the end of the world and 
    should neither be the end of our flexible cropping sequence.
-   As you can see from the above screenshot, from the 1993-01-28 onwards, the log records the following info:
+   As you can see from the above screenshot, after the crop failure, the log records the following info:
    <br><br>
    <b>""Paddock.RotationManager: Transition from "Sorghum" to "Fallow" by Exit SG is not possible. Weight = 0"</b>
    <br><br>
