@@ -693,7 +693,7 @@ What is the reason our simulation is not continuing as intended?
    <br><br>
     A usual step when a crop failure occurs in a simulation is to further investigate the mechanistic cause:
     Which kind of stress or other factor led to the total loss of leaf area?
-    Did this stess build up gradually or over a short amount of time?
+    Did this stress build up gradually or over a short amount of time?
     Did our management choices contribute to the crop failure? 
     While these analytical questions fall outside the scope of our tutorial, which focuses on the technical handling of crop rotations, 
     you may wish to explore them on your own time.
