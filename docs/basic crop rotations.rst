@@ -391,7 +391,7 @@ In the thus modified *manager* script ``SowHarvest_sorghum`` we can switch back 
 Now, we should be able to modify the three target parameters *"skip row configuration"*, *"tillering method"*, and *"fertile tiller number"* to their desired values:
 solid row configuration, fixed tillering method, and zero fertile tillers.
 
-The above provided an example of a work routing that implements minor changes to a *manager* script, without thorough knowledge or skills in *C#* programming.
+The above provided an example of a work routine that implements minor changes to a *manager* script, without thorough knowledge or skills in *C#* programming.
 If you are interested in gaining a more mechanistic understanding of how to flexibly modify **C# code** in APSIM, the tutorials
 `"Build a model" <https://apsimnextgeneration.netlify.app/development/tutorial/buildmodeltutorial/>`_ and
 `"How PMF functions work" <https://apsimnextgeneration.netlify.app/development/tutorial/howpmffunctionswork/>`_
