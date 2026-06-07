@@ -510,7 +510,7 @@ To inspect the specific values, please expand the *Soil node* ``HRS``, then expa
 
 Here, you can see the specific values for: 
 
-- Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the terms *Crop Lower Limit*. Below the indicated values, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
+- Crop-specific soil water extraction limit (*Lower Limit*; LL). You may also know this variable under the term *Crop Lower Limit*. Below the indicated values, the crop cannot extract water (even though some water is still physically present in the soil profile). Please note that this is different from *Lower Limit 15* (LL15), also known as *Wilting Point*, which indicates the soil water content at 15 bar suction (which is exclusively soil-specific, but not crop-specific).
 - Water Extraction Coefficient (KL). The KL factor specifies the maximum fraction of available water (above LL15) that a plant’s roots can extract from a soil layer per day under non-limiting conditions. It reflects both root and soil properties (e.g., root density, soil hydraulic conductivity, etc.).
 - Root Exploration Factor (XF). The XF factor limits root penetration in a soil layer, describing the fraction of the layer accessible to roots. When XF equals 1, roots can fully explore the layer, whereas when XF equals 0, root growth into that layer is entirely restricted. Values in between reflect partial restriction (e.g., due to physical or chemical constraints).
 
